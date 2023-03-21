@@ -2,7 +2,7 @@ package com.vaas.vaasbackend.entity;
 
 import jakarta.persistence.*;
 
-@Entity
+
 @Table(name = "tbl_user_role")
 public class TblUserRole {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
