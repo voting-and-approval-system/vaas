@@ -1,0 +1,113 @@
+package com.vaas.vaasbackend.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "tbl_users")
+public class TblUser {
+    @Id
+    @Column(name = "user_id", nullable = false)
+    private Integer id;
+
+    @Column(name = "first_name", nullable = false, length = 20)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 20)
+    private String lastName;
+
+    @Column(name = "phone_number", nullable = false, length = 12)
+    private String phoneNumber;
+
+    @Column(name = "user_email", nullable = false, length = 20)
+    private String userEmail;
+
+    @Column(name = "house_number", nullable = false, length = 6)
+    private String houseNumber;
+
+    @Column(name = "user_joining_date", nullable = false)
+    private LocalDate userJoiningDate;
+
+    @Column(name = "user_updated_date", nullable = false)
+    private LocalDate userUpdatedDate;
+
+    @Column(name = "user_is_active", nullable = false)
+    private Boolean userIsActive = false;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getHouseNumber() {
+        return houseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        this.houseNumber = houseNumber;
+    }
+
+    public LocalDate getUserJoiningDate() {
+        return userJoiningDate;
+    }
+
+    public void setUserJoiningDate(LocalDate userJoiningDate) {
+        this.userJoiningDate = userJoiningDate;
+    }
+
+    public LocalDate getUserUpdatedDate() {
+        return userUpdatedDate;
+    }
+
+    public void setUserUpdatedDate(LocalDate userUpdatedDate) {
+        this.userUpdatedDate = userUpdatedDate;
+    }
+
+    public Boolean getUserIsActive() {
+        return userIsActive;
+    }
+
+    public void setUserIsActive(Boolean userIsActive) {
+        this.userIsActive = userIsActive;
+    }
+
+}
