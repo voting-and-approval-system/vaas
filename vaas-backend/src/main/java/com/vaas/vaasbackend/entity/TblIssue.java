@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "tbl_issue")
 public class TblIssue {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "issue_id", nullable = false)
     private Integer id;
 
@@ -21,14 +22,14 @@ public class TblIssue {
     @Column(name = "allow_multiple_options", nullable = false)
     private Boolean allowMultipleOptions = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "assetes_id")
     private TblAssete assetes;
 
     @Column(name = "issue_is_active", nullable = false)
     private Boolean issueIsActive = false;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "vote_type_id", nullable = false)
     private TblVotesType voteType;
 
