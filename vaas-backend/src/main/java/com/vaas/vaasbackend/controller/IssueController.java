@@ -19,10 +19,24 @@ public class IssueController {
         return issueService.ShowIssue();
     }
 
+    @GetMapping("/issue/{id}")
+    public TblIssue ShowIssue(@PathVariable Integer id){
+        return issueService.ShowIssue(id);
+    }
+
+    @GetMapping("issue/active/{isactive}")
+    public List<TblIssue> ShowActiveIssue(@PathVariable("isactive") boolean isActive){
+        return issueService.ShowActiveIssue(isActive);
+    }
+
     @PostMapping("/issue")
     public TblIssue SaveIssue(@RequestBody TblIssue issue){
-
         return issueService.SaveIssue(issue);
+    }
+
+    @PutMapping("/issue/{id}")
+    public TblIssue UpdateIssue(@PathVariable Integer id,@RequestBody TblIssue issue){
+        return issueService.UpdateIssue(id,issue);
     }
 
     @DeleteMapping("/issue/{id}")
