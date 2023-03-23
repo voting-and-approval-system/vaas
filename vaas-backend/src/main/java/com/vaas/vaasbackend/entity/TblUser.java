@@ -2,6 +2,8 @@ package com.vaas.vaasbackend.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "tbl_users")
 public class TblUser {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", nullable = false)
     private Integer id;
 
@@ -108,6 +111,10 @@ public class TblUser {
 
     public void setUserIsActive(Boolean userIsActive) {
         this.userIsActive = userIsActive;
+    }
+
+    public TblUser get() {
+        return null;
     }
 
 }
