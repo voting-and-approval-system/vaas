@@ -22,8 +22,8 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public TblUser SaveUsers(TblUser user) {
-        return usersRepository.save(user);
+    public TblUser SaveUsers(TblUser id) {
+        return usersRepository.save(id);
     }
     
     @Override
@@ -32,17 +32,17 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public void DeleteUserById(Long user) {
-        usersRepository.deleteById(user);
+    public void DeleteUserById(Long id) {
+        usersRepository.deleteById(id);
     }
 
     @Override
-    public TblUser UpdateUser(Long user, TblUser user2) {
-        TblUser depDB = usersRepository.findById(user).get();
+    public TblUser UpdateUser(Long id, TblUser user) {
+        TblUser depDB = usersRepository.findById(id).get();
 
-        if(Objects.nonNull(user2.getUserEmail()) &&
-        !"".equalsIgnoreCase(user2.getUserEmail())) {
-            depDB.setUserEmail(user2.getUserEmail());
+        if(Objects.nonNull(user.getUserEmail()) &&
+        !"".equalsIgnoreCase(user.getUserEmail())) {
+            depDB.setUserEmail(user.getUserEmail());
         }
 
         return usersRepository.save(depDB);

@@ -10,11 +10,11 @@ public class TblUserRole {
     @Column(name = "user_role_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private TblUser user;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private TblRole role;
 

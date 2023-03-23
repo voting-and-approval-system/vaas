@@ -34,20 +34,20 @@ public class UsersController {
 	}
 
     @PostMapping("/users")
-    public TblUser SaveUser(@RequestBody TblUser user){
-        return usersService.SaveUsers(user);
+    public TblUser SaveUser(@RequestBody TblUser id){
+        return usersService.SaveUsers(id);
     }
 
 
     @DeleteMapping("/users/{id}")
-    public String DeleteUserById(@PathVariable("id") Long user) {
-        usersService.DeleteUserById(user);
+    public String DeleteUserById(@PathVariable("id") Long id) {
+        usersService.DeleteUserById(id);
         return "users deleted Successfully!!";
     }
 
     @PutMapping("/users/{id}")
-    public TblUser UpdateUser(@PathVariable("id") Long user,@RequestBody TblUser user2) {
-        return usersService.UpdateUser(user,user2);
+    public TblUser UpdateUser(@PathVariable("id") Long id,@RequestBody TblUser user) {
+        return usersService.UpdateUser(id,user);
     }
 
 
