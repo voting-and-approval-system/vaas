@@ -25,8 +25,8 @@ public class RoleController {
         return roleService.ShowRoles();
     }
     @PostMapping("/roles")
-    public TblRole SaveRoles(@RequestBody TblRole id){
-        return roleService.SaveRole(id);
+    public TblRole SaveRoles(@RequestBody TblRole role){
+        return roleService.SaveRole(role);
     }
     
     @GetMapping("/roles/{id}")

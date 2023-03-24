@@ -13,7 +13,7 @@ public interface UserRoleService {
 
     Optional<TblUserRole> GetUserRole(Long id);
 
-    TblUserRole SaveUserRole(TblUserRole id);
+    TblUserRole SaveUserRole(TblUserRole userrole);
 
     public void DeleteUserRoleById(Long id);
 
