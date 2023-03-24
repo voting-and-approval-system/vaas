@@ -1,11 +1,6 @@
 package com.vaas.vaasbackend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -40,6 +35,9 @@ public class TblUser {
 
     @Column(name = "user_is_active", nullable = false)
     private Boolean userIsActive = false;
+
+    @Column(name = "password", nullable = false, length = 80)
+    private String password;
 
     public Integer getId() {
         return id;
@@ -113,8 +111,12 @@ public class TblUser {
         this.userIsActive = userIsActive;
     }
 
-    public TblUser get() {
-        return null;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
