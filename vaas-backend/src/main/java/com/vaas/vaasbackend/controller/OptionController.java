@@ -14,17 +14,27 @@ public class OptionController {
     private OptionService optionService;
 
     @GetMapping("/option")
-    public List<TblOption> ShowOption(){
+    public List<TblOption> ShowOption() {
         return optionService.ShowOption();
     }
 
+    @GetMapping("option/{id}")
+    public TblOption ShowOption(@PathVariable Integer id){
+        return optionService.ShowOption(id);
+    }
+
+    @GetMapping("/option/issue/{id}")
+    public List<TblOption> ShowOptionByIssueId(@PathVariable("id")Integer id){
+        return optionService.ShowOptionByIssueId(id);
+    }
+
     @PostMapping("/option")
-    public TblOption SaveOption(@RequestBody TblOption option){
+    public TblOption SaveOption(@RequestBody TblOption option) {
         return optionService.SaveOption(option);
     }
 
     @DeleteMapping("/option/{id}")
-    public String DeleteOption(@PathVariable Integer id){
+    public String DeleteOption(@PathVariable Integer id) {
         optionService.DeleteOption(id);
         return "Record Deleted";
     }

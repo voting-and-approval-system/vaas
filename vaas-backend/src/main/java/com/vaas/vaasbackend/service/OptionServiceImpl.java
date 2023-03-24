@@ -25,4 +25,14 @@ public class OptionServiceImpl implements OptionService{
     public void DeleteOption(Integer id) {
         optionRepository.deleteById(id);
     }
+
+    @Override
+    public List<TblOption> ShowOptionByIssueId(Integer id) {
+        return optionRepository.findByIssueId(id);
+    }
+
+    @Override
+    public TblOption ShowOption(Integer id) {
+        return optionRepository.findById(id).get();
+    }
 }

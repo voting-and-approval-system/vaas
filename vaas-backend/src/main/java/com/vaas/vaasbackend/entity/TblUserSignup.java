@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tbl_user_signup")
-public class TblUserSignup {
+public class TblUserSignup{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_signup_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private TblUser user;
 
