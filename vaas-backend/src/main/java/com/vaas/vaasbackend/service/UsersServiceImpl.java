@@ -22,8 +22,8 @@ public class UsersServiceImpl implements UsersService{
     }
 
     @Override
-    public TblUser SaveUsers(TblUser id) {
-        return usersRepository.save(id);
+    public TblUser SaveUsers(TblUser user) {
+        return usersRepository.save(user);
     }
     
     @Override

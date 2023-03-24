@@ -21,8 +21,8 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public TblUserRole SaveUserRole(TblUserRole id) {
-        return usersrolerepository.save(id);
+    public TblUserRole SaveUserRole(TblUserRole userrole) {
+        return usersrolerepository.save(userrole);
     }
     
     @Override

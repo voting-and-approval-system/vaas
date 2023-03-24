@@ -24,8 +24,8 @@ public class RoleServiceImpl implements RoleService{
     }
 
     @Override
-    public TblRole SaveRole(TblRole id) {
-        return rolerepository.save(id);
+    public TblRole SaveRole(TblRole role) {
+        return rolerepository.save(role);
     }
     
     @Override

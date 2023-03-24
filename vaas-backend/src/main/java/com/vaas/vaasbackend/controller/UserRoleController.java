@@ -32,8 +32,8 @@ public class UserRoleController {
 	}
 
     @PostMapping("/userrole")
-    public TblUserRole saveUserRole(@RequestBody TblUserRole id){
-        return userRoleService.SaveUserRole(id);
+    public TblUserRole saveUserRole(@RequestBody TblUserRole userrole){
+        return userRoleService.SaveUserRole(userrole);
     }
 
     @DeleteMapping("/userrole/{id}")

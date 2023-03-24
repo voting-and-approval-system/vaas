@@ -12,7 +12,7 @@ public interface UsersService {
 
     Optional<TblUser> GetUsers(Long id);
 
-    TblUser SaveUsers(TblUser id);
+    TblUser SaveUsers(TblUser user);
 
     public void DeleteUserById(Long id);
 

@@ -7,7 +7,7 @@ import com.vaas.vaasbackend.entity.TblRole;
 public interface RoleService {
     public List<TblRole> ShowRoles();
 
-    TblRole SaveRole(TblRole id);
+    TblRole SaveRole(TblRole role);
 
     Optional<TblRole> GetRole(Long id);
 
