@@ -3,6 +3,8 @@ package com.vaas.vaasbackend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.vaas.vaasbackend.entity.TblUserSignup;
+import com.vaas.vaasbackend.service.UserSignupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,8 @@ public class UsersController {
 
     @Autowired
     UsersService usersService;
+    @Autowired
+    UserSignupService userSignupService;
 
     @GetMapping("/users")
     public List<TblUser> ShowUsers(){
@@ -34,10 +38,9 @@ public class UsersController {
 	}
 
     @PostMapping("/users")
-    public TblUser SaveUser(@RequestBody TblUser id){
-        return usersService.SaveUsers(id);
+    public TblUser SaveUser(@RequestBody TblUser user, @RequestBody TblUserSignup userSignup){
+        return usersService.SaveUsers(user);
     }
-
 
     @DeleteMapping("/users/{id}")
     public String DeleteUserById(@PathVariable("id") Long id) {
@@ -49,6 +52,4 @@ public class UsersController {
     public TblUser UpdateUser(@PathVariable("id") Long id,@RequestBody TblUser user) {
         return usersService.UpdateUser(id,user);
     }
-
-
 }

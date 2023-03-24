@@ -10,4 +10,8 @@ public interface OptionService {
     public TblOption SaveOption(TblOption option);
 
     public void DeleteOption(Integer id);
+
+    public List<TblOption> ShowOptionByIssueId(Integer id);
+
+    public TblOption ShowOption(Integer id);
 }
