@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "tbl_option")
 public class TblOption {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "option_id", nullable = false)
     private Integer id;
 
@@ -18,7 +19,7 @@ public class TblOption {
     @Column(name = "option_attachment_path", length = 200)
     private String optionAttachmentPath;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "issue_id", nullable = false)
     private TblIssue issue;
 
