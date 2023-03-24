@@ -38,7 +38,7 @@ public class UsersController {
 	}
 
     @PostMapping("/users")
-    public TblUser SaveUser(@RequestBody TblUser user, @RequestBody TblUserSignup userSignup){
+    public TblUser SaveUser(@RequestBody TblUser user){
         return usersService.SaveUsers(user);
     }
 
