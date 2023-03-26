@@ -18,6 +18,11 @@ public class AssetesServiceImpl implements AssetesService{
     }
 
     @Override
+    public TblAssete ShowAssetes(Integer id) {
+        return assetesRepository.findById(id).get();
+    }
+
+    @Override
     public TblAssete SaveAssetes(TblAssete assete) {
         return assetesRepository.save(assete);
     }
