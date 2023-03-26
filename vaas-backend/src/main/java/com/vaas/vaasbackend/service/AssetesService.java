@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface AssetesService {
    public List<TblAssete> ShowAssetes();
-    TblAssete SaveAssetes(TblAssete assete);
+   public TblAssete ShowAssetes(Integer id);
+   public TblAssete SaveAssetes(TblAssete assete);
 }

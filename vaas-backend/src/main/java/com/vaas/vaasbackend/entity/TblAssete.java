@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tbl_assetes")
@@ -10,6 +11,7 @@ public class TblAssete {
     @Column(name = "assetes_id", nullable = false)
     private Integer id;
 
+    @NotBlank(message = "assetesTitle is require !")
     @Column(name = "assetes_title", nullable = false, length = 30)
     private String assetesTitle;
 
