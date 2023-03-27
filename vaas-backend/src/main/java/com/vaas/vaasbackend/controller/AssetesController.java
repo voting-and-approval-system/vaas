@@ -23,6 +23,12 @@ public class AssetesController {
         return assetesService.ShowAssetes(id);
     }
 
+    @DeleteMapping("assetes/{id}")
+    public String DeleteAssetes(@PathVariable Integer id){
+        assetesService.DeleteAssetes(id);
+        return "Record Deleted !!";
+    }
+
     @PostMapping("/assetes")
     public TblAssete SaveAssetes(@Valid @RequestBody TblAssete assete){
         return assetesService.SaveAssetes(assete);
