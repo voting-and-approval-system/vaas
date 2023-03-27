@@ -6,14 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "tbl_round")
 public class TblRound {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "round_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "issue_id", nullable = false)
     private TblIssue issue;
 
-    @Column(name = "round_number", nullable = false)
+    @Column
     private Integer roundNumber;
 
     public Integer getId() {

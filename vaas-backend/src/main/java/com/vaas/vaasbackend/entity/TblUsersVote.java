@@ -8,14 +8,15 @@ import java.time.LocalDate;
 @Table(name = "tbl_users_vote")
 public class TblUsersVote {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_vote_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private TblUser user;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "round_id", nullable = false)
     private TblRound round;
 
