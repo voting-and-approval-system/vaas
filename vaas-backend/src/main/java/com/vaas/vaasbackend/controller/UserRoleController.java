@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vaas.vaasbackend.entity.TblUserRole;
 import com.vaas.vaasbackend.service.UserRoleService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserRoleController {
     @Autowired
@@ -32,7 +34,7 @@ public class UserRoleController {
 	}
 
     @PostMapping("/userrole")
-    public TblUserRole saveUserRole(@RequestBody TblUserRole userrole){
+    public TblUserRole saveUserRole(@Valid @RequestBody TblUserRole userrole){
         return userRoleService.SaveUserRole(userrole);
     }
 
@@ -44,7 +46,7 @@ public class UserRoleController {
 
 
     @PutMapping("/userrole/{id}")
-    public TblUserRole UpdateUserRole(@PathVariable("id") Long id,@RequestBody TblUserRole userrole) {
+    public TblUserRole UpdateUserRole(@PathVariable("id") Long id,@Valid @RequestBody TblUserRole userrole) {
         return userRoleService.UpdateUserRole(id,userrole);
     }
 

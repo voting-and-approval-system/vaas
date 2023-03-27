@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.vaas.vaasbackend.service.UsersService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UsersController {
 
@@ -34,7 +36,7 @@ public class UsersController {
 	}
 
     @PostMapping("/users")
-    public TblUser SaveUser(@RequestBody TblUser user){
+    public TblUser SaveUser(@Valid @RequestBody TblUser user){
         return usersService.SaveUsers(user);
     }
 
@@ -45,7 +47,7 @@ public class UsersController {
     }
 
     @PutMapping("/users/{id}")
-    public TblUser UpdateUser(@PathVariable("id") Long id,@RequestBody TblUser user) {
+    public TblUser UpdateUser(@PathVariable("id") Long id,@Valid @RequestBody TblUser user) {
         return usersService.UpdateUser(id,user);
     }
 }

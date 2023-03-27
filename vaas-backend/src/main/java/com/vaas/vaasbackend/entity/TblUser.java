@@ -1,6 +1,9 @@
 package com.vaas.vaasbackend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -13,30 +16,42 @@ public class TblUser {
     private Integer id;
 
     @Column(name = "first_name", nullable = false, length = 20)
+    @NotBlank(message = "Please enter First Name")
     private String firstName;
 
     @Column(name = "last_name", nullable = false, length = 20)
+    @NotBlank(message = "Please enter Last Name")
     private String lastName;
 
     @Column(name = "phone_number", nullable = false, length = 12)
+    @NotBlank(message = "Please enter Phone Number")
+    @Size(max = 10)
     private String phoneNumber;
 
     @Column(name = "user_email", nullable = false, length = 20)
+    @NotBlank(message = "Please enter email address")
+    @Email
     private String userEmail;
 
     @Column(name = "house_number", nullable = false, length = 6)
+    @NotBlank(message = "Please enter house Number")
     private String houseNumber;
 
     @Column(name = "user_joining_date", nullable = false)
+    @NotBlank(message = "Please enter joining date")
     private LocalDate userJoiningDate;
 
     @Column(name = "user_updated_date", nullable = false)
+    @NotBlank(message = "Please enter update date")
     private LocalDate userUpdatedDate;
 
     @Column(name = "user_is_active", nullable = false)
+    @NotBlank(message = "Is user active?")
     private Boolean userIsActive = false;
 
     @Column(name = "password", nullable = false, length = 80)
+    @NotBlank(message = "Please enter password")
+    @Size(max = 20, min = 8)
     private String password;
 
     public Integer getId() {

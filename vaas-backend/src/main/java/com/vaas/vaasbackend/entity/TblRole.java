@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tbl_roles")
@@ -16,6 +17,7 @@ public class TblRole {
     private Integer id;
 
     @Column(name = "role_name", nullable = false, length = 20)
+    @NotBlank(message = "please enter role")
     private String roleName;
 
     public Integer getId() {

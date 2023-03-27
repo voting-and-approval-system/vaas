@@ -15,6 +15,8 @@ import com.vaas.vaasbackend.entity.TblRole;
 
 import com.vaas.vaasbackend.service.RoleService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class RoleController {
     @Autowired
@@ -25,7 +27,7 @@ public class RoleController {
         return roleService.ShowRoles();
     }
     @PostMapping("/roles")
-    public TblRole SaveRoles(@RequestBody TblRole role){
+    public TblRole SaveRoles(@Valid @RequestBody TblRole role){
         return roleService.SaveRole(role);
     }
     
@@ -42,7 +44,7 @@ public class RoleController {
     }
 
     @PutMapping("/roles/{id}")
-    public TblRole UpdateUser(@PathVariable("id") Long id,@RequestBody TblRole role) {
+    public TblRole UpdateUser(@PathVariable("id") Long id,@Valid @RequestBody TblRole role) {
         return roleService.UpdateRole(id,role);
     }
 
