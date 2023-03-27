@@ -8,4 +8,5 @@ public interface AssetesService {
    public List<TblAssete> ShowAssetes();
    public TblAssete ShowAssetes(Integer id);
    public TblAssete SaveAssetes(TblAssete assete);
+   public void DeleteAssetes(Integer id);
 }
