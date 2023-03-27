@@ -1,12 +1,14 @@
 package com.vaas.vaasbackend.service;
 
 import com.vaas.vaasbackend.entity.TblAssete;
+import com.vaas.vaasbackend.errors.AssetesNotFoundException;
 import com.vaas.vaasbackend.repository.AssetesRepository;
 import com.vaas.vaasbackend.repository.IssueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssetesServiceImpl implements AssetesService{
@@ -21,8 +23,12 @@ public class AssetesServiceImpl implements AssetesService{
     }
 
     @Override
-    public TblAssete ShowAssetes(Integer id) {
-        return assetesRepository.findById(id).get();
+    public TblAssete ShowAssetes(Integer id) throws AssetesNotFoundException {
+        Optional<TblAssete> assete = assetesRepository.findById(id);
+        if(!assete.isPresent()){
+            throw new AssetesNotFoundException("Assetes Not Available");
+        }
+        return assete.get();
     }
 
     @Override

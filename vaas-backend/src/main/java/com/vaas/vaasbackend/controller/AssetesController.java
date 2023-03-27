@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblAssete;
+import com.vaas.vaasbackend.errors.AssetesNotFoundException;
 import com.vaas.vaasbackend.service.AssetesService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class AssetesController {
     }
 
     @GetMapping("/assetes/{id}")
-    public TblAssete ShowAssetes(@PathVariable Integer id){
+    public TblAssete ShowAssetes(@PathVariable Integer id) throws AssetesNotFoundException {
         return assetesService.ShowAssetes(id);
     }
 
