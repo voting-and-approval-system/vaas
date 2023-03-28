@@ -1,14 +1,12 @@
 package com.vaas.vaasbackend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tbl_votes_type")
 public class TblVotesType {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vote_type_id", nullable = false)
     private Integer id;
 
