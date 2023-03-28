@@ -18,7 +18,7 @@ import jakarta.persistence.*;
         classes = @ConstructorResult(
                 targetClass = TotalVoteForIssue.class,
                 columns = {
-                        @ColumnResult(name = "option_title", type =String.class),
+                        @ColumnResult(name = "option_title", type = String.class),
                         @ColumnResult(name = "total_votes", type = Integer.class)
                 }
         )
