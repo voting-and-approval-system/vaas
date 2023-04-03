@@ -15,25 +15,21 @@ import java.util.List;
 @Service
 public class UserVoteServiceImpl implements UserVoteService{
     @Autowired
-    UserVoteRepository userVoteRepository;
+    private UserVoteRepository userVoteRepository;
     @Override
     public List<TblUsersVote> ShowUserVote() {
         return userVoteRepository.findAll();
     }
-
     @Override
     public TblUsersVote SaveUserVote(TblUsersVote usersVote) {
         return userVoteRepository.save(usersVote);
     }
-
     @Override
     public List<TblUsersVote> ShowUserVoteByUserId(Integer id) {
         return userVoteRepository.findByUserId(id);
     }
-
     @Override
     public List<String> ShowUserVoteForIssue(Integer id) {
         return userVoteRepository.ShowUserVoteForIssue(id);
     }
-
 }

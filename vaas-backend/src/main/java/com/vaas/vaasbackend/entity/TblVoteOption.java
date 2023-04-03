@@ -28,6 +28,7 @@ import jakarta.persistence.*;
 @Table(name = "tbl_vote_option")
 public class TblVoteOption {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vote_option_id", nullable = false)
     private Integer id;
 

@@ -13,16 +13,16 @@ public class RoundController {
     RoundService roundService;
     @GetMapping("/round")
     public List<TblRound> ShowRound(){
-        return roundService.ShowRound();
+        return roundService.showRound();
     }
 
     @PostMapping("/round")
     public TblRound SaveRound(@RequestBody TblRound round){
-        return roundService.SaveRound(round);
+        return roundService.saveRound(round);
     }
 
     @GetMapping("/round/issue/{id}")
     public List<TblRound> ShowRoundByIssueId(@PathVariable Integer id){
-        return roundService.ShowRoundByIssueId(id);
+        return roundService.showRoundByIssueId(id);
     }
 }
