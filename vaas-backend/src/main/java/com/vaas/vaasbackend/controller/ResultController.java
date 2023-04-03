@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class ResultController {
     Evaluator[] evaluator;
 
     @GetMapping("/result/{issueid}/{roundno}")
-    public TotalVoteForIssue getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) {
+    public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) {
         //validate input i.e. issueId
         //call ResultService.getResult(issueId);
 

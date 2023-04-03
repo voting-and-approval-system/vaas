@@ -16,22 +16,22 @@ public class AssetesController {
 
     @GetMapping("/assetes")
     public List<TblAssete> ShowAssetes(){
-        return assetesService.ShowAssetes();
+        return assetesService.showAssetes();
     }
 
     @GetMapping("/assetes/{id}")
     public TblAssete ShowAssetes(@PathVariable Integer id) throws AssetesNotFoundException {
-        return assetesService.ShowAssetes(id);
+        return assetesService.showAssetes(id);
     }
 
     @DeleteMapping("assetes/{id}")
     public String DeleteAssetes(@PathVariable Integer id){
-        assetesService.DeleteAssetes(id);
+        assetesService.deleteAssetes(id);
         return "Record Deleted !!";
     }
 
     @PostMapping("/assetes")
     public TblAssete SaveAssetes(@Valid @RequestBody TblAssete assete){
-        return assetesService.SaveAssetes(assete);
+        return assetesService.saveAssetes(assete);
     }
 }
