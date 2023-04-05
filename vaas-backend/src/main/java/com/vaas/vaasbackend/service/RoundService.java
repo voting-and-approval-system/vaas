@@ -11,17 +11,17 @@ import java.util.List;
 public class RoundService{
     @Autowired
     RoundRepository roundRepository;
-    
+
     public List<TblRound> showRound() {
         return roundRepository.findAll();
     }
 
-   
+
     public TblRound saveRound(TblRound round) {
         return roundRepository.save(round);
     }
 
-   
+
     public List<TblRound> showRoundByIssueId(Integer id) {
         return roundRepository.findByIssueId(id);
     }

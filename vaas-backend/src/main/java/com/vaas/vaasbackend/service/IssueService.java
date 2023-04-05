@@ -12,21 +12,26 @@ import java.util.Objects;
 public class IssueService {
     @Autowired
     IssueRepository issueRepository;
+
     public List<TblIssue> showIssue() {
         return issueRepository.findAll();
     }
+
 
     public TblIssue showIssue(Integer id) {
         return issueRepository.findById(id).get();
     }
 
+
     public TblIssue saveIssue(TblIssue issue) {
         return issueRepository.save(issue);
     }
 
+
     public void deleteIssue(Integer id) {
         issueRepository.deleteById(id);
     }
+
 
     public TblIssue updateIssue(Integer id, TblIssue issue) {
         TblIssue tblIssue = issueRepository.findById(id).get();
@@ -68,6 +73,7 @@ public class IssueService {
 
         return issueRepository.save(tblIssue);
     }
+
 
     public List<TblIssue> showActiveIssue(boolean isActive) {
         return issueRepository.findByIssueIsActive(isActive);

@@ -1,7 +1,7 @@
 package com.vaas.vaasbackend.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_user_role")

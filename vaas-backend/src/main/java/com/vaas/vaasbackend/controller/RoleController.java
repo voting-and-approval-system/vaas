@@ -3,6 +3,7 @@ package com.vaas.vaasbackend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.vaas.vaasbackend.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.vaas.vaasbackend.entity.TblRole;
 
-import com.vaas.vaasbackend.service.RoleService;
+import javax.validation.Valid;
 
-import jakarta.validation.Valid;
 
 @RestController
 public class RoleController {
@@ -23,29 +23,29 @@ public class RoleController {
     RoleService roleService;
 
     @GetMapping("/roles")
-    public List<TblRole> ShowRoles(){
-        return roleService.ShowRoles();
+    public List<TblRole> showRoles(){
+        return roleService.showRoles();
     }
     @PostMapping("/roles")
-    public TblRole SaveRoles(@Valid @RequestBody TblRole role){
-        return roleService.SaveRole(role);
+    public TblRole saveRoles(@Valid @RequestBody TblRole role){
+        return roleService.saveRole(role);
     }
     
     @GetMapping("/roles/{id}")
-	public Optional<TblRole> GetRole(@PathVariable String id)
+	public Optional<TblRole> getRole(@PathVariable String id)
 	{
-		return this.roleService.GetRole(Long.parseLong(id));
+		return this.roleService.getRole(Long.parseLong(id));
 	}
 
     @DeleteMapping("/roles/{id}")
-    public String DeleteRole(@PathVariable("id") Long id) {
-        roleService.DeleteRole(id);
+    public String deleteRole(@PathVariable("id") Long id) {
+        roleService.deleteRole(id);
         return "role deleted Successfully!!";
     }
 
     @PutMapping("/roles/{id}")
-    public TblRole UpdateUser(@PathVariable("id") Long id,@Valid @RequestBody TblRole role) {
-        return roleService.UpdateRole(id,role);
+    public TblRole updateUser(@PathVariable("id") Long id, @Valid @RequestBody TblRole role) {
+        return roleService.updateRole(id,role);
     }
 
 

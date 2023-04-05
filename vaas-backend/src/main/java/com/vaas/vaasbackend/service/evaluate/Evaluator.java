@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.service.evaluate;
 
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
+
 import java.util.List;
 
 public interface Evaluator {

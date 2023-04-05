@@ -1,7 +1,9 @@
 package com.vaas.vaasbackend.entity;
 
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
+
 
 @Entity
 @org.hibernate.annotations.NamedNativeQuery(name="TotalVoteForIssueMapping",

@@ -1,6 +1,6 @@
 package com.vaas.vaasbackend.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tbl_issue")

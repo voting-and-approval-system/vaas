@@ -1,14 +1,18 @@
 package com.vaas.vaasbackend.service;
 
-import com.vaas.vaasbackend.entity.TblVoteOption;
+import com.vaas.vaasbackend.repository.VoteOptionRepository;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface VoteOptionService {
-    public List<TotalVoteForIssue> countTotalVotes(Integer issueId, Integer roundNumber);
+@Service
+public class VoteOptionService {
+    @Autowired
+    VoteOptionRepository voteOptionRepository;
 
-    public List<TblVoteOption> showVoteOption();
-
-    public TblVoteOption saveVoteOption(TblVoteOption tblVoteOption);
+    public List<TotalVoteForIssue> countTotalVotes(Integer issueId, Integer roundNumber) {
+        return voteOptionRepository.countTotalVotes(issueId,roundNumber);
+    }
 }

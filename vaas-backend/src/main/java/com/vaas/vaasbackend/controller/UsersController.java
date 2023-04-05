@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.vaas.vaasbackend.entity.TblUser;
+import com.vaas.vaasbackend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-import com.vaas.vaasbackend.service.UsersService;
+import javax.validation.Valid;
 
-import jakarta.validation.Valid;
 
 @RestController
 public class UsersController {
@@ -25,29 +26,36 @@ public class UsersController {
     UsersService usersService;
 
     @GetMapping("/users")
-    public List<TblUser> ShowUsers(){
-        return usersService.ShowUsers();
+    public List<TblUser> showUsers(){
+        return usersService.showUsers();
     }
 
     @GetMapping("/users/{id}")
-	public Optional<TblUser> GetUsers(@PathVariable String id)
+	public Optional<TblUser> getUsers(@PathVariable String id)
 	{
-		return this.usersService.GetUsers(Long.parseLong(id));
+		return this.usersService.getUsers(Long.parseLong(id));
 	}
 
     @PostMapping("/users")
-    public TblUser SaveUser(@Valid @RequestBody TblUser user){
-        return usersService.SaveUsers(user);
+    public TblUser saveUser(@Valid @RequestBody TblUser user){
+        return usersService.saveUsers(user);
     }
 
     @DeleteMapping("/users/{id}")
-    public String DeleteUserById(@PathVariable("id") Long id) {
-        usersService.DeleteUserById(id);
+    public String deleteUserById(@PathVariable("id") Long id) {
+        usersService.deleteUserById(id);
         return "users deleted Successfully!!";
     }
 
     @PutMapping("/users/{id}")
-    public TblUser UpdateUser(@PathVariable("id") Long id,@Valid @RequestBody TblUser user) {
-        return usersService.UpdateUser(id,user);
+    public TblUser updateUser(@PathVariable("id") Long id, @Valid @RequestBody TblUser user) {
+        return usersService.updateUser(id,user);
     }
+
+    @GetMapping("/users/{userEmail}")
+    public Optional<TblUser> findByUserEmail(@PathVariable String userEmail)
+    {
+        return this.usersService.findByUserEmail(userEmail);
+    }
+
 }

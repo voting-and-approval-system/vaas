@@ -1,6 +1,5 @@
 package com.vaas.vaasbackend.controller;
 
-import com.vaas.vaasbackend.entity.TblUser;
 import com.vaas.vaasbackend.entity.TblUsersVote;
 import com.vaas.vaasbackend.service.UserVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +13,22 @@ public class UserVoteController {
     UserVoteService userVoteService;
 
     @GetMapping("/uservote")
-    public List<TblUsersVote> ShowUserVote(){
-        return userVoteService.ShowUserVote();
+    public List<TblUsersVote> showUserVote(){
+        return userVoteService.showUserVote();
     }
 
     @GetMapping("/uservote/user/{id}")
-    public List<TblUsersVote> ShowUserVoteByUserId(@PathVariable Integer id){
-        return userVoteService.ShowUserVoteByUserId(id);
+    public List<TblUsersVote> showUserVoteByUserId(@PathVariable Integer id){
+        return userVoteService.showUserVoteByUserId(id);
     }
 
     @GetMapping("/uservote/uservoteforissue/{id}")
-    public List<String> ShowUserVoteForIssue(@PathVariable Integer id){
-        return userVoteService.ShowUserVoteForIssue(id);
+    public List<String> showUserVoteForIssue(@PathVariable Integer id){
+        return userVoteService.showUserVoteForIssue(id);
     }
 
     @PostMapping("/uservote")
-    public TblUsersVote SaveUserVote(@RequestBody TblUsersVote usersVote){
-        return userVoteService.SaveUserVote(usersVote);
+    public TblUsersVote saveUserVote(@RequestBody TblUsersVote usersVote){
+        return userVoteService.saveUserVote(usersVote);
     }
 }

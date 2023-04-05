@@ -13,32 +13,32 @@ public class IssueController {
     IssueService issueService;
 
     @GetMapping("/issue")
-    public List<TblIssue> ShowIssue(){
+    public List<TblIssue> showIssue(){
         return issueService.showIssue();
     }
 
     @GetMapping("/issue/{id}")
-    public TblIssue ShowIssue(@PathVariable Integer id){
+    public TblIssue showIssue(@PathVariable Integer id){
         return issueService.showIssue(id);
     }
 
     @GetMapping("issue/active/{isactive}")
-    public List<TblIssue> ShowActiveIssue(@PathVariable("isactive") boolean isActive){
+    public List<TblIssue> showActiveIssue(@PathVariable("isactive") boolean isActive){
         return issueService.showActiveIssue(isActive);
     }
 
     @PostMapping("/issue")
-    public TblIssue SaveIssue(@RequestBody TblIssue issue){
+    public TblIssue saveIssue(@RequestBody TblIssue issue){
         return issueService.saveIssue(issue);
     }
 
     @PutMapping("/issue/{id}")
-    public TblIssue UpdateIssue(@PathVariable Integer id,@RequestBody TblIssue issue){
+    public TblIssue updateIssue(@PathVariable Integer id, @RequestBody TblIssue issue){
         return issueService.updateIssue(id,issue);
     }
 
     @DeleteMapping("/issue/{id}")
-    public String DeleteIssue(@PathVariable Integer id){
+    public String deleteIssue(@PathVariable Integer id){
         issueService.deleteIssue(id);
         return "Record Deleted";
     }
