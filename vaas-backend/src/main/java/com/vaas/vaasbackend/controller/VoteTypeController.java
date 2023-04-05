@@ -15,17 +15,17 @@ public class VoteTypeController {
     @Autowired
     private VoteTypeService voteTypeService;
 
-    @PostMapping("/votetypes")
+    @PostMapping("/votetype")
     public TblVotesType saveVoteType(@RequestBody TblVotesType votesType) {
         return voteTypeService.saveVoteType(votesType);
     }
 
-    @GetMapping("/votetypes")
+    @GetMapping("/votetype")
     public List<TblVotesType> showUserVoteType(){
         return voteTypeService.showUserVoteType();
     }
 
-    @DeleteMapping("/votetypes/{id}")
+    @DeleteMapping("/votetype/{id}")
     public String deleteVoteTypeById(@PathVariable("id") Integer id) {
         voteTypeService.deleteVoteTypeById(id);
         return "users deleted Successfully!!";

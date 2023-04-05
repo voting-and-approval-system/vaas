@@ -17,11 +17,9 @@ public class VoteOptionService{
         return voteOptionRepository.countTotalVotes(issueId,roundNumber);
     }
 
-
     public List<TblVoteOption> showVoteOption() {
         return voteOptionRepository.findAll();
     }
-
 
     public TblVoteOption saveVoteOption(TblVoteOption tblVoteOption) {
         return voteOptionRepository.save(tblVoteOption);

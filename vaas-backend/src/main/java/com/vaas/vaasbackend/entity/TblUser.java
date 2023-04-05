@@ -41,15 +41,12 @@ public class TblUser {
     private String houseNumber;
 
     @Column(name = "user_joining_date", nullable = false)
-    @NotBlank(message = "Please enter joining date")
     private LocalDate userJoiningDate;
 
     @Column(name = "user_updated_date", nullable = false)
-    @NotBlank(message = "Please enter update date")
     private LocalDate userUpdatedDate;
 
     @Column(name = "user_is_active", nullable = false)
-    @NotBlank(message = "Is user active?")
     private Boolean userIsActive = false;
 
     @Column(name = "password", nullable = false, length = 80)
