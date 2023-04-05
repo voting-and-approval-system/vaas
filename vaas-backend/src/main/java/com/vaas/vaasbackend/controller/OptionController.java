@@ -13,12 +13,12 @@ public class OptionController {
     private OptionService optionService;
 
     @GetMapping("/option")
-    public List<TblOption> ShowOption() {
+    public List<TblOption> showOption() {
         return optionService.showOption();
     }
 
     @GetMapping("option/{id}")
-    public TblOption ShowOption(@PathVariable Integer id){
+    public TblOption showOption(@PathVariable Integer id){
         return optionService.showOption(id);
     }
 
@@ -28,12 +28,12 @@ public class OptionController {
     }
 
     @PostMapping("/option")
-    public TblOption SaveOption(@RequestBody TblOption option) {
+    public TblOption saveOption(@RequestBody TblOption option) {
         return optionService.saveOption(option);
     }
 
     @DeleteMapping("/option/{id}")
-    public String DeleteOption(@PathVariable Integer id) {
+    public String deleteOption(@PathVariable Integer id) {
         optionService.deleteOption(id);
         return "Record Deleted";
     }

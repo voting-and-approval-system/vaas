@@ -1,6 +1,5 @@
 package com.vaas.vaasbackend.service.evaluate;
 
-import com.vaas.vaasbackend.entity.TblVoteOption;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
 import org.springframework.stereotype.Service;
 
