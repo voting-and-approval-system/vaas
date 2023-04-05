@@ -3,7 +3,6 @@ package com.vaas.vaasbackend.controller;
 import com.vaas.vaasbackend.entity.TblOption;
 import com.vaas.vaasbackend.service.OptionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,28 +13,28 @@ public class OptionController {
     private OptionService optionService;
 
     @GetMapping("/option")
-    public List<TblOption> ShowOption() {
-        return optionService.ShowOption();
+    public List<TblOption> showOption() {
+        return optionService.showOption();
     }
 
     @GetMapping("option/{id}")
-    public TblOption ShowOption(@PathVariable Integer id){
-        return optionService.ShowOption(id);
+    public TblOption showOption(@PathVariable Integer id){
+        return optionService.showOption(id);
     }
 
     @GetMapping("/option/issue/{id}")
     public List<TblOption> ShowOptionByIssueId(@PathVariable("id")Integer id){
-        return optionService.ShowOptionByIssueId(id);
+        return optionService.showOptionByIssueId(id);
     }
 
     @PostMapping("/option")
-    public TblOption SaveOption(@RequestBody TblOption option) {
-        return optionService.SaveOption(option);
+    public TblOption saveOption(@RequestBody TblOption option) {
+        return optionService.saveOption(option);
     }
 
     @DeleteMapping("/option/{id}")
-    public String DeleteOption(@PathVariable Integer id) {
-        optionService.DeleteOption(id);
+    public String deleteOption(@PathVariable Integer id) {
+        optionService.deleteOption(id);
         return "Record Deleted";
     }
 }

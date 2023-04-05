@@ -1,11 +1,14 @@
 package com.vaas.vaasbackend.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
+
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.*;
 
 @Entity
 @Table(name = "tbl_users")
@@ -132,6 +135,24 @@ public class TblUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "tbl_user_role",
+            joinColumns = {
+                    @JoinColumn(name = "user_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id")
+            }
+    )
+    private Set<TblRole> role;
+    public Set<TblRole> getRole() {
+        return role;
+    }
+    public void setRole(Set<TblRole> role) {
+        this.role = role;
     }
 
 }

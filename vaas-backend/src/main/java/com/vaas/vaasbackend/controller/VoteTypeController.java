@@ -1,15 +1,12 @@
 package com.vaas.vaasbackend.controller;
 
-import com.vaas.vaasbackend.entity.TblUser;
-import com.vaas.vaasbackend.entity.TblUsersVote;
 import com.vaas.vaasbackend.entity.TblVotesType;
-import com.vaas.vaasbackend.service.UserVoteService;
+
 import com.vaas.vaasbackend.service.VoteTypeService;
-import com.vaas.vaasbackend.service.VoteTypeServiceImpl;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController

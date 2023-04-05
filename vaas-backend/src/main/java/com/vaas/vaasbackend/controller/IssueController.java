@@ -1,10 +1,8 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblIssue;
-import com.vaas.vaasbackend.repository.IssueRepository;
 import com.vaas.vaasbackend.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,33 +13,33 @@ public class IssueController {
     IssueService issueService;
 
     @GetMapping("/issue")
-    public List<TblIssue> ShowIssue(){
-        return issueService.ShowIssue();
+    public List<TblIssue> showIssue(){
+        return issueService.showIssue();
     }
 
     @GetMapping("/issue/{id}")
-    public TblIssue ShowIssue(@PathVariable Integer id){
-        return issueService.ShowIssue(id);
+    public TblIssue showIssue(@PathVariable Integer id){
+        return issueService.showIssue(id);
     }
 
     @GetMapping("issue/active/{isactive}")
-    public List<TblIssue> ShowActiveIssue(@PathVariable("isactive") boolean isActive){
-        return issueService.ShowActiveIssue(isActive);
+    public List<TblIssue> showActiveIssue(@PathVariable("isactive") boolean isActive){
+        return issueService.showActiveIssue(isActive);
     }
 
     @PostMapping("/issue")
-    public TblIssue SaveIssue(@RequestBody TblIssue issue){
-        return issueService.SaveIssue(issue);
+    public TblIssue saveIssue(@RequestBody TblIssue issue){
+        return issueService.saveIssue(issue);
     }
 
     @PutMapping("/issue/{id}")
-    public TblIssue UpdateIssue(@PathVariable Integer id,@RequestBody TblIssue issue){
-        return issueService.UpdateIssue(id,issue);
+    public TblIssue updateIssue(@PathVariable Integer id, @RequestBody TblIssue issue){
+        return issueService.updateIssue(id,issue);
     }
 
     @DeleteMapping("/issue/{id}")
-    public String DeleteIssue(@PathVariable Integer id){
-        issueService.DeleteIssue(id);
+    public String deleteIssue(@PathVariable Integer id){
+        issueService.deleteIssue(id);
         return "Record Deleted";
     }
 }

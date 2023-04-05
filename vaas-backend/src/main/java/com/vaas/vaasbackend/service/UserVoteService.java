@@ -1,17 +1,34 @@
 package com.vaas.vaasbackend.service;
 
-import com.vaas.vaasbackend.entity.TblUser;
 import com.vaas.vaasbackend.entity.TblUsersVote;
-import org.springframework.data.jpa.repository.Query;
+import com.vaas.vaasbackend.repository.UserVoteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface UserVoteService {
-    public List<TblUsersVote> ShowUserVote();
+@Service
+public class UserVoteService {
+    @Autowired
+    UserVoteRepository userVoteRepository;
 
-    public TblUsersVote SaveUserVote(TblUsersVote usersVote);
+    public List<TblUsersVote> showUserVote() {
+        return userVoteRepository.findAll();
+    }
 
-    public List<TblUsersVote> ShowUserVoteByUserId(Integer id);
 
-    public List<String> ShowUserVoteForIssue(Integer id);
+    public TblUsersVote saveUserVote(TblUsersVote usersVote) {
+        return userVoteRepository.save(usersVote);
+    }
+
+
+    public List<TblUsersVote> showUserVoteByUserId(Integer id) {
+        return userVoteRepository.findByUserId(id);
+    }
+
+
+    public List<String> showUserVoteForIssue(Integer id) {
+        return userVoteRepository.ShowUserVoteForIssue(id);
+    }
+
 }
