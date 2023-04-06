@@ -20,19 +20,7 @@ public class ResultController {
 
     @GetMapping("/result/{issueid}/{roundno}")
     public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) {
-        //validate input i.e. issueId
-        //call ResultService.getResult(issueId);
 
-        List<TotalVoteForIssue> responseList = resultService.getResponseListFromApi(issueId,roundNo);
-        TotalVoteForIssue totalVoteForIssue = responseList.get(1);
-
-        String voteType = totalVoteForIssue.getVoteType();
-
-        for (Evaluator e : evaluator) {
-            if (e.isSupported(voteType)) {
-                return e.evaluate(responseList);
-            }
-        }
-        return null;
+        return resultService.getResult(issueId, roundNo);
     }
 }

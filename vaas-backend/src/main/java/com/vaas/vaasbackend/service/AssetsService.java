@@ -1,6 +1,6 @@
 package com.vaas.vaasbackend.service;
 
-import com.vaas.vaasbackend.entity.TblAssete;
+import com.vaas.vaasbackend.entity.TblAsset;
 import com.vaas.vaasbackend.errors.AssetesNotFoundException;
 import com.vaas.vaasbackend.repository.AssetsRepository;
 import com.vaas.vaasbackend.repository.IssueRepository;
@@ -17,13 +17,13 @@ public class AssetsService {
     @Autowired
     private IssueRepository issueRepository;
 
-    public List<TblAssete> showAssets() {
+    public List<TblAsset> showAssets() {
         return assetsRepository.findAll();
     }
 
 
-    public TblAssete showAssets(Integer id) throws AssetesNotFoundException {
-        Optional<TblAssete> asset = assetsRepository.findById(id);
+    public TblAsset showAssets(Integer id) throws AssetesNotFoundException {
+        Optional<TblAsset> asset = assetsRepository.findById(id);
         if(!asset.isPresent()){
             throw new AssetesNotFoundException("Assets Not Available");
         }
@@ -31,7 +31,7 @@ public class AssetsService {
     }
 
 
-    public TblAssete saveAssets(TblAssete asset) {
+    public TblAsset saveAssets(TblAsset asset) {
         return assetsRepository.save(asset);
     }
 

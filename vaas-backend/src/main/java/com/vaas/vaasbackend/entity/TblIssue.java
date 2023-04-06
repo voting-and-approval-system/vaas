@@ -24,7 +24,7 @@ public class TblIssue {
 
     @ManyToOne
     @JoinColumn(name = "assetes_id")
-    private TblAssete assetes;
+    private TblAsset assetes;
 
     @Column(name = "issue_is_active", nullable = false)
     private Boolean issueIsActive = false;
@@ -73,11 +73,11 @@ public class TblIssue {
         this.allowMultipleOptions = allowMultipleOptions;
     }
 
-    public TblAssete getAssetes() {
+    public TblAsset getAssetes() {
         return assetes;
     }
 
-    public void setAssetes(TblAssete assetes) {
+    public void setAssetes(TblAsset assetes) {
         this.assetes = assetes;
     }
 
