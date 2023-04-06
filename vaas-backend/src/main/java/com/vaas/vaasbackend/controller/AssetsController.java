@@ -1,6 +1,6 @@
 package com.vaas.vaasbackend.controller;
 
-import com.vaas.vaasbackend.entity.TblAssete;
+import com.vaas.vaasbackend.entity.TblAsset;
 import com.vaas.vaasbackend.errors.AssetesNotFoundException;
 
 import com.vaas.vaasbackend.service.AssetsService;
@@ -16,12 +16,12 @@ public class AssetsController {
     AssetsService assetsService;
 
     @GetMapping("/assets")
-    public List<TblAssete> showAssets(){
+    public List<TblAsset> showAssets(){
         return assetsService.showAssets();
     }
 
     @GetMapping("/assets/{id}")
-    public TblAssete showAssets(@PathVariable Integer id) throws AssetesNotFoundException {
+    public TblAsset showAssets(@PathVariable Integer id) throws AssetesNotFoundException {
         return assetsService.showAssets(id);
     }
 
@@ -32,7 +32,7 @@ public class AssetsController {
     }
 
     @PostMapping("/assets")
-    public TblAssete saveAssets(@Valid @RequestBody TblAssete asset){
+    public TblAsset saveAssets(@Valid @RequestBody TblAsset asset){
         return assetsService.saveAssets(asset);
     }
 }

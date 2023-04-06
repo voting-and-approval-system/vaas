@@ -1,8 +1,5 @@
 package com.vaas.vaasbackend.entity;
 
-
-
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -135,7 +132,7 @@ public class TblUser {
     }
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "tbl_user_role",
             joinColumns = {
                     @JoinColumn(name = "user_id")
