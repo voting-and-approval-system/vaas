@@ -20,7 +20,6 @@ public class ResultController {
 
     @GetMapping("/result/{issueid}/{roundno}")
     public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) {
-
         return resultService.getResult(issueId, roundNo);
     }
 }
