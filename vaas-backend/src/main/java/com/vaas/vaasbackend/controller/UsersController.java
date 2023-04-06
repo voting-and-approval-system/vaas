@@ -26,6 +26,7 @@ public class UsersController {
     UsersService usersService;
 
     @GetMapping("/users")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<TblUser> showUsers(){
         return usersService.showUsers();
     }
