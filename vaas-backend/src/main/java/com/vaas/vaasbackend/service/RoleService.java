@@ -48,11 +48,4 @@ public class RoleService {
 
         return rolerepository.save(depDB);
     }
-
-//    public Optional<TblRole> findByRoleName(String rolename) {
-//        return rolerepository.findByRoleName(rolename);
-//    }
-
-
-
 }
