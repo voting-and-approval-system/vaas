@@ -22,12 +22,12 @@ public class UsersController {
 
 
     @GetMapping("/users")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_Admin')")
     public List<TblUser> showUsers(){
         return usersService.showUsers();
     }
 
-//    @GetMapping("/users/{id}")
+//  @GetMapping("/users/{id}")
 //	public Optional<TblUser> getUsers(@PathVariable String id)
 //	{
 //		return this.usersService.getUsers(Long.parseLong(id));
@@ -50,12 +50,9 @@ public class UsersController {
     }
 
 
-    @GetMapping("/users/{id}")
-    public Optional<TblUser> findByUserEmail(@PathVariable String userEmail)
+    @GetMapping("/users/{emailid}")
+    public Optional<TblUser> findByUserEmail(@PathVariable("emailid") String userEmail)
     {
         return this.usersService.findByUserEmail(userEmail);
     }
-
-
-
 }

@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -31,15 +32,15 @@ public class JwtService implements UserDetailsService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception{
-       String userEmail = jwtRequest.getUserEmail();
-       String password = jwtRequest.getPassword();
+    public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
+        String userEmail = jwtRequest.getUserEmail();
+        String password = jwtRequest.getPassword();
 
-       authenticate(userEmail, password);
+        authenticate(userEmail, password);
 
-      UserDetails userDetails = loadUserByUsername(userEmail);
-      String newGeneratedToken = jwtUtil.generateToken(userDetails);
-        TblUser tblUser = usersRepository. findByUserEmail(userEmail).get();
+        UserDetails userDetails = loadUserByUsername(userEmail);
+        String newGeneratedToken = jwtUtil.generateToken(userDetails);
+        TblUser tblUser = usersRepository.findByUserEmail(userEmail).get();
         return new JwtResponse(tblUser, newGeneratedToken);
 
     }
@@ -47,46 +48,36 @@ public class JwtService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-       TblUser tblUser = usersRepository. findByUserEmail(userEmail).get();
+        TblUser tblUser = usersRepository.findByUserEmail(userEmail).get();
 
-       if(tblUser!= null)
-       {
-           return new org.springframework.security.core.userdetails.User(
-                   tblUser.getUserEmail(),
-                   tblUser.getPassword(),
-                   getAuthorities(tblUser)
+        if (tblUser != null) {
+            return new org.springframework.security.core.userdetails.User(
+                    tblUser.getUserEmail(),
+                    tblUser.getPassword(),
+                    getAuthorities(tblUser)
 
-           );
-       }
-       else {
-           throw new UsernameNotFoundException("useremail is not valid" + userEmail);
-       }
+            );
+        } else {
+            throw new UsernameNotFoundException("useremail is not valid" + userEmail);
+        }
     }
 
-    private Set getAuthorities(TblUser tblUser){
-        Set <SimpleGrantedAuthority> authorities = new HashSet<>();
-
-
-        tblUser.getRoleName().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+tblUser.getRoleName()));
-        });
+    private Set getAuthorities(TblUser tblUser) {
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        List<String> Roles = usersRepository.getRole(tblUser.getId());
+        for(String Role : Roles){
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + Role));
+        }
         return authorities;
-
-
-
     }
 
 
-    private void authenticate(String userEmail, String password) throws Exception{
-        try{
+    private void authenticate(String userEmail, String password) throws Exception {
+        try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail, password));
-        }
-        catch(DisabledException e)
-        {
+        } catch (DisabledException e) {
             throw new Exception("user is disabled", e);
-        }
-        catch(BadCredentialsException e)
-        {
+        } catch (BadCredentialsException e) {
             throw new Exception("BAd credentials from user", e);
         }
 

@@ -68,12 +68,8 @@ public class UsersService {
         return passwordEncoder.encode(password);
     }
 
-
-
-
-  
-
-
-
+    public List<String> getRole(TblUser tblUser){
+        return usersRepository.getRole(tblUser.getId());
+    }
 }
  
