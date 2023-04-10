@@ -1,7 +1,7 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblAsset;
-import com.vaas.vaasbackend.errors.AssetesNotFoundException;
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 
 import com.vaas.vaasbackend.service.AssetsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +16,23 @@ public class AssetsController {
     AssetsService assetsService;
 
     @GetMapping("/assets")
-    public List<TblAsset> showAssets(){
+    public List<TblAsset> showAssets() throws DataNotFoundException {
         return assetsService.showAssets();
     }
 
     @GetMapping("/assets/{id}")
-    public TblAsset showAssets(@PathVariable Integer id) throws AssetesNotFoundException {
+    public TblAsset showAssets(@PathVariable Integer id) throws DataNotFoundException {
         return assetsService.showAssets(id);
     }
 
     @DeleteMapping("assets/{id}")
-    public String deleteAssets(@PathVariable Integer id){
+    public String deleteAssets(@PathVariable Integer id) throws DataNotFoundException {
         assetsService.deleteAssets(id);
         return "Record Deleted !!";
     }
 
     @PostMapping("/assets")
-    public TblAsset saveAssets(@Valid @RequestBody TblAsset asset){
+    public TblAsset saveAssets(@Valid @RequestBody TblAsset asset) throws Exception {
         return assetsService.saveAssets(asset);
     }
 }
