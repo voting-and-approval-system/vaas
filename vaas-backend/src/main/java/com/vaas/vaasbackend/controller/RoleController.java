@@ -49,11 +49,11 @@ public class RoleController {
         return roleService.updateRole(id,role);
     }
 
-    @GetMapping("/roles/{rolename}")
-    public Optional<TblRole> findByRoleName(@PathVariable String rolename)
-    {
-        return this.roleService.findByRoleName(rolename);
-    }
+//    @GetMapping("/roles/{rolename}")
+//    public Optional<TblRole> findByRoleName(@PathVariable String rolename)
+//    {
+//        return this.roleService.findByRoleName(rolename);
+//    }
 
 
     

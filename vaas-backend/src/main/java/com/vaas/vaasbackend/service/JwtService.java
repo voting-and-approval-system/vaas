@@ -59,12 +59,12 @@ public class JwtService implements UserDetailsService {
            );
        }
        else {
-           throw new UsernameNotFoundException("username is not valid");
+           throw new UsernameNotFoundException("useremail is not valid" + userEmail);
        }
     }
 
     private Set getAuthorities(TblUser tblUser){
-        Set <SimpleGrantedAuthority> authorities = new HashSet();
+        Set <SimpleGrantedAuthority> authorities = new HashSet<>();
 
 
         tblUser.getRoleName().forEach(role -> {
