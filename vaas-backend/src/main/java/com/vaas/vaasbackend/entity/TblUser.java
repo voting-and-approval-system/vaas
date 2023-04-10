@@ -132,7 +132,7 @@ public class TblUser {
     }
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "tbl_user_role",
             joinColumns = {
                     @JoinColumn(name = "user_id")

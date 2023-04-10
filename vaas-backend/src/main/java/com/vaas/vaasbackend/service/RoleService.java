@@ -30,7 +30,7 @@ public class RoleService {
     public Optional<TblRole> getRole(Integer id) {
         return rolerepository.findById(id);
     }
-    
+
     
 
     public void deleteRole(Integer id) {
@@ -49,9 +49,9 @@ public class RoleService {
         return rolerepository.save(depDB);
     }
 
-    public Optional<TblRole> findByRoleName(String rolename) {
-        return rolerepository.findByRoleName(rolename);
-    }
+//    public Optional<TblRole> findByRoleName(String rolename) {
+//        return rolerepository.findByRoleName(rolename);
+//    }
 
 
 

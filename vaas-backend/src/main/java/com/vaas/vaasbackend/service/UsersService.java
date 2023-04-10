@@ -39,17 +39,17 @@ public class UsersService {
     }
     
 
-    public Optional<TblUser> getUsers(Long id) {
-        return usersRepository.findById(id);
-    }
+//    public Optional<TblUser> getUsers(Long id) {
+//        return usersRepository.findById(id);
+//    }
 
 
-    public void deleteUserById(Long id) {
+    public void deleteUserById(String id) {
         usersRepository.deleteById(id);
     }
 
 
-    public TblUser updateUser(Long id, TblUser user) {
+    public TblUser updateUser(String id, TblUser user) {
         TblUser depDB = usersRepository.findById(id).get();
 
         if(Objects.nonNull(user.getUserEmail()) &&
