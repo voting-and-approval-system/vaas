@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.vaas.vaasbackend.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,20 +33,26 @@ public class RoleController {
     }
     
     @GetMapping("/roles/{id}")
-	public Optional<TblRole> getRole(@PathVariable String id)
+	public Optional<TblRole> getRole(@PathVariable Integer id)
 	{
-		return this.roleService.getRole(Long.parseLong(id));
+		return this.roleService.getRole(id);
 	}
 
     @DeleteMapping("/roles/{id}")
-    public String deleteRole(@PathVariable("id") Long id) {
+    public String deleteRole(@PathVariable("id") Integer id) {
         roleService.deleteRole(id);
         return "role deleted Successfully!!";
     }
 
     @PutMapping("/roles/{id}")
-    public TblRole updateUser(@PathVariable("id") Long id, @Valid @RequestBody TblRole role) {
+    public TblRole updateUser(@PathVariable("id") Integer id, @Valid @RequestBody TblRole role) {
         return roleService.updateRole(id,role);
+    }
+
+    @GetMapping("/roles/{rolename}")
+    public Optional<TblRole> findByRoleName(@PathVariable String rolename)
+    {
+        return this.roleService.findByRoleName(rolename);
     }
 
 

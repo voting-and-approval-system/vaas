@@ -142,10 +142,10 @@ public class TblUser {
             }
     )
     private Set<TblRole> role;
-    public Set<TblRole> getRole() {
+    public Set<TblRole> getRoleName() {
         return role;
     }
-    public void setRole(Set<TblRole> role) {
+    public void setRoleName(Set<TblRole> role) {
         this.role = role;
     }
 

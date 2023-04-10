@@ -27,18 +27,18 @@ public class RoleService {
     }
     
 
-    public Optional<TblRole> getRole(Long id) {
+    public Optional<TblRole> getRole(Integer id) {
         return rolerepository.findById(id);
     }
     
     
 
-    public void deleteRole(Long id) {
+    public void deleteRole(Integer id) {
         rolerepository.deleteById(id);
     }
 
 
-    public TblRole updateRole(Long id, TblRole role) {
+    public TblRole updateRole(Integer id, TblRole role) {
         TblRole depDB = rolerepository.findById(id).get();
 
         if(Objects.nonNull(role.getRoleName()) &&
@@ -47,6 +47,10 @@ public class RoleService {
         }
 
         return rolerepository.save(depDB);
+    }
+
+    public Optional<TblRole> findByRoleName(String rolename) {
+        return rolerepository.findByRoleName(rolename);
     }
 
 

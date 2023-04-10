@@ -1,10 +1,10 @@
 package com.vaas.vaasbackend.service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
+import com.vaas.vaasbackend.entity.TblRole;
 import com.vaas.vaasbackend.entity.TblUser;
+import com.vaas.vaasbackend.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -19,6 +19,7 @@ public class UsersService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     UsersRepository usersRepository;
+    RoleRepository roleRepository;
 
 
     public List<TblUser> showUsers() {
@@ -27,6 +28,12 @@ public class UsersService {
 
 
     public TblUser saveUsers(TblUser user) {
+//        TblRole role = roleRepository.findByRoleName("Admin").get();
+//        Set<TblRole> roles = new HashSet<>();
+//        roles.add(role);
+//        user.setRoleName(roles);
+
+
         user.setPassword(getEncodedPassword(user.getPassword()));
         return usersRepository.save(user);
     }
@@ -60,6 +67,9 @@ public class UsersService {
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }
+
+
+
 
   
 
