@@ -2,7 +2,6 @@ package com.vaas.vaasbackend.service;
 
 import java.util.*;
 
-import com.vaas.vaasbackend.entity.TblRole;
 import com.vaas.vaasbackend.entity.TblUser;
 import com.vaas.vaasbackend.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

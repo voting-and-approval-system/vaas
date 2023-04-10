@@ -1,6 +1,5 @@
 package com.vaas.vaasbackend.service;
 
-import com.vaas.vaasbackend.entity.TblIssue;
 import com.vaas.vaasbackend.repository.IssueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

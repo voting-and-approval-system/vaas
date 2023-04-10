@@ -1,6 +1,8 @@
 package com.vaas.vaasbackend.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "tbl_issue")
@@ -10,28 +12,39 @@ public class TblIssue {
     @Column(name = "issue_id", nullable = false)
     private Integer id;
 
+    @Size(max = 80)
+    @NotNull
     @Column(name = "issue_title", nullable = false, length = 80)
     private String issueTitle;
 
+    @Size(max = 200)
     @Column(name = "issue_description", length = 200)
     private String issueDescription;
 
+    @Size(max = 200)
     @Column(name = "issue_attachment_path", length = 200)
     private String issueAttachmentPath;
 
+    @NotNull
     @Column(name = "allow_multiple_options", nullable = false)
     private Boolean allowMultipleOptions = false;
 
     @ManyToOne
-    @JoinColumn(name = "assetes_id")
-    private TblAsset assetes;
+    @JoinColumn(name = "assets_id")
+    private TblAsset assets;
 
+    @NotNull
     @Column(name = "issue_is_active", nullable = false)
     private Boolean issueIsActive = false;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "vote_type_id", nullable = false)
     private TblVotesType voteType;
+
+    @NotNull
+    @Column(name = "allow_feedback", nullable = false)
+    private Integer allowFeedback;
 
     public Integer getId() {
         return id;
@@ -73,12 +86,12 @@ public class TblIssue {
         this.allowMultipleOptions = allowMultipleOptions;
     }
 
-    public TblAsset getAssetes() {
-        return assetes;
+    public TblAsset getAssets() {
+        return assets;
     }
 
-    public void setAssetes(TblAsset assetes) {
-        this.assetes = assetes;
+    public void setAssets(TblAsset assets) {
+        this.assets = assets;
     }
 
     public Boolean getIssueIsActive() {
@@ -95,6 +108,14 @@ public class TblIssue {
 
     public void setVoteType(TblVotesType voteType) {
         this.voteType = voteType;
+    }
+
+    public Integer getAllowFeedback() {
+        return allowFeedback;
+    }
+
+    public void setAllowFeedback(Integer allowFeedback) {
+        this.allowFeedback = allowFeedback;
     }
 
 }
