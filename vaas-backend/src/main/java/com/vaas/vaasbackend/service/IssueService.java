@@ -1,5 +1,6 @@
 package com.vaas.vaasbackend.service;
 
+import com.vaas.vaasbackend.entity.TblIssue;
 import com.vaas.vaasbackend.repository.IssueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,9 +56,9 @@ public class IssueService {
             tblIssue.setAllowMultipleOptions(issue.getAllowMultipleOptions());
         }
 
-        if(Objects.nonNull(issue.getAssetes()) &&
-                !"".equalsIgnoreCase(issue.getAssetes().toString())) {
-            tblIssue.setAssetes(issue.getAssetes());
+        if(Objects.nonNull(issue.getAssets()) &&
+                !"".equalsIgnoreCase(issue.getAssets().toString())) {
+            tblIssue.setAssets(issue.getAssets());
         }
 
         if(Objects.nonNull(issue.getIssueIsActive()) &&
@@ -72,8 +73,7 @@ public class IssueService {
 
         return issueRepository.save(tblIssue);
     }
-
-
+    
     public List<TblIssue> showActiveIssue(boolean isActive) {
         return issueRepository.findByIssueIsActive(isActive);
     }

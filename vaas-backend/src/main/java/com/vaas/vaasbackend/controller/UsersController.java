@@ -3,6 +3,7 @@ package com.vaas.vaasbackend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.vaas.vaasbackend.entity.TblUser;
 import com.vaas.vaasbackend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

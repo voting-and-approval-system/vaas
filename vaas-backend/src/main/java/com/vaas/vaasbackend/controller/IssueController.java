@@ -1,5 +1,6 @@
 package com.vaas.vaasbackend.controller;
 
+import com.vaas.vaasbackend.entity.TblIssue;
 import com.vaas.vaasbackend.service.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
