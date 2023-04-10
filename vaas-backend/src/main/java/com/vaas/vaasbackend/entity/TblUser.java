@@ -1,11 +1,9 @@
 package com.vaas.vaasbackend.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.*;
 
 @Entity
 @Table(name = "tbl_users")
@@ -15,40 +13,46 @@ public class TblUser {
     @Column(name = "user_id", nullable = false)
     private Integer id;
 
+    @Size(max = 20)
+    @NotNull
     @Column(name = "first_name", nullable = false, length = 20)
-    @NotBlank(message = "Please enter First Name")
     private String firstName;
 
+    @Size(max = 20)
+    @NotNull
     @Column(name = "last_name", nullable = false, length = 20)
-    @NotBlank(message = "Please enter Last Name")
     private String lastName;
 
+    @Size(max = 12)
+    @NotNull
     @Column(name = "phone_number", nullable = false, length = 12)
-    @NotBlank(message = "Please enter Phone Number")
-    @Size(max = 10)
     private String phoneNumber;
 
+    @Size(max = 20)
+    @NotNull
     @Column(name = "user_email", nullable = false, length = 20)
-    @NotBlank(message = "Please enter email address")
-    @Email
     private String userEmail;
 
+    @Size(max = 6)
+    @NotNull
     @Column(name = "house_number", nullable = false, length = 6)
-    @NotBlank(message = "Please enter house Number")
     private String houseNumber;
 
+    @NotNull
     @Column(name = "user_joining_date", nullable = false)
     private LocalDate userJoiningDate;
 
+    @NotNull
     @Column(name = "user_updated_date", nullable = false)
     private LocalDate userUpdatedDate;
 
+    @NotNull
     @Column(name = "user_is_active", nullable = false)
     private Boolean userIsActive = false;
 
+    @Size(max = 80)
+    @NotNull
     @Column(name = "password", nullable = false, length = 80)
-    @NotBlank(message = "Please enter password")
-    @Size(max = 20, min = 8)
     private String password;
 
     public Integer getId() {
@@ -130,4 +134,5 @@ public class TblUser {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
