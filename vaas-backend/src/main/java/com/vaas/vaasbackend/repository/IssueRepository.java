@@ -2,6 +2,7 @@ package com.vaas.vaasbackend.repository;
 
 import com.vaas.vaasbackend.entity.TblIssue;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,4 +11,7 @@ import java.util.List;
 public interface IssueRepository extends JpaRepository<TblIssue,Integer> {
 
     public List<TblIssue> findByIssueIsActive(boolean isActive);
+
+    @Query(nativeQuery = true,value = "select tbl_issue.* from tbl_assets,tbl_issue where tbl_issue.assets_id = tbl_assets.assets_id and tbl_issue.issue_is_active = 1 and tbl_assets.assets_id = ?")
+    List<TblIssue> getActiveIssueForAssets(Integer assetsId);
 }
