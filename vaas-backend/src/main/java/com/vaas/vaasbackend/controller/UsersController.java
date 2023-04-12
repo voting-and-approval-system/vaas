@@ -49,7 +49,6 @@ public class UsersController {
         return usersService.updateUser(id,user);
     }
 
-
     @GetMapping("/users/{emailid}")
     public Optional<TblUser> findByUserEmail(@PathVariable("emailid") String userEmail)
     {

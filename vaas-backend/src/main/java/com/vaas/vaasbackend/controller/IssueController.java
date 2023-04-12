@@ -38,6 +38,11 @@ public class IssueController {
         return issueService.updateIssue(id,issue);
     }
 
+    @GetMapping("/issue/assets/{assetsid}")
+    public List<TblIssue> getActiveIssueForAssets(@PathVariable(name = "assetsid") Integer assetsId) throws DataNotFoundException {
+        return issueService.getActiveIssueForAssets(assetsId);
+    }
+
     @DeleteMapping("/issue/{id}")
     public String deleteIssue(@PathVariable Integer id) throws DataNotFoundException {
         issueService.deleteIssue(id);

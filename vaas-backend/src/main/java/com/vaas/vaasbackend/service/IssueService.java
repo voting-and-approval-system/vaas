@@ -110,4 +110,12 @@ public class IssueService {
         }
         return issues;
     }
+
+    public List<TblIssue> getActiveIssueForAssets(Integer assetsId) throws DataNotFoundException {
+        List<TblIssue> list = issueRepository.getActiveIssueForAssets(assetsId);
+        if(list.isEmpty()){
+            throw new DataNotFoundException("No Active Issue Found For Given Assets");
+        }
+        return list;
+    }
 }

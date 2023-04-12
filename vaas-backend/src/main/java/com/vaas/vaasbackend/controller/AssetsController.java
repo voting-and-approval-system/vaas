@@ -31,6 +31,11 @@ public class AssetsController {
         return "Record Deleted !!";
     }
 
+    @PutMapping("assets/{id}")
+    public TblAsset updateAssets(@PathVariable Integer id,@RequestBody TblAsset asset) throws Exception {
+        return assetsService.updateAssets(id,asset);
+    }
+
     @PostMapping("/assets")
     public TblAsset saveAssets(@Valid @RequestBody TblAsset asset) throws Exception {
         return assetsService.saveAssets(asset);
