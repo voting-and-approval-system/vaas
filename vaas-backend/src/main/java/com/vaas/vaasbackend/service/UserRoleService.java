@@ -14,37 +14,24 @@ import com.vaas.vaasbackend.repository.UsersRoleRepository;
 public class UserRoleService {
     @Autowired
     UsersRoleRepository usersrolerepository;
-
-
     public List<TblUserRole> showUserRole() {
         return usersrolerepository.findAll();
     }
-
-
     public TblUserRole saveUserRole(TblUserRole userrole) {
         return usersrolerepository.save(userrole);
     }
-    
-
     public Optional<TblUserRole> getUserRole(Long id) {
         return usersrolerepository.findById(id);
     }
-
-
     public void deleteUserRoleById(Long id) {
         usersrolerepository.deleteById(id);
     }
-
-
     public TblUserRole updateUserRole(Long id, TblUserRole userrole) {
         TblUserRole depDB = usersrolerepository.findById(id).get();
-
         if(Objects.nonNull(userrole.getRole()) &&
         !"".equalsIgnoreCase(userrole.getRole().toString())) {
             depDB.setRole(userrole.getRole());
         }
-
         return usersrolerepository.save(depDB);
     }
-
 }
