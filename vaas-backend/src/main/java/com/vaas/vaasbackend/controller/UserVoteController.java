@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblUsersVote;
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.service.UserVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +14,12 @@ public class UserVoteController {
     UserVoteService userVoteService;
 
     @GetMapping("/uservote")
-    public List<TblUsersVote> showUserVote(){
+    public List<TblUsersVote> showUserVote() throws DataNotFoundException {
         return userVoteService.showUserVote();
     }
 
     @GetMapping("/uservote/user/{id}")
-    public List<TblUsersVote> showUserVoteByUserId(@PathVariable Integer id){
+    public List<TblUsersVote> showUserVoteByUserId(@PathVariable Integer id) throws DataNotFoundException {
         return userVoteService.showUserVoteByUserId(id);
     }
 
@@ -28,7 +29,7 @@ public class UserVoteController {
     }
 
     @PostMapping("/uservote")
-    public TblUsersVote saveUserVote(@RequestBody TblUsersVote usersVote){
+    public TblUsersVote saveUserVote(@RequestBody TblUsersVote usersVote) throws Exception {
         return userVoteService.saveUserVote(usersVote);
     }
 }

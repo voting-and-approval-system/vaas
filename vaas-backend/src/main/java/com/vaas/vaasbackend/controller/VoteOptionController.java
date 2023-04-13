@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblVoteOption;
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
 import com.vaas.vaasbackend.service.VoteOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ public class VoteOptionController {
     VoteOptionService voteOptionService;
 
     @GetMapping("/voteoption")
-    public List<TblVoteOption> showVoteOption(){
+    public List<TblVoteOption> showVoteOption() throws DataNotFoundException {
         return voteOptionService.showVoteOption();
     }
 
     @PostMapping("/voteoption")
-    public TblVoteOption saveVoteOption(@RequestBody TblVoteOption tblVoteOption){
+    public TblVoteOption saveVoteOption(@RequestBody TblVoteOption tblVoteOption) throws Exception {
         return voteOptionService.saveVoteOption(tblVoteOption);
     }
 

@@ -1,6 +1,7 @@
 package com.vaas.vaasbackend.service;
 
 import com.vaas.vaasbackend.entity.TblVoteOption;
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.repository.VoteOptionRepository;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,19 @@ public class VoteOptionService{
         return voteOptionRepository.countTotalVotes(issueId,roundNumber);
     }
 
-    public List<TblVoteOption> showVoteOption() {
-        return voteOptionRepository.findAll();
+    public List<TblVoteOption> showVoteOption() throws DataNotFoundException {
+        List<TblVoteOption> tblVoteOptions = voteOptionRepository.findAll();
+        if(tblVoteOptions.isEmpty()){
+            throw new DataNotFoundException("No Data Found");
+        }
+        return tblVoteOptions;
     }
 
-    public TblVoteOption saveVoteOption(TblVoteOption tblVoteOption) {
-        return voteOptionRepository.save(tblVoteOption);
+    public TblVoteOption saveVoteOption(TblVoteOption tblVoteOption) throws Exception {
+        try{
+            return voteOptionRepository.save(tblVoteOption);
+        }catch (Exception e){
+            throw new Exception("Data Not Inserted");
+        }
     }
 }
