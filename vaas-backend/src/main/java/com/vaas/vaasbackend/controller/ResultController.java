@@ -1,5 +1,6 @@
 package com.vaas.vaasbackend.controller;
 
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
 import com.vaas.vaasbackend.service.ResultService;
 import com.vaas.vaasbackend.service.evaluate.Evaluator;
@@ -20,7 +21,7 @@ public class ResultController {
     Evaluator[] evaluator;
 
     @GetMapping("/result/{issueid}/{roundno}")
-    public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) {
+    public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) throws DataNotFoundException {
         return resultService.getResult(issueId, roundNo);
     }
 }
