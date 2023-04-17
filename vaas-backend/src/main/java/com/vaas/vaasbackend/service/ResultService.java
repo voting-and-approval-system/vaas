@@ -1,5 +1,6 @@
 package com.vaas.vaasbackend.service;
 
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.responseBody.TotalVoteForIssue;
 import com.vaas.vaasbackend.service.evaluate.Evaluator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class ResultService {
     VoteOptionService voteOptionService;
     @Autowired
     Evaluator[] evaluatorServices;
-    public List<TotalVoteForIssue> getResult(int issueId, int roundNo) {
+    public List<TotalVoteForIssue> getResult(int issueId, int roundNo) throws DataNotFoundException {
         List<TotalVoteForIssue> responseList = voteOptionService.countTotalVotes(issueId, roundNo);
         TotalVoteForIssue totalVoteForIssue = responseList.get(0);
         String voteType = totalVoteForIssue.getVoteType();

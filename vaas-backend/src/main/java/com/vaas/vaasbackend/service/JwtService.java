@@ -78,9 +78,8 @@ public class JwtService implements UserDetailsService {
         } catch (DisabledException e) {
             throw new Exception("user is disabled", e);
         } catch (BadCredentialsException e) {
-            throw new Exception("BAd credentials from user", e);
+            throw new Exception("Bad credentials from user", e);
         }
-
     }
 
 }

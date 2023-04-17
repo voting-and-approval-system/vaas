@@ -8,6 +8,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -61,5 +62,44 @@ public class OptionService {
             throw new DataNotFoundException("No Option Found For Id " + id);
         }
         return option.get();
+    }
+
+    public TblOption updateOption(Integer id, TblOption option) throws Exception {
+        Optional<TblOption> option1 = optionRepository.findById(id);
+        if(!option1.isPresent()){
+            throw new DataNotFoundException("Option Not Found For Id " + id);
+        }
+        TblOption tblOption = option1.get();
+        if (Objects.nonNull(option.getOptionTitle()) &&
+                !"".equalsIgnoreCase(option.getOptionTitle())) {
+            tblOption.setOptionTitle(option.getOptionTitle());
+        }
+
+        if (Objects.nonNull(option.getOptionDescription()) &&
+                !"".equalsIgnoreCase(option.getOptionDescription())) {
+            tblOption.setOptionDescription(option.getOptionDescription());
+        }
+
+        if (Objects.nonNull(option.getOptionAttachmentPath()) &&
+                !"".equalsIgnoreCase(option.getOptionAttachmentPath())) {
+            tblOption.setOptionAttachmentPath(option.getOptionAttachmentPath());
+        }
+
+
+        if (Objects.nonNull(option.getIssue()) &&
+                !"".equalsIgnoreCase(option.getIssue().toString())) {
+            tblOption.setIssue(option.getIssue());
+        }
+
+        if (Objects.nonNull(option.getOptionIsActive()) &&
+                !"".equalsIgnoreCase(option.getOptionIsActive().toString())) {
+            tblOption.setOptionIsActive(option.getOptionIsActive());
+        }
+
+        try{
+            return optionRepository.save(tblOption);
+        }catch (Exception e){
+            throw new Exception(e);
+        }
     }
 }

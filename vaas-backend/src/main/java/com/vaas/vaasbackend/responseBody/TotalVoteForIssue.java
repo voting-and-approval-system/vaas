@@ -1,17 +1,29 @@
 package com.vaas.vaasbackend.responseBody;
-
 public class TotalVoteForIssue {
 
+    private Integer optionId;
     private String optionTitle;
-    private int count;
+    private Integer count;
+    private Integer preference;
+
+    public Integer getPreference() {
+        return preference;
+    }
+
+    public void setPreference(Integer preference) {
+        this.preference = preference;
+    }
+
     private String voteType;
 
     public TotalVoteForIssue() {
     }
 
-    public TotalVoteForIssue(String optionTitle, int count, String voteType) {
+    public TotalVoteForIssue(Integer optionId, String optionTitle, Integer count, Integer preference, String voteType) {
+        this.optionId = optionId;
         this.optionTitle = optionTitle;
         this.count = count;
+        this.preference =  preference;
         this.voteType = voteType;
     }
 
@@ -23,17 +35,8 @@ public class TotalVoteForIssue {
         this.optionTitle = optionTitle;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
-    }
-
-    @Override
-    public String toString() {
-        return "TotalVoteForIssue{" +
-                "optionTitle='" + optionTitle + '\'' +
-                ", count=" + count +
-                ", voteType='" + voteType + '\'' +
-                '}';
     }
 
     public String getVoteType() {
@@ -44,8 +47,26 @@ public class TotalVoteForIssue {
         this.voteType = voteType;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
+    public Integer getOptionId() {
+        return optionId;
+    }
+
+    public void setOptionId(Integer optionId) {
+        this.optionId = optionId;
+    }
+
+    @Override
+    public String toString() {
+        return "TotalVoteForIssue{" +
+                "optionId=" + optionId +
+                ", optionTitle='" + optionTitle + '\'' +
+                ", count=" + count +
+                ", preference=" + preference +
+                ", voteType='" + voteType + '\'' +
+                '}';
+    }
 }

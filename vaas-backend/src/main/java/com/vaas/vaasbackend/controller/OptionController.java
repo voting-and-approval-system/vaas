@@ -28,6 +28,11 @@ public class OptionController {
         return optionService.showOptionByIssueId(id);
     }
 
+    @PutMapping("/option/{id}")
+    public TblOption updateOption(@PathVariable Integer id,@RequestBody TblOption option) throws Exception {
+        return optionService.updateOption(id,option);
+    }
+
     @PostMapping("/option")
     public TblOption saveOption(@RequestBody TblOption option) throws Exception {
         return optionService.saveOption(option);

@@ -27,26 +27,12 @@ public class UsersService {
 
 
     public TblUser saveUsers(TblUser user) {
-//        TblRole role = roleRepository.findByRoleName("Admin").get();
-//        Set<TblRole> roles = new HashSet<>();
-//        roles.add(role);
-//        user.setRoleName(roles);
-
-
         user.setPassword(getEncodedPassword(user.getPassword()));
         return usersRepository.save(user);
     }
-    
-
-//    public Optional<TblUser> getUsers(Long id) {
-//        return usersRepository.findById(id);
-//    }
-
-
     public void deleteUserById(String id) {
         usersRepository.deleteById(id);
     }
-
 
     public TblUser updateUser(String id, TblUser user) {
         TblUser depDB = usersRepository.findById(id).get();
@@ -58,7 +44,6 @@ public class UsersService {
 
         return usersRepository.save(depDB);
     }
-
 
     public Optional<TblUser> findByUserEmail(String userEmail) {
         return usersRepository. findByUserEmail(userEmail);
