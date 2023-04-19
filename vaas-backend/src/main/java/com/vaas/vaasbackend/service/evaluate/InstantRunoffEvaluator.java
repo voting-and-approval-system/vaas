@@ -76,8 +76,8 @@ public class InstantRunoffEvaluator implements Evaluator {
                 int optionId = optionWithMinCount.getOptionId();
                 int users[] = voteOptionRepository.userVoteForLeastOption(optionId);
                 List<TotalVoteForIssue> newOptionList = voteOptionRepository.getNextPreferenceOfLeastOptionUser(preference, issueId, Arrays.stream(users).toArray());
-                if(newOptionList.isEmpty()){
-                    if(preference == 1){
+                if (newOptionList.isEmpty()) {
+                    if (preference == 1) {
                         throw new DataNotFoundException("No Data Found");
                     }
                 }
