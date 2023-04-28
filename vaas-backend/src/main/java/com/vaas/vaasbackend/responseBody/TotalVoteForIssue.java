@@ -3,6 +3,8 @@ public class TotalVoteForIssue {
 
     private Integer optionId;
     private String optionTitle;
+
+    private Integer roundNumber;
     private Integer count;
     private Integer preference;
 
@@ -19,9 +21,10 @@ public class TotalVoteForIssue {
     public TotalVoteForIssue() {
     }
 
-    public TotalVoteForIssue(Integer optionId, String optionTitle, Integer count, Integer preference, String voteType) {
+    public TotalVoteForIssue(Integer optionId, String optionTitle, Integer roundNumber, Integer count, Integer preference, String voteType) {
         this.optionId = optionId;
         this.optionTitle = optionTitle;
+        this.roundNumber = roundNumber;
         this.count = count;
         this.preference =  preference;
         this.voteType = voteType;
@@ -33,6 +36,14 @@ public class TotalVoteForIssue {
 
     public void setOptionTitle(String optionTitle) {
         this.optionTitle = optionTitle;
+    }
+
+    public Integer getRoundNumber() {
+        return roundNumber;
+    }
+
+    public void setRoundNumber(Integer roundNumber) {
+        this.roundNumber = roundNumber;
     }
 
     public Integer getCount() {
@@ -64,6 +75,7 @@ public class TotalVoteForIssue {
         return "TotalVoteForIssue{" +
                 "optionId=" + optionId +
                 ", optionTitle='" + optionTitle + '\'' +
+                ", roundNumber=" + roundNumber +
                 ", count=" + count +
                 ", preference=" + preference +
                 ", voteType='" + voteType + '\'' +

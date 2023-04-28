@@ -26,7 +26,7 @@ public class InstantRunoffEvaluator implements Evaluator {
     @Autowired
     VoteOptionRepository voteOptionRepository;
 
-    private int requireVote, preference, issueId;
+    private int requireVote, preference, issueId, roundNo;
 
     @Override
     public boolean isSupported(String votingType) {
@@ -36,12 +36,13 @@ public class InstantRunoffEvaluator implements Evaluator {
     @Override
     public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws DataNotFoundException {
         preference = 1;
+
         TblOption option = optionService.showOption(optionList.get(0).getOptionId());
         TblIssue issue = option.getIssue();
+        roundNo = optionList.get(0).getRoundNumber();
         issueId = issueService.showIssue(issue.getId()).getId();
-        int totalVote = voteOptionRepository.totalVote(issueId);
+        int totalVote = voteOptionRepository.totalVote(issueId,roundNo);
         requireVote = totalVote * 50 / 100;
-        System.out.println("Require Vote " + requireVote);
 
         List<TotalVoteForIssue> firstPreferenceOptionList = optionList.stream().filter(list -> list.getPreference() == 1).collect(Collectors.toCollection(ArrayList<TotalVoteForIssue>::new));
 
@@ -75,7 +76,7 @@ public class InstantRunoffEvaluator implements Evaluator {
 
                 int optionId = optionWithMinCount.getOptionId();
                 int users[] = voteOptionRepository.userVoteForLeastOption(optionId);
-                List<TotalVoteForIssue> newOptionList = voteOptionRepository.getNextPreferenceOfLeastOptionUser(preference, issueId, Arrays.stream(users).toArray());
+                List<TotalVoteForIssue> newOptionList = voteOptionRepository.getNextPreferenceOfLeastOptionUser(preference, issueId,roundNo ,Arrays.stream(users).toArray());
                 if (newOptionList.isEmpty()) {
                     if (preference == 1) {
                         throw new DataNotFoundException("No Data Found");
