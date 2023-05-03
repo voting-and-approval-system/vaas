@@ -34,6 +34,7 @@ public class AssetsController {
 
     @PutMapping("assets/{id}")
     public TblAsset updateAssets(@PathVariable Integer id,@RequestBody TblAsset asset) throws Exception {
+        System.out.println(asset.getAssetsTitle());
         return assetsService.updateAssets(id,asset);
     }
 

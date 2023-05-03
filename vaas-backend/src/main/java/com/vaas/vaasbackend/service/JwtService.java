@@ -2,6 +2,7 @@ package com.vaas.vaasbackend.service;
 
 import com.vaas.vaasbackend.entity.*;
 import com.vaas.vaasbackend.repository.UsersRepository;
+import com.vaas.vaasbackend.repository.UsersRoleRepository;
 import com.vaas.vaasbackend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,6 +27,9 @@ public class JwtService implements UserDetailsService {
     private UsersRepository usersRepository;
 
     @Autowired
+    UsersRoleRepository usersRoleRepository;
+
+    @Autowired
     private JwtUtil jwtUtil;
 
 
@@ -41,7 +45,8 @@ public class JwtService implements UserDetailsService {
         UserDetails userDetails = loadUserByUsername(userEmail);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
         TblUser tblUser = usersRepository.findByUserEmail(userEmail).get();
-        return new JwtResponse(tblUser, newGeneratedToken);
+        List<String> roles = usersRoleRepository.findUserRoleByEmail(userEmail);
+        return new JwtResponse(tblUser,roles,newGeneratedToken);
 
     }
 

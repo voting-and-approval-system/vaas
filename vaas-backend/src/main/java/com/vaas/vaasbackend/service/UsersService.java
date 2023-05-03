@@ -30,11 +30,11 @@ public class UsersService {
         user.setPassword(getEncodedPassword(user.getPassword()));
         return usersRepository.save(user);
     }
-    public void deleteUserById(String id) {
+    public void deleteUserById(int id) {
         usersRepository.deleteById(id);
     }
 
-    public TblUser updateUser(String id, TblUser user) {
+    public TblUser updateUser(int id, TblUser user) {
         TblUser depDB = usersRepository.findById(id).get();
 
         if(Objects.nonNull(user.getUserEmail()) &&
