@@ -45,7 +45,6 @@ public class InstantRunoffEvaluator implements Evaluator {
         requireVote = totalVote * 50 / 100;
 
         List<TotalVoteForIssue> firstPreferenceOptionList = optionList.stream().filter(list -> list.getPreference() == 1).collect(Collectors.toCollection(ArrayList<TotalVoteForIssue>::new));
-
         return eliminateLeastCountOption(firstPreferenceOptionList);
     }
 
@@ -65,14 +64,16 @@ public class InstantRunoffEvaluator implements Evaluator {
         } else {
             if (firstPreferenceOptionList.size() > 1) {
                 preference++;
-                TotalVoteForIssue optionWithMinCount = null;
-                int lowestCount = firstPreferenceOptionList.get(0).getCount();
+                TotalVoteForIssue optionWithMinCount = firstPreferenceOptionList.get(0);
+                int lowestCount = optionWithMinCount.getCount();
                 for (TotalVoteForIssue TotalVoteForIssue : firstPreferenceOptionList) {
                     if (TotalVoteForIssue.getCount() < lowestCount) {
                         lowestCount = TotalVoteForIssue.getCount();
                         optionWithMinCount = TotalVoteForIssue;
                     }
                 }
+
+                System.out.println("\n\n\n" + optionWithMinCount + "\n\n\n");
 
                 int optionId = optionWithMinCount.getOptionId();
                 int users[] = voteOptionRepository.userVoteForLeastOption(optionId);

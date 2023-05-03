@@ -5,21 +5,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Voting {
+    public static class VotePreference{
+        int optionId;
+        int preference;
+
+        public VotePreference() {
+        }
+
+        public VotePreference(int optionId, int preference) {
+            this.optionId = optionId;
+            this.preference = preference;
+        }
+
+        public int getOptionId() {
+            return optionId;
+        }
+
+        public void setOptionId(int optionId) {
+            this.optionId = optionId;
+        }
+
+        public int getPreference() {
+            return preference;
+        }
+
+        public void setPreference(int preference) {
+            this.preference = preference;
+        }
+
+        @Override
+        public String toString() {
+            return "VotePreference{" +
+                    "optionId=" + optionId +
+                    ", preference=" + preference +
+                    '}';
+        }
+    }
     private int userId;
     private int roundId;
     private LocalDate voteDate;
-    private List<Integer> optionIds = new ArrayList<>();
-    private int preference;
+    private List<VotePreference> votePreferences = new ArrayList<>();
 
     public Voting() {
     }
 
-    public Voting(int userId, int roundId, LocalDate voteDate, List<Integer> optionIds, int preference) {
+    public Voting(int userId, int roundId, LocalDate voteDate, List<VotePreference> votePreferences) {
         this.userId = userId;
         this.roundId = roundId;
         this.voteDate = voteDate;
-        this.optionIds = optionIds;
-        this.preference = preference;
+        this.votePreferences = votePreferences;
     }
 
     public int getUserId() {
@@ -46,20 +80,12 @@ public class Voting {
         this.voteDate = voteDate;
     }
 
-    public List<Integer> getOptionIds() {
-        return optionIds;
+    public List<VotePreference> getVotePreferences() {
+        return votePreferences;
     }
 
-    public void setOptionIds(List<Integer> optionIds) {
-        this.optionIds = optionIds;
-    }
-
-    public int getPreference() {
-        return preference;
-    }
-
-    public void setPreference(int preference) {
-        this.preference = preference;
+    public void setVotePreferences(List<VotePreference> votePreferences) {
+        this.votePreferences = votePreferences;
     }
 
     @Override
@@ -68,8 +94,7 @@ public class Voting {
                 "userId=" + userId +
                 ", roundId=" + roundId +
                 ", voteDate=" + voteDate +
-                ", optionId=" + optionIds +
-                ", preference=" + preference +
+                ", votePreferences=" + votePreferences +
                 '}';
     }
 }
