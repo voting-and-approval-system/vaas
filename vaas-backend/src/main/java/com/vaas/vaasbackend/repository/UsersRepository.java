@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UsersRepository extends JpaRepository<TblUser, String>{
+public interface UsersRepository extends JpaRepository<TblUser, Integer>{
 
     Optional<TblUser> findByUserEmail(String userEmail);
 

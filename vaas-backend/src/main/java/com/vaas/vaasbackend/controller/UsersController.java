@@ -39,13 +39,13 @@ public class UsersController {
     }
 
     @DeleteMapping("/users/{id}")
-    public String deleteUserById(@PathVariable("id") String id) {
+    public String deleteUserById(@PathVariable("id") int id) {
         usersService.deleteUserById(id);
         return "users deleted Successfully!!";
     }
 
     @PutMapping("/users/{id}")
-    public TblUser updateUser(@PathVariable("id") String id, @Valid @RequestBody TblUser user) {
+    public TblUser updateUser(@PathVariable("id") int id, @Valid @RequestBody TblUser user) {
         return usersService.updateUser(id,user);
     }
 
