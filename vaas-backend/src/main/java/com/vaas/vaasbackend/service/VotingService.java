@@ -35,11 +35,11 @@ public class VotingService {
             usersVote.setUser(usersRepository.findById(voting.getUserId()).get());
             entityManager.persist(usersVote);
 
-            for(int optionId : voting.getOptionIds()){
+            for(Voting.VotePreference votePreference : voting.getVotePreferences()){
                 TblVoteOption voteOption = new TblVoteOption();
                 voteOption.setUserVote(userVoteRepository.findById(userVoteRepository.lastInsertedRecord()).get());
-                voteOption.setOption(optionRepository.findById(optionId).get());
-                voteOption.setPreference(voting.getPreference());
+                voteOption.setOption(optionRepository.findById(votePreference.getOptionId()).get());
+                voteOption.setPreference(votePreference.getPreference());
                 entityManager.persist(voteOption);
             }
             return voting;
