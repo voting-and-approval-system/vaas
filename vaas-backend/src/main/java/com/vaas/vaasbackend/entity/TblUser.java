@@ -50,11 +50,6 @@ public class TblUser {
     @Column(name = "user_is_active", nullable = false)
     private Boolean userIsActive = false;
 
-//    @Size(max = 80)
-//    @NotNull
-//    @Column(name = "password", nullable = false, length = 80)
-//    private String password;
-
     public Integer getId() {
         return id;
     }
@@ -127,12 +122,18 @@ public class TblUser {
         this.userIsActive = userIsActive;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
+    @Override
+    public String toString() {
+        return "TblUser{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", houseNumber='" + houseNumber + '\'' +
+                ", userJoiningDate=" + userJoiningDate +
+                ", userUpdatedDate=" + userUpdatedDate +
+                ", userIsActive=" + userIsActive +
+                '}';
+    }
 }

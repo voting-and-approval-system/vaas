@@ -3,12 +3,11 @@ package com.vaas.vaasbackend.service;
 import com.vaas.vaasbackend.entity.*;
 import com.vaas.vaasbackend.repository.UsersRepository;
 import com.vaas.vaasbackend.repository.UsersRoleRepository;
+import com.vaas.vaasbackend.responseBody.JwtRequest;
+import com.vaas.vaasbackend.responseBody.JwtResponse;
 import com.vaas.vaasbackend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,10 +37,6 @@ public class JwtService implements UserDetailsService {
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
         String userEmail = jwtRequest.getUserEmail();
-//        String password = jwtRequest.getPassword();
-
-        authenticate(userEmail);
-
         UserDetails userDetails = loadUserByUsername(userEmail);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
         TblUser tblUser = usersRepository.findByUserEmail(userEmail).get();
@@ -75,16 +70,4 @@ public class JwtService implements UserDetailsService {
         }
         return authorities;
     }
-
-
-    private void authenticate(String userEmail) throws Exception {
-//        try {
-//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail,""));
-//        } catch (DisabledException e) {
-//            throw new Exception("user is disabled", e);
-//        } catch (BadCredentialsException e) {
-//            throw new Exception("Bad credentials from user", e);
-//        }
-    }
-
 }

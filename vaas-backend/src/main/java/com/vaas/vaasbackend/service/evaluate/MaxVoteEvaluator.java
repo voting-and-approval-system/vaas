@@ -13,17 +13,20 @@ public class MaxVoteEvaluator implements Evaluator {
     }
 
     @Override
-    public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> responseList) {
+    public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> responseList) throws Exception {
         TotalVoteForIssue highestCountObject = null;
         List<TotalVoteForIssue> totalVoteForIssues = new ArrayList<>();
         int highestCount = 0;
         for (TotalVoteForIssue TotalVoteForIssue : responseList) {
-            if (TotalVoteForIssue.getCount() > highestCount) {
+            if (TotalVoteForIssue.getCount() >= highestCount) {
                 highestCount = TotalVoteForIssue.getCount();
                 highestCountObject = TotalVoteForIssue;
+                totalVoteForIssues.add(highestCountObject);
             }
         }
-        totalVoteForIssues.add(highestCountObject);
+        if(totalVoteForIssues.size() > 1){
+            throw new Exception("There Is clash between : " + totalVoteForIssues.stream().map(totalVoteForIssue -> totalVoteForIssues));
+        }
         return totalVoteForIssues;
     }
 }

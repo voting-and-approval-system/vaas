@@ -2,6 +2,7 @@ package com.vaas.vaasbackend.service;
 
 import com.vaas.vaasbackend.entity.TblUsersVote;
 import com.vaas.vaasbackend.entity.TblVoteOption;
+import com.vaas.vaasbackend.errors.UserAlreadyVoteException;
 import com.vaas.vaasbackend.repository.OptionRepository;
 import com.vaas.vaasbackend.repository.RoundRepository;
 import com.vaas.vaasbackend.repository.UserVoteRepository;
@@ -26,16 +27,21 @@ public class VotingService {
     private UserVoteRepository userVoteRepository;
     @Autowired
     OptionRepository optionRepository;
+
     @Transactional(rollbackOn = Exception.class)
     public Voting insertVotingDetails(Voting voting) throws Exception {
-        try{
+        Integer userId = userVoteRepository.userAlreadyVote(voting.getUserId(), voting.getRoundId());
+        if(userId != null){
+            throw new UserAlreadyVoteException("User alredy vote for this round");
+        }
+        try {
             TblUsersVote usersVote = new TblUsersVote();
             usersVote.setRound(roundRepository.findById(voting.getRoundId()).get());
             usersVote.setVoteDate(voting.getVoteDate());
             usersVote.setUser(usersRepository.findById(voting.getUserId()).get());
             entityManager.persist(usersVote);
 
-            for(Voting.VotePreference votePreference : voting.getVotePreferences()){
+            for (Voting.VotePreference votePreference : voting.getVotePreferences()) {
                 TblVoteOption voteOption = new TblVoteOption();
                 voteOption.setUserVote(userVoteRepository.findById(userVoteRepository.lastInsertedRecord()).get());
                 voteOption.setOption(optionRepository.findById(votePreference.getOptionId()).get());
@@ -43,7 +49,7 @@ public class VotingService {
                 entityManager.persist(voteOption);
             }
             return voting;
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("No Voting");
         }
     }

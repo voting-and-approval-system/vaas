@@ -16,4 +16,8 @@ public interface UserVoteRepository extends JpaRepository<TblUsersVote,Integer> 
 
     @Query(nativeQuery = true,value = "select top 1 user_vote_id from tbl_users_vote order by user_vote_id desc")
     public int lastInsertedRecord();
+
+    @Query(nativeQuery = true,value = "select tbl_users.user_id from tbl_users,tbl_users_vote,tbl_round where tbl_users.user_id = tbl_users_vote.user_id and\n" +
+            "tbl_round.round_id = tbl_users_vote.round_id and tbl_users.user_id = ? and tbl_round.round_id = ?")
+    public Integer userAlreadyVote(int userId,int roundId);
 }

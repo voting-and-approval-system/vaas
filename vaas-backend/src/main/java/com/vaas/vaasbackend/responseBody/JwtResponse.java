@@ -1,4 +1,6 @@
-package com.vaas.vaasbackend.entity;
+package com.vaas.vaasbackend.responseBody;
+
+import com.vaas.vaasbackend.entity.TblUser;
 
 import java.util.List;
 
@@ -26,15 +28,12 @@ public class JwtResponse {
     public List<String> getRoles() {
         return roles;
     }
-
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
-
     public String getJwtToken() {
         return jwtToken;
     }
-
     public void setJwtToken(String jwtToken) {
         this.jwtToken = jwtToken;
     }
