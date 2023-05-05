@@ -27,12 +27,6 @@ public class UsersController {
         return usersService.showUsers();
     }
 
-//  @GetMapping("/users/{id}")
-//	public Optional<TblUser> getUsers(@PathVariable String id)
-//	{
-//		return this.usersService.getUsers(Long.parseLong(id));
-//	}
-
     @PostMapping("/users")
     public TblUser saveUser(@Valid @RequestBody TblUser user){
         return usersService.saveUsers(user);

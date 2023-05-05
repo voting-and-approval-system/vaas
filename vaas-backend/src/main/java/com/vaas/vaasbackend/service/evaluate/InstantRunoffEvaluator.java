@@ -73,8 +73,6 @@ public class InstantRunoffEvaluator implements Evaluator {
                     }
                 }
 
-                System.out.println("\n\n\n" + optionWithMinCount + "\n\n\n");
-
                 int optionId = optionWithMinCount.getOptionId();
                 int users[] = voteOptionRepository.userVoteForLeastOption(optionId);
                 List<TotalVoteForIssue> newOptionList = voteOptionRepository.getNextPreferenceOfLeastOptionUser(preference, issueId,roundNo ,Arrays.stream(users).toArray());

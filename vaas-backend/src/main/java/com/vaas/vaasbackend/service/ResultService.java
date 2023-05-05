@@ -15,7 +15,7 @@ public class ResultService {
     VoteOptionService voteOptionService;
     @Autowired
     Evaluator[] evaluatorServices;
-    public List<TotalVoteForIssue> getResult(int issueId, int roundNo) throws DataNotFoundException {
+    public List<TotalVoteForIssue> getResult(int issueId, int roundNo) throws Exception {
         List<TotalVoteForIssue> responseList = voteOptionService.countTotalVotes(issueId, roundNo);
         TotalVoteForIssue totalVoteForIssue = responseList.get(0);
         String voteType = totalVoteForIssue.getVoteType();
