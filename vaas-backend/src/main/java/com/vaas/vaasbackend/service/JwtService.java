@@ -38,9 +38,9 @@ public class JwtService implements UserDetailsService {
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
         String userEmail = jwtRequest.getUserEmail();
-        String password = jwtRequest.getPassword();
+//        String password = jwtRequest.getPassword();
 
-        authenticate(userEmail, password);
+        authenticate(userEmail);
 
         UserDetails userDetails = loadUserByUsername(userEmail);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
@@ -58,7 +58,7 @@ public class JwtService implements UserDetailsService {
         if (tblUser != null) {
             return new org.springframework.security.core.userdetails.User(
                     tblUser.getUserEmail(),
-                    tblUser.getPassword(),
+                    "",
                     getAuthorities(tblUser)
 
             );
@@ -77,14 +77,14 @@ public class JwtService implements UserDetailsService {
     }
 
 
-    private void authenticate(String userEmail, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail, password));
-        } catch (DisabledException e) {
-            throw new Exception("user is disabled", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("Bad credentials from user", e);
-        }
+    private void authenticate(String userEmail) throws Exception {
+//        try {
+//        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userEmail,""));
+//        } catch (DisabledException e) {
+//            throw new Exception("user is disabled", e);
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("Bad credentials from user", e);
+//        }
     }
 
 }

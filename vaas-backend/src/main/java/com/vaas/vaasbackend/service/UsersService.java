@@ -27,7 +27,7 @@ public class UsersService {
 
 
     public TblUser saveUsers(TblUser user) {
-        user.setPassword(getEncodedPassword(user.getPassword()));
+//        user.setPassword(getEncodedPassword(user.getPassword()));
         return usersRepository.save(user);
     }
     public void deleteUserById(int id) {
@@ -48,9 +48,9 @@ public class UsersService {
     public Optional<TblUser> findByUserEmail(String userEmail) {
         return usersRepository. findByUserEmail(userEmail);
     }
-    public String getEncodedPassword(String password) {
-        return passwordEncoder.encode(password);
-    }
+//    public String getEncodedPassword(String password) {
+//        return passwordEncoder.encode(password);
+//    }
 
     public List<String> getRole(TblUser tblUser){
         return usersRepository.getRole(tblUser.getId());
