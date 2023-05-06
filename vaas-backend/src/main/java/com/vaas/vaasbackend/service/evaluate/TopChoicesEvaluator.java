@@ -15,7 +15,7 @@ public class TopChoicesEvaluator implements Evaluator{
     }
 
     @Override
-    public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) {
+    public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws Exception {
         Collections.sort(optionList, new Comparator<TotalVoteForIssue>() {
             @Override
             public int compare(TotalVoteForIssue o1, TotalVoteForIssue o2) {
@@ -24,8 +24,18 @@ public class TopChoicesEvaluator implements Evaluator{
         });
 
         List<TotalVoteForIssue> totalVoteForIssues = new ArrayList<>();
-        for (int i = 0; i < 3 && i < optionList.size(); i++) {
-            totalVoteForIssues.add(optionList.get(i));
+        int highestCount = 0;
+
+        for (int i = 0; i < optionList.size(); i++) {
+            TotalVoteForIssue option = optionList.get(i);
+            if (i < 3) {
+                totalVoteForIssues.add(option);
+                highestCount = option.getCount();
+            } else if (option.getCount() == highestCount) {
+                throw new Exception("An object below the third position has the same count as the third object");
+            } else {
+                break;
+            }
         }
         return totalVoteForIssues;
     }
