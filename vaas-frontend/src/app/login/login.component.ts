@@ -68,11 +68,11 @@ export class LoginComponent implements OnInit {
         console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
 
-        const role = response.roles[0];
-        if (role === 'Admin' || role === 'Tenant') {
+        const role = response.roles;
+        if (role.includes('Admin') && role.includes('Tenant')) {
           this.router.navigate(['/adminoption']);
         } 
-        else if(role == 'Admin')
+        else if(role.includes('Admin'))
         {
           this.router.navigate(['/admin']);
         }
