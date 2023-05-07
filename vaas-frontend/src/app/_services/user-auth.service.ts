@@ -28,6 +28,6 @@ export class UserAuthService {
   }
 
   public isLoggedIn() {
-    return this.getRoles().length > 0 && this.getToken() !== null;
+    return this.getToken() !== null;
   }
 }

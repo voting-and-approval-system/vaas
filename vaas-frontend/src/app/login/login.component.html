@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
 <div class="card center" style="width: 36rem;">
 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)"> 
     <div class="mb-3">
@@ -17,6 +17,23 @@
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn btn-primary" value="Login">Login</button>
-  </form>
+  </form> -->
+
+  <div>
+    <div class="card center" style="width: 36rem;">
+      <form>
+        <div class="mb-3">
+          <button type="button" class="btn btn-primary" (click)="signInWithGoogle()">Sign in with Google</button>
+        </div>
+      </form>
+      <div *ngIf="userEmail">
+        User Email: {{ userEmail }}
+      </div>
+    </div>
   </div>
-</div>
+  
+  
+
+<!--   
+  </div>
+</div> -->
