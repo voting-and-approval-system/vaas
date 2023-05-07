@@ -20,17 +20,17 @@
   </form> -->
 
   <div>
-    <div class="card center" style="width: 36rem;">
+    <div class="card center" style="width: 12rem;">
       <form>
-        <div class="mb-3">
-          <button type="button" class="btn btn-primary" (click)="signInWithGoogle()">Sign in with Google</button>
+        <div class="btn-container">
+          <button type="button" class="btn btn-dark" (click)="signInWithGoogle()">
+            <img src="assets/google.png" alt="Google" class="google-icon"> Sign in with Google
+          </button>
         </div>
       </form>
-      <div *ngIf="userEmail">
-        User Email: {{ userEmail }}
-      </div>
     </div>
   </div>
+  
   
   
 

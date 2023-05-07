@@ -65,12 +65,18 @@ export class LoginComponent implements OnInit {
     this.userService.login({ userEmail }).subscribe(
       (response: any) => {
         this.userAuthService.setRoles(response.roles);
+        console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
 
         const role = response.roles[0];
-        if (role === 'Admin') {
+        if (role === 'Admin' || role === 'Tenant') {
+          this.router.navigate(['/adminoption']);
+        } 
+        else if(role == 'Admin')
+        {
           this.router.navigate(['/admin']);
-        } else {
+        }
+        else {
           this.router.navigate(['/user']);
         }
       },
