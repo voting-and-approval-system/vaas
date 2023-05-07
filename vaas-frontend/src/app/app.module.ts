@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
+import { AdminOptionComponent } from './admin-option/admin-option.component';
 
 const appRoute : Routes = [
  
@@ -28,7 +29,8 @@ const appRoute : Routes = [
     UserComponent,
     LoginComponent,
     HeaderComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AdminOptionComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AdminOptionComponent } from './admin-option/admin-option.component';
 
 const routes: Routes = [
   {path:'home', component:HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'user', component:UserComponent},
   {path:'login', component:LoginComponent},
   {path:'forbidden', component:ForbiddenComponent},
+  {path:'adminoption', component:AdminOptionComponent},
 ];
 
 @NgModule({
