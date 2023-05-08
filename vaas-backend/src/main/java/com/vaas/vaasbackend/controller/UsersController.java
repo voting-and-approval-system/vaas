@@ -27,13 +27,8 @@ public class UsersController {
         return usersService.showUsers();
     }
 
-//  @GetMapping("/users/{id}")
-//	public Optional<TblUser> getUsers(@PathVariable String id)
-//	{
-//		return this.usersService.getUsers(Long.parseLong(id));
-//	}
-
-    @PostMapping("/users")
+    @PostMapping("/user")
+    @CrossOrigin(origins = "http://localhost:4200")
     public TblUser saveUser(@Valid @RequestBody TblUser user){
         return usersService.saveUsers(user);
     }
@@ -45,7 +40,7 @@ public class UsersController {
     }
 
     @PutMapping("/users/{id}")
-    public TblUser updateUser(@PathVariable("id") int id, @Valid @RequestBody TblUser user) {
+    public TblUser updateUser(@PathVariable("id") int id, @RequestBody TblUser user) {
         return usersService.updateUser(id,user);
     }
 

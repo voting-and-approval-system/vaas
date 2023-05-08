@@ -7,9 +7,5 @@ import java.util.List;
 
 public interface Evaluator {
     boolean isSupported(String votingType);
-    List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws DataNotFoundException;
-
-    public static class Result {
-        /* TODO */
-    }
+    List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws Exception;
 }

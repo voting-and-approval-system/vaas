@@ -1,0 +1,28 @@
+.card {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+
+  .card-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-family: 'Your Font Family', cursive;
+  }
+
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-text button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
