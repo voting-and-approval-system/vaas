@@ -13,8 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import { GoogleLoginProvider } from 'angularx-social-login';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
 
 const appRoute : Routes = [
@@ -38,21 +36,8 @@ const appRoute : Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule,
-    SocialLoginModule
   ],
   providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('374191778060-j6pbqqlneq1hv5c8lijgmj6ihhkf12gi.apps.googleusercontent.com')
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
   ],
   bootstrap: [AppComponent]
 })

@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-dark">
       <img src="assets/voting-and-approval-system-website-favicon-color.png" alt="vaas" class="vaas-icon">
     </button>
-    <h5>Voting and approval System</h5>
+    <h5>Voting & approval System</h5>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,7 +14,7 @@
         </li>
        
       </ul>
-      <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
+      <!-- <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button> -->
       <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
     </div>
   </div>

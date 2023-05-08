@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UsersService } from '../_services/users.service';
+import { formatDate } from '@angular/common';
 
 declare const gapi: any; // Declare gapi object
 
@@ -61,13 +62,30 @@ export class LoginComponent implements OnInit {
   loginWithGoogle(userEmail: string): void {
     console.log('User email:', userEmail);
 
+    const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+    const profile = googleUser.getBasicProfile();
+  
+    const firstName = profile.getGivenName();
+    const lastName = profile.getFamilyName();
+  
+    const newUser = {
+      firstName: firstName,
+      lastName: lastName,
+      phoneNumber: '',
+      userEmail: userEmail,
+      houseNumber: '',
+      userJoiningDate: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'),
+      userUpdatedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'),
+      userIsActive: true
+    };
+    console.log(firstName);
+
     // Perform any additional login actions if needed
     this.userService.login({ userEmail }).subscribe(
       (response: any) => {
         this.userAuthService.setRoles(response.roles);
         console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
-        console.log(response.jwtToken);
 
         const role = response.roles;
         if (role.includes('Admin') && role.includes('Tenant')) {
@@ -82,8 +100,34 @@ export class LoginComponent implements OnInit {
         }
       },
       (error) => {
-        console.log(error);
+        if (error.status === 500) {
+          // If the error is 500 (user not found), prompt for house number and phone number
+          const houseNumber = prompt('Please enter your house number');
+          const phoneNumber = prompt('Please enter your phone number');
+          
+          newUser.houseNumber = houseNumber || '';
+          newUser.phoneNumber = phoneNumber || '';
+  
+          // Register the user with the entered details
+          this.userService.register(newUser).subscribe(
+            (response: any) => {
+              // Registration successful, perform login actions
+              console.log('User registered successfully:', response);
+  
+              // You can perform the login actions here or call the loginWithGoogle method again
+              this.loginWithGoogle(userEmail);
+            },
+            (error: any) => {
+              console.log('Error occurred during user registration', error);
+            }
+          );
+        } else {
+          console.log('Error occurred during login', error);
+        }
       }
+      
     );
   }
+
+
 }
