@@ -27,7 +27,8 @@ public class UsersController {
         return usersService.showUsers();
     }
 
-    @PostMapping("/users")
+    @PostMapping("/user")
+    @CrossOrigin(origins = "http://localhost:4200")
     public TblUser saveUser(@Valid @RequestBody TblUser user){
         return usersService.saveUsers(user);
     }

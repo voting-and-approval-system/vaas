@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'home', component:HomeComponent},
   {path:'admin', component:AdminComponent},
   {path:'user', component:UserComponent},
+  {path:'', component:LoginComponent},
   {path:'login', component:LoginComponent},
   {path:'forbidden', component:ForbiddenComponent},
   {path:'adminoption', component:AdminOptionComponent},
