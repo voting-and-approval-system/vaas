@@ -67,6 +67,7 @@ export class LoginComponent implements OnInit {
         this.userAuthService.setRoles(response.roles);
         console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
+        console.log(response.jwtToken);
 
         const role = response.roles;
         if (role.includes('Admin') && role.includes('Tenant')) {
