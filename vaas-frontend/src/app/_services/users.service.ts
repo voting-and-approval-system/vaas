@@ -25,8 +25,4 @@ export class UsersService {
   public register(newUser: any) {
     return this.httpclient.post(this.PATH_OF_API + '/user', newUser);
   }
-
- 
-
-
 }
