@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserAuthService } from '../_services/user-auth.service';
 import { UsersService } from '../_services/users.service';
 import { formatDate } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
 
 declare const gapi: any; // Declare gapi object
 
@@ -18,12 +20,43 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private userAuthService: UserAuthService,
-    private router: Router
+    private router: Router,
+    private register : MatDialog
   ) {}
 
   ngOnInit(): void {
     this.loadGoogleApi();
   }
+
+  openForm(newUser : any,userEmail : string) {
+    const dialogRef = this.register.open(RegisterComponent);
+    dialogRef.componentInstance.formSubmitted.subscribe(({ houseNumber, phoneNumber }) => {
+      console.log("Data On Login Page : " + houseNumber + " " + phoneNumber);
+      // If the error is 500 (user not found), prompt for house number and phone number
+          
+          if(houseNumber == null || phoneNumber == null){
+            return;
+          }
+          
+          newUser.houseNumber = houseNumber || '';
+          newUser.phoneNumber = phoneNumber || '';
+  
+          // Register the user with the entered details
+          this.userService.register(newUser).subscribe(
+            (response: any) => {
+              // Registration successful, perform login actions
+              console.log('User registered successfully:', response);
+  
+              // You can perform the login actions here or call the loginWithGoogle method again
+              this.loginWithGoogle(userEmail);
+            },
+            (error: any) => {
+              console.log('Error occurred during user registration', error);
+            }
+          );
+    });
+  }
+  
 
   loadGoogleApi(): void {
     gapi.load('auth2', () => {
@@ -101,26 +134,31 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         if (error.status === 500) {
+          this.openForm(newUser,userEmail);
           // If the error is 500 (user not found), prompt for house number and phone number
-          const houseNumber = prompt('Please enter your house number');
-          const phoneNumber = prompt('Please enter your phone number');
+          // const houseNumber = prompt('Please enter your house number');
+          // const phoneNumber = prompt('Please enter your phone number');
+
+          // if(houseNumber === "" || phoneNumber === ""){
+          //   return
+          // }
           
-          newUser.houseNumber = houseNumber || '';
-          newUser.phoneNumber = phoneNumber || '';
+          // newUser.houseNumber = houseNumber || '';
+          // newUser.phoneNumber = phoneNumber || '';
   
-          // Register the user with the entered details
-          this.userService.register(newUser).subscribe(
-            (response: any) => {
-              // Registration successful, perform login actions
-              console.log('User registered successfully:', response);
+          // // Register the user with the entered details
+          // this.userService.register(newUser).subscribe(
+          //   (response: any) => {
+          //     // Registration successful, perform login actions
+          //     console.log('User registered successfully:', response);
   
-              // You can perform the login actions here or call the loginWithGoogle method again
-              this.loginWithGoogle(userEmail);
-            },
-            (error: any) => {
-              console.log('Error occurred during user registration', error);
-            }
-          );
+          //     // You can perform the login actions here or call the loginWithGoogle method again
+          //     this.loginWithGoogle(userEmail);
+          //   },
+          //   (error: any) => {
+          //     console.log('Error occurred during user registration', error);
+          //   }
+          // );
         } else {
           console.log('Error occurred during login', error);
         }
