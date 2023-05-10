@@ -21,8 +21,7 @@ import { RouterModule } from '@angular/router';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
 import { RegisterComponent } from './register/register.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UsersService } from './_services/users.service';
-import { DemoComponent } from './user/demo/demo.component';
+import { UserRoutingModule } from './user/user-routing.module';
 
 const appRoute : Routes = [
  
@@ -38,7 +37,6 @@ const appRoute : Routes = [
     ForbiddenComponent,
     AdminOptionComponent,
     RegisterComponent,
-    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +51,8 @@ const appRoute : Routes = [
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    UserRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
