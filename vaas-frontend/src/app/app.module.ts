@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
 import { RegisterComponent } from './register/register.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UsersService } from './_services/users.service';
 
 const appRoute : Routes = [
  
@@ -54,8 +55,7 @@ const appRoute : Routes = [
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
