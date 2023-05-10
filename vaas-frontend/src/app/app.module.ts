@@ -14,7 +14,6 @@ import { Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HttpClientModule } from '@angular/common/http'
@@ -23,6 +22,7 @@ import { AdminOptionComponent } from './admin-option/admin-option.component';
 import { RegisterComponent } from './register/register.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UsersService } from './_services/users.service';
+import { DemoComponent } from './user/demo/demo.component';
 
 const appRoute : Routes = [
  
@@ -34,11 +34,11 @@ const appRoute : Routes = [
     AdminComponent,
     HomeComponent,
     UserComponent,
-    LoginComponent,
     HeaderComponent,
     ForbiddenComponent,
     AdminOptionComponent,
-    RegisterComponent
+    RegisterComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
