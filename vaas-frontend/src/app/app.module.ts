@@ -14,7 +14,6 @@ import { Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router';
@@ -22,6 +21,7 @@ import { AdminOptionComponent } from './admin-option/admin-option.component';
 import { RegisterComponent } from './register/register.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserRoutingModule } from './user/user-routing.module';
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 const appRoute : Routes = [
  
@@ -33,7 +33,6 @@ const appRoute : Routes = [
     AdminComponent,
     HomeComponent,
     UserComponent,
-    HeaderComponent,
     ForbiddenComponent,
     AdminOptionComponent,
     RegisterComponent,
@@ -52,7 +51,8 @@ const appRoute : Routes = [
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    UserRoutingModule
+    UserRoutingModule,
+    AdminRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
