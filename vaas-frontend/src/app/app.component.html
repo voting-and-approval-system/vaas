@@ -1,22 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container-fluid">
-      <button type="button" class="btn btn-dark">
+      <div class="container-fluid d-flex align-items-center justify-content-center">
         <img src="assets/voting-and-approval-system-website-favicon-color.png" alt="vaas" class="vaas-icon">
-      </button>
-      <h5>Voting & approval System</h5>
+        <h5 class="mx-3 my-0">Voting & approval System</h5>
+      </div>
+      <!-- <img src="assets/voting-and-approval-system-website-favicon-color.png" alt="vaas" class="vaas-icon">
+      <h5>Voting & approval System</h5> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-          </li>       
-        </ul>
-        <button  class="btn btn-login" type="button" *ngIf="!isLoggedIn()" (click)="loginService.signInWithGoogle()">
-          <img src="assets/google.png" height="30px" width="30px" alt="Google" class="google-icon"> Sign in with Google
-        </button>
-        <button  mat-button *ngIf="isLoggedIn()" type="button" color="warn" (click)="logout()" >Logout</button>
-      </div>
     </div>
   </nav>
 <router-outlet></router-outlet>

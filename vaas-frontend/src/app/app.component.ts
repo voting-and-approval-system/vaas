@@ -22,13 +22,4 @@ export class AppComponent {
   ngOnInit(): void {
     this.loginService.loadGoogleApi();
   }
-
-  public isLoggedIn() {
-    return this.userAuthService.isLoggedIn();
-  }
-
-  public logout() {
-    this.userAuthService.clear();
-    this.router.navigate(['/home']);
-  }
 }
