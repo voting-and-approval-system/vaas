@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoginService } from './_services/login.service';
-import { UserAuthService } from './_services/user-auth.service';
 import { UsersService } from './_services/users.service';
 
 @Component({
@@ -12,9 +10,7 @@ import { UsersService } from './_services/users.service';
 export class AppComponent {
   title = 'vaas-frontend';
 
-  constructor(
-    private userAuthService: UserAuthService,
-    private router: Router,
+  constructor(    
     public userService: UsersService,
     public loginService : LoginService
   ) {}

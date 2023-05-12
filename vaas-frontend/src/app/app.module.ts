@@ -22,7 +22,8 @@ import { RegisterComponent } from './register/register.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserRoutingModule } from './user/user-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
-
+import { AssetsComponent } from './admin/assets/assets.component';
+import { AddAssetsComponent } from './admin/add-assets/add-assets.component';
 const appRoute : Routes = [
  
 ];
@@ -36,6 +37,8 @@ const appRoute : Routes = [
     ForbiddenComponent,
     AdminOptionComponent,
     RegisterComponent,
+    AssetsComponent,
+    AddAssetsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,7 @@ const appRoute : Routes = [
     ReactiveFormsModule,
     FormsModule,
     UserRoutingModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
