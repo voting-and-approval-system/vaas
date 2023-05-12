@@ -1,4 +1,4 @@
-package com.vaas.vaasbackend.configuration;
+package com.vaas.vaasbackend;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -19,11 +19,12 @@ public class CorsConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
+                registry.addMapping("/*")
+                        .allowedOrigins("http://localhost:4200")
                         .allowedMethods(GET, PUT, POST, DELETE)
                         .allowedHeaders("*")
-                        .allowedOriginPatterns("*")
-                        .allowCredentials(true);
+                        .allowCredentials(true)
+                        .maxAge(3600);
             }
 
         };

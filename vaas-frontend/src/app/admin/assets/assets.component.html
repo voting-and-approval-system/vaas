@@ -1,1 +1,26 @@
-<p>assets works!</p>
+<div class="container-fluid">
+    <div class="title">
+       <a class="nav-link" routerLink="/admin/addassets"> Add Assets </a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let asset of data">
+            <th scope="row">{{asset.id}}</th>
+            <td>{{asset.assetsTitle}}</td>
+            <td>{{asset.assetsDescription}}</td>
+            <td><a class="btn btn-primary" (click)="editAssets(asset.id)">Edit</a></td>
+            <td><a class="btn btn-danger" (click)="deleteAssets(asset.id)">Delete</a></td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
