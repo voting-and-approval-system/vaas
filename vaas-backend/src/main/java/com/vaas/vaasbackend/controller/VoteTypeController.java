@@ -19,7 +19,7 @@ public class VoteTypeController {
     public TblVotesType saveVoteType(@RequestBody TblVotesType votesType) {
         return voteTypeService.saveVoteType(votesType);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/votetype")
     public List<TblVotesType> showUserVoteType(){
         return voteTypeService.showUserVoteType();

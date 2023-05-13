@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="title">
+    </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let votetype of data">
+            <th scope="row">{{votetype.id}}</th>
+            <td>{{votetype.voteTypeTitle}}</td>
+            <td>{{votetype.voteTypeDescription}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+

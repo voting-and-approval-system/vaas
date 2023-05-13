@@ -24,6 +24,10 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AssetsComponent } from './admin/assets/assets.component';
 import { AddAssetsComponent } from './admin/add-assets/add-assets.component';
+import { VoteTypesComponent } from './admin/vote-types/vote-types.component';
+import { IssuesComponent } from './admin/issues/issues.component';
+import { AddIssuesComponent } from './admin/add-issues/add-issues.component';
+import { OptionComponent } from './admin/option/option.component';
 const appRoute : Routes = [
  
 ];
@@ -38,7 +42,11 @@ const appRoute : Routes = [
     AdminOptionComponent,
     RegisterComponent,
     AssetsComponent,
-    AddAssetsComponent
+    AddAssetsComponent,
+    VoteTypesComponent,
+    IssuesComponent,
+    AddIssuesComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,
