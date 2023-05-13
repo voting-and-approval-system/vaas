@@ -24,8 +24,8 @@
             <td>{{issues.issueTitle}}</td>
             <td>{{issues.issueDescription}}</td>
             <td>{{issues.issueAttachmentPath}}</td>
-            <td>{{ issues.allowMultipleOptions ? 'Yes' : 'No' }}</td>
-            <td>{{issues.assets.assetsTitle}}</td>
+            <td>{{issues.allowMultipleOptions ? 'Yes' : 'No' }}</td>
+            <td>{{issues.assets ?  issues.assets.assetsTitle : ''}}</td>
             <td>{{issues.issueIsActive ? 'Yes' : 'No'}}</td>
             <td>{{issues.voteType.voteTypeTitle}}</td>
             <td>{{issues.allowFeedback ? 'Yes' : 'No'}}</td>

@@ -30,9 +30,8 @@
       <div class="row mb-3">
         <label for="asset" class="col-sm-2 col-form-label">Asset</label>
         <div class="col-sm-10">
-          <select formControlName="asset" class="form-select" id="asset" [value]="data ? data.asset : null" required>
-            <option value="">Select Asset</option>
-            <option *ngFor="let asset of assets" [value]="asset.id">{{ asset.assetsTitle }}</option>
+          <select formControlName="assets" class="form-select" id="asset" [value]="data ? data.asset : null" required>
+            <option *ngFor="let asset of assetsData" [value]="asset.id">{{ asset.assetsTitle }}</option>
           </select>
         </div>
       </div>
@@ -46,8 +45,7 @@
         <label for="voteType" class="col-sm-2 col-form-label">Vote Type</label>
         <div class="col-sm-10">
           <select formControlName="voteType" class="form-select" id="voteType" [value]="data ? data.voteType : null" required>
-            <option value="">Select Vote Type</option>
-            <option *ngFor="let voteType of voteTypes" [value]="voteType.id">{{ voteType.voteTypeTitle }}</option>
+            <option *ngFor="let voteType of voteTypesData" [value]="voteType.id">{{ voteType.voteTypeTitle }}</option>
           </select>
         </div>
       </div>

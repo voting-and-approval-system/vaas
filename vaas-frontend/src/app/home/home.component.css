@@ -165,6 +165,7 @@
 
   .btn-login{
     color: white;
+    border-radius: 40px;
     background-color: #124265;
   }
 
@@ -173,5 +174,5 @@
   }
 
   .google-icon{
-    height: 40px;
+    height: 30px;
   }
