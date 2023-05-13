@@ -12,40 +12,39 @@ import java.util.List;
 public class IssueController {
     @Autowired
     IssueService issueService;
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue")
     public List<TblIssue> showIssue() throws DataNotFoundException {
         return issueService.showIssue();
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue/{id}")
     public TblIssue showIssue(@PathVariable Integer id) throws DataNotFoundException {
         return issueService.showIssue(id);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("issue/active/{isactive}")
     public List<TblIssue> showActiveIssue(@PathVariable("isactive") boolean isActive) throws DataNotFoundException {
         return issueService.showActiveIssue(isActive);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/issue")
     public TblIssue saveIssue(@RequestBody TblIssue issue) throws Exception {
         return issueService.saveIssue(issue);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/issue/{id}")
     public TblIssue updateIssue(@PathVariable Integer id, @RequestBody TblIssue issue) throws Exception {
         return issueService.updateIssue(id,issue);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue/assets/{assetsid}")
     public List<TblIssue> getActiveIssueForAssets(@PathVariable(name = "assetsid") Integer assetsId) throws DataNotFoundException {
         return issueService.getActiveIssueForAssets(assetsId);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/issue/{id}")
-    public String deleteIssue(@PathVariable Integer id) throws DataNotFoundException {
+    public void deleteIssue(@PathVariable Integer id) throws DataNotFoundException {
         issueService.deleteIssue(id);
-        return "Record Deleted";
     }
 }

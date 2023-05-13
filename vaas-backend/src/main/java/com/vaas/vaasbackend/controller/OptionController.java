@@ -12,7 +12,7 @@ import java.util.List;
 public class OptionController {
     @Autowired
     private OptionService optionService;
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/option")
     public List<TblOption> showOption() throws DataNotFoundException {
         return optionService.showOption();
