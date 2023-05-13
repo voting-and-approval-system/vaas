@@ -39,6 +39,10 @@ export class AdminServicesService {
     return this._http.get(this.basrUrl + '/votetype',{headers : this.headers});
   }
 
+  findVoteTypeById(id : number) : Observable<any>{
+    return this._http.get(this.basrUrl + `/votetype/${id}`,{headers : this.headers});
+  }
+
   getIssues() : Observable<any> {
     return this._http.get(this.basrUrl + '/issue',{headers : this.headers});
   }

@@ -9,8 +9,6 @@ import { OptionComponent } from './option/option.component';
 
 @NgModule({
   declarations: [
-  
-  
     OptionComponent
   ],
   imports: [
