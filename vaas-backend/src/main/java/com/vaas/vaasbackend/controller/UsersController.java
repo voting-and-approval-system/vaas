@@ -45,6 +45,7 @@ public class UsersController {
     }
 
     @GetMapping("/users/{emailid}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Optional<TblUser> findByUserEmail(@PathVariable("emailid") String userEmail)
     {
         return this.usersService.findByUserEmail(userEmail);

@@ -87,6 +87,7 @@ export class LoginService {
   }
 
   loginWithGoogle(userEmail: string): void {
+    localStorage.setItem('userEmail',userEmail);
     console.log('User email:', userEmail);
 
     const googleUser = gapi.auth2.getAuthInstance().currentUser.get();

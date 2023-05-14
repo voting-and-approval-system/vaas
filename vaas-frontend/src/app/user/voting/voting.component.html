@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="title">
+       
+    </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Issue Title</th>
+            <th scope="col">Issue Description</th>
+            <th scope="col">Round Number</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let round of roundData">
+            <th scope="row">{{round.id}}</th>
+            <td>{{round.issue.issueTitle}}</td>
+            <td>{{round.issue.issueDescription}}</td>
+            <td>{{round.roundNumber}}</td>
+            <td><a class="btn btn-primary" (click)="vote(round.id)">Vote</a></td>
+          </tr>
+        </tbody>
+    </table>
+</div>
