@@ -28,6 +28,7 @@ import { VoteTypesComponent } from './admin/vote-types/vote-types.component';
 import { IssuesComponent } from './admin/issues/issues.component';
 import { AddIssuesComponent } from './admin/add-issues/add-issues.component';
 import { OptionComponent } from './admin/option/option.component';
+import { AddOptionComponent } from './admin/add-option/add-option.component';
 const appRoute : Routes = [
  
 ];
@@ -46,7 +47,8 @@ const appRoute : Routes = [
     VoteTypesComponent,
     IssuesComponent,
     AddIssuesComponent,
-    OptionComponent
+    OptionComponent,
+    AddOptionComponent
   ],
   imports: [
     BrowserModule,

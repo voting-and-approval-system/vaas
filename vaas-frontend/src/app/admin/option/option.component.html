@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="title">
+    <a class="nav-link" routerLink="/admin/addoption"> Add option </a>
+ </div>
     <table class="table table-hover">
         <thead>
           <tr>
@@ -18,6 +21,8 @@
             <td>{{option.optionAttachmentPath}}</td>
             <td>{{option.issue.issueTitle}}</td>
             <td>{{option.optionIsActive}}</td>
+            <td><a class="btn btn-primary" (click)="editOption(option.id)">Edit</a></td>
+            <td><a class="btn btn-danger" (click)="deleteOption(option.id)">Delete</a></td>
           </tr>
         </tbody>
     </table>

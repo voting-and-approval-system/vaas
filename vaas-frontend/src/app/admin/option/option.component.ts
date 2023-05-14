@@ -25,4 +25,21 @@ export class OptionComponent implements OnInit {
         this.data = res;
       });
   }
+
+  editOption(id: number) {
+    this._router.navigate(['/admin/addoption', {id : id}]);
+  }
+
+
+  deleteOption(id: number) {
+    this._adminService.deleteOption(id).subscribe({
+      next: (res) => {
+        alert("Record Deleted !!");
+        this.getOptions();
+      },
+      error: (err) => {
+        console.log("Error While Delete : " + err);
+      }
+    })
+  }
 }

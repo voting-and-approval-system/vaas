@@ -1,0 +1,41 @@
+<div class="container-fluid title">
+    <h1>Option Form</h1>
+  </div>
+  <div class="container-fluid regestration-form">
+    <form [formGroup]="optionForm" (ngSubmit)="data ? updateOption(data.id) : addOption()">
+      <div class="row mb-3">
+        <label for="optionTitle" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="optionTitle" class="form-control" id="optionTitle" [value]="data ? data.optionTitle : null" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="optionDescription" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+          <textarea formControlName="optionDescription" class="form-control" id="optionDescription" [value]="data ? data.optionDescription : null" required></textarea>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="optionAttachmentPath" class="col-sm-2 col-form-label">Attachment Path</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="optionAttachmentPath" class="form-control" id="optionAttachmentPath" [value]="data ? data.optionAttachmentPath : null" required>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="issues" class="col-sm-2 col-form-label">issue</label>
+        <div class="col-sm-10">
+          <select formControlName="issue" class="form-select" id="issue" [value]="data ? data.issue : null" required>
+            <option *ngFor="let issue of issueData" [value]="issue.id">{{ issue.issueTitle }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="optionIsActive" class="col-sm-2 col-form-label">optionIsActive is Active</label>
+        <div class="col-sm-10">
+          <input type="checkbox" formControlName="optionIsActive" id="optionIsActive" [value]="data ? data.optionIsActive : null">
+        </div>
+      </div> 
+      <button type="submit" class="btn btn-success" [innerText]="data ? 'Update' : 'Add'"></button>
+    </form>
+  </div>
+  
