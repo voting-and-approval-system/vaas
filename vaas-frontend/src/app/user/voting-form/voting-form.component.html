@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <h2>{{roundData.issue?.issueTitle}}</h2>
+</div>
+<form [formGroup]="votingForm" (ngSubmit)="voting()">
+    <div class="form-check" *ngFor="let _option of optionData">
+        <input class="form-check-input" type="{{roundData.issue.allowMultipleOptions ? 'checkbox' : 'radio'}}"
+            name="option" [value]="_option.id" formControlName="votePreferences" />
+        <label class="form-check-label">{{_option.optionTitle}}</label>
+    </div>
+    <button type="submit" class="btn btn-success">Vote</button>
+</form>
