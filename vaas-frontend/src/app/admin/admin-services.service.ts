@@ -65,4 +65,18 @@ export class AdminServicesService {
     return this._http.get(this.basrUrl + '/option',{headers : this.headers});
   }
 
+  addOption(data : any) {
+    return this._http.post(this.basrUrl + '/option',data,{headers : this.headers});
+  }
+
+  updateOption(id : number,data : any){
+    return this._http.put(this.basrUrl + `/option/${id}`,data,{headers : this.headers});
+  }
+  findOptionById(id : number){
+    return this._http.get(this.basrUrl + `/option/${id}`,{headers : this.headers});
+  }
+  deleteOption(id : number){
+    return this._http.delete(this.basrUrl + `/option/${id}`,{headers : this.headers});
+  }
+
 }

@@ -7,6 +7,7 @@ import { VoteTypesComponent } from './vote-types/vote-types.component';
 import { IssuesComponent } from './issues/issues.component';
 import { AddIssuesComponent } from './add-issues/add-issues.component';
 import { OptionComponent } from './option/option.component';
+import { AddOptionComponent } from './add-option/add-option.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       {path: 'admin/votetypes',component : VoteTypesComponent},
       {path: 'admin/issues',component : IssuesComponent},
       {path: 'admin/addissues',component : AddIssuesComponent},
-      {path: 'admin/option',component : OptionComponent}
+      {path: 'admin/option',component : OptionComponent},
+      {path: 'admin/addoption',component : AddOptionComponent}
     ]
   }
 ];
