@@ -27,7 +27,7 @@ export class AdminServicesService {
     return this._http.delete(this.basrUrl + `/assets/${id}`,{headers : this.headers});
   }
 
-  findAssetsById(id : number){
+  findAssetsById(id : number) : Observable<any> {
     return this._http.get(this.basrUrl + `/assets/${id}`,{headers : this.headers});
   }
 
@@ -53,7 +53,7 @@ export class AdminServicesService {
   updateIssues(id : number,data : any){
     return this._http.put(this.basrUrl + `/issue/${id}`,data,{headers : this.headers});
   }
-  findIssuesById(id : number){
+  findIssuesById(id : number): Observable<any>{
     return this._http.get(this.basrUrl + `/issue/${id}`,{headers : this.headers});
   }
 
@@ -72,7 +72,7 @@ export class AdminServicesService {
   updateOption(id : number,data : any){
     return this._http.put(this.basrUrl + `/option/${id}`,data,{headers : this.headers});
   }
-  findOptionById(id : number){
+  findOptionById(id : number): Observable<any>{
     return this._http.get(this.basrUrl + `/option/${id}`,{headers : this.headers});
   }
   deleteOption(id : number){

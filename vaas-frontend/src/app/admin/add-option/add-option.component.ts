@@ -33,8 +33,8 @@ export class AddOptionComponent implements OnInit{
     
     if(data != null){
       this._adminService.findOptionById(Number(data)).subscribe({
-        next : (val : any) => {
-          this.data = val;
+        next : async (val : any) => {
+          this.data = val;  
         }
       });
     }
@@ -90,18 +90,35 @@ async addOption() {
 
 
 
-updateOption(id : number){
-  return this._adminService.updateOption(id,this.optionForm.value).subscribe({
-    next : (val : any) => {
-      alert("option Updated !!");
-      this._router.navigate(['/admin/option']);
-      this.optionForm.reset();
-    },
-    error : (err) =>{
-      console.log("Error while Add option : " + JSON.stringify(err));
-      this.optionForm.reset();
-    }
-  });
+  async updateOption(id : number){
+  try {
+    
+  let _issue = [];
+  try {
+    this.optionForm.get('optionTitle').setValue(this.data.optionTitle);
+    this.optionForm.get('optionDescription').setValue(this.data.optionDescription);
+    this.optionForm.get('optionAttachmentPath').setValue(this.data.optionAttachmentPath);
+    this.optionForm.get('optionIsActive').setValue(this.data.optionIsActive);
+
+    
+    const issueId = this.optionForm.get('issue').value;
+    const issueRes : any = await this._adminService.findIssuesById(issueId).toPromise();
+    _issue = issueRes;
+    console.log("DATA +++ : " + JSON.stringify(issueId))
+  } catch (err) {
+    console.log("Error while fetching issue: " + JSON.stringify(err));
+  }
+
+  this.optionForm.get('issue').setValue(_issue);
+
+    const val = await this._adminService.updateOption(id,this.optionForm.value).toPromise();
+    alert("options Updated !!");
+    this._router.navigate(['/admin/option']);
+    this.optionForm.reset();
+  } catch (err) {
+    console.log("Error while adding option: " + JSON.stringify(err));
+    this.optionForm.reset();
+  }
 }
 
 }

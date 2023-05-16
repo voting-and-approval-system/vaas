@@ -23,9 +23,9 @@ export class AddIssuesComponent implements OnInit{
       issueTitle : '',
       issueDescription : '',
       issueAttachmentPath : '',
-      allowMultipleOptions : '',
-      issueIsActive : '',
-      allowFeedback : '',
+      allowMultipleOptions : false,
+      issueIsActive : false,
+      allowFeedback : false,
       voteType : '',
       assets : ''
     })
@@ -161,11 +161,13 @@ async addIssues() {
   try {
     const voteTypeRes : any = await this._adminService.findVoteTypeById(voteTypeId).toPromise();
     _voteType = voteTypeRes;
+    console.log("GGG : " + JSON.stringify(_voteType))
   } catch (err) {
     console.log("Error while fetching vote type: " + JSON.stringify(err));
   }
 
   this.issuesForm.get('assets').setValue(_assets);
+
   this.issuesForm.get('voteType').setValue(_voteType);
 
   console.log("LOG : " + JSON.stringify(_assets));
@@ -187,19 +189,56 @@ async addIssues() {
 
 
 
-updateIssues(id : number){
-  return this._adminService.updateIssues(id,this.issuesForm.value).subscribe({
-    next : (val : any) => {
-      alert("Issues Updated !!");
-      this._router.navigate(['/admin/issues']);
-      this.issuesForm.reset();
-    },
-    error : (err) =>{
-      console.log("Error while Add Assets : " + JSON.stringify(err));
-      this.issuesForm.reset();
-    }
-  });
+async updateIssues(id : number) {
+
+
+  this.issuesForm.get('issueTitle').setValue(this.data.issueTitle);
+  this.issuesForm.get('issueDescription').setValue(this.data.issueDescription);
+  this.issuesForm.get('issueAttachmentPath').setValue(this.data.issueAttachmentPath);
+  this.issuesForm.get('allowMultipleOptions').setValue(this.data.allowMultipleOptions);
+  this.issuesForm.get('issueIsActive').setValue(this.data.issueIsActive);
+  this.issuesForm.get('allowFeedback').setValue(this.data.allowFeedback);
+  
+  
+  const assetId = this.issuesForm.get('assets').value;
+  const voteTypeId = this.issuesForm.get('voteType').value;
+  console.log("print Data : " +JSON.stringify(this.issuesForm.value));
+
+  let _assets = [];
+  try {
+    const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
+    _assets = assetRes;
+    console.log("DATA +++ : " + JSON.stringify(_assets))
+  } catch (err) {
+    console.log("Error while fetching assets: " + JSON.stringify(err));
+  }
+
+  let _voteType = [];
+  try {
+    const voteTypeRes: any = await this._adminService.findVoteTypeById(voteTypeId).toPromise();
+    _voteType = voteTypeRes;
+    console.log("GGG : " + JSON.stringify(_voteType))
+  } catch (err) {
+    console.log("Error while fetching vote type: " + JSON.stringify(err));
+  }
+
+  this.issuesForm.get('assets').setValue(_assets);
+  this.issuesForm.get('voteType').setValue(_voteType);
+
+  console.log("LOG : " + JSON.stringify(_voteType));
+  console.log("NILAY  " + JSON.stringify(this.issuesForm.value));
+
+  try {
+    const val = await this._adminService.updateIssues(id,this.issuesForm.value).toPromise();
+    alert("issues Updated !!");
+    this._router.navigate(['/admin/issues']);
+    this.issuesForm.reset();
+  } catch (err) {
+    console.log("Error while adding issues: " + JSON.stringify(err));
+    this.issuesForm.reset();
+  }
 }
+
 
 }
 

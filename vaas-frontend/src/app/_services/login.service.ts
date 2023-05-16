@@ -15,6 +15,7 @@ export class LoginService {
   userEmail!: string; // Variable to store the user's email
   public tempRole : string;
 
+
   constructor(
     private userService: UsersService,
     private userAuthService: UserAuthService,
@@ -25,7 +26,7 @@ export class LoginService {
   openForm(newUser : any,userEmail : string) {
     const dialogRef = this.register.open(RegisterComponent);
     dialogRef.componentInstance.formSubmitted.subscribe(({ houseNumber, phoneNumber }) => {
-      console.log("Data On Login Page : " + houseNumber + " " + phoneNumber);
+      // console.log("Data On Login Page : " + houseNumber + " " + phoneNumber);
       // If the error is 500 (user not found), prompt for house number and phone number
           
           if(houseNumber == null || phoneNumber == null){
@@ -39,13 +40,13 @@ export class LoginService {
           this.userService.register(newUser).subscribe(
             (response: any) => {
               // Registration successful, perform login actions
-              console.log('User registered successfully:', response);
+              // console.log('User registered successfully:', response);
   
               // You can perform the login actions here or call the loginWithGoogle method again
               this.loginWithGoogle(userEmail);
             },
             (error: any) => {
-              console.log('Error occurred during user registration', error);
+              // console.log('Error occurred during user registration', error);
             }
           );
     });
@@ -57,13 +58,14 @@ export class LoginService {
       gapi.auth2.init({
         client_id: '374191778060-j6pbqqlneq1hv5c8lijgmj6ihhkf12gi.apps.googleusercontent.com', // Replace with your actual client ID
         scope: 'email', 
-        plugin_name: 'vaas-frontend'// Add the scope for retrieving the user's email
+        plugin_name: 'vaas-frontend',
+        prompt: 'select_account'// Add the scope for retrieving the user's email
       }).then((error:any)=>{
         console.log("Success");
-        console.log(error);
+        // console.log(error);
       }).catch((error:any)=>{
         console.log("Error");
-        console.log(error);
+        // console.log(error);
       });
     });
    
@@ -71,24 +73,25 @@ export class LoginService {
   
 
   signInWithGoogle(): void {
-    gapi.auth2.getAuthInstance().signIn().then((googleUser: any) => {
-      console.log(googleUser);
-      this.userEmail = googleUser.getBasicProfile().getEmail(); // Fetch the user's email and assign it to the userEmail variable
-      this.loginWithGoogle(this.userEmail);
-       // Pass the userEmail to the loginWithGoogle method
-    })
-    .catch((error: any) => {
-      if (error.details === 'popup_closed_by_user') {
-        console.log('User closed the Google sign-in popup');
-      } else {
-        console.log('Error occurred during Google sign-in', error);
-      }
-    });
+    Promise.resolve(gapi.auth2.getAuthInstance().signIn())
+      .then((googleUser: any) => {
+        // console.log(googleUser);
+        const userEmail = googleUser.getBasicProfile().getEmail();
+        this.loginWithGoogle(userEmail);
+      })
+      .catch((error: any) => {
+        if (error.details === 'popup_closed_by_user') {
+          console.log('User closed the Google sign-in popup');
+        } else {
+          console.log('Error occurred during Google sign-in', error);
+        }
+      });
   }
+  
 
   loginWithGoogle(userEmail: string): void {
     localStorage.setItem('userEmail',userEmail);
-    console.log('User email:', userEmail);
+    // console.log('User email:', userEmail);
 
     const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
     const profile = googleUser.getBasicProfile();
@@ -106,13 +109,13 @@ export class LoginService {
       userUpdatedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'),
       userIsActive: true
     };
-    console.log(firstName);
+    // console.log(firstName);
 
     // Perform any additional login actions if needed
     this.userService.login({ userEmail }).subscribe(
       (response: any) => {
         this.userAuthService.setRoles(response.roles);
-        console.log(response.roles);
+        // console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
 
         const role = response.roles;
@@ -124,9 +127,12 @@ export class LoginService {
           this.tempRole = "Admin";
           this.router.navigate(['/admin']);
         }
-        else {
+        else if(role.includes('Tenant')){
           this.tempRole = "Tenant";
           this.router.navigate(['/user']);
+        }
+        else{
+          this.router.navigate(['/forbidden']);
         }
       },
       (error) => {
@@ -138,5 +144,36 @@ export class LoginService {
       }
       
     );
+
+    
   }
+  private logoutAndNotifyGoogle(): void {
+    // Clear the token and expiration time from localStorage
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('jwtToken');
+
+    // Use gapi.auth2 to sign out from the user's Google account
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
+      console.log('User signed out from Google');
+      // Perform any additional logout actions as needed
+    });
+  }
+
+  checkTokenExpiration(): void {
+    const jwtToken = localStorage.getItem('jwtToken');
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
+  
+    if (jwtToken && tokenExpiration) {
+      const expirationTime = new Date(tokenExpiration).getTime();
+      const currentTime = new Date().getTime();
+  
+      if (currentTime >= expirationTime) {
+        // Token has expired, perform logout actions and redirect to home page
+        this.logoutAndNotifyGoogle();
+        this.router.navigate(['/home']);
+      }
+    }
+  }
+
 }
