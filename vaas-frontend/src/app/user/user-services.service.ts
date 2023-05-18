@@ -29,4 +29,8 @@ export class UserServicesService {
   displayRoundById(roundId : number){
     return this._http.get(this.baseUrl + `/round/${roundId}`,{headers : this.headers});
   }
+
+  voting(data : any){
+    return this._http.post(this.baseUrl + '/voting',data,{headers : this.headers});
+  }
 }
