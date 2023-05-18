@@ -1,63 +1,66 @@
 <div class="container-fluid title">
-    <h1>Issues Form</h1>
-  </div>
-  <div class="container-fluid regestration-form">
-    <form [formGroup]="issuesForm" (ngSubmit)="data ? updateIssues(data.id) : addIssues()">
-      <div class="row mb-3">
-        <label for="issueTitle" class="col-sm-2 col-form-label">Title</label>
-        <div class="col-sm-10">
-          <input type="text" formControlName="issueTitle" class="form-control" id="issueTitle" [value]="data ? data.issueTitle : null" required>
-        </div>
+  <h1>Issues Form</h1>
+</div>
+<div class="container-fluid regestration-form">
+  <form [formGroup]="issuesForm" (ngSubmit)="data ? updateIssues(data.id) : addIssues()">
+    <div class="row mb-3">
+      <label for="issueTitle" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="issueTitle" class="form-control" id="issueTitle"
+           required>
       </div>
-      <div class="row mb-3">
-        <label for="issueDescription" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-          <textarea formControlName="issueDescription" class="form-control" id="issueDescription" [value]="data ? data.issueDescription : null" required></textarea>
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="issueDescription" class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+        <textarea formControlName="issueDescription" class="form-control" id="issueDescription"
+           required></textarea>
       </div>
-      <div class="row mb-3">
-        <label for="issueAttachmentPath" class="col-sm-2 col-form-label">Attachment Path</label>
-        <div class="col-sm-10">
-          <input type="text" formControlName="issueAttachmentPath" class="form-control" id="issueAttachmentPath" [value]="data ? data.issueAttachmentPath : null" required>
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="issueAttachmentPath" class="col-sm-2 col-form-label">Attachment Path</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="issueAttachmentPath" class="form-control" id="issueAttachmentPath"
+           required>
       </div>
-      <div class="row mb-3">
-        <label for="allowMultipleOptions" class="col-sm-2 col-form-label">Allow Multiple Options</label>
-        <div class="col-sm-10">
-          <input type="checkbox" [checked]="data?.allowMultipleOptions" formControlName="allowMultipleOptions" id="allowMultipleOptions">
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="allowMultipleOptions" class="col-sm-2 col-form-label">Allow Multiple Options</label>
+      <div class="col-sm-10">
+        <input type="checkbox" formControlName="allowMultipleOptions"
+          id="allowMultipleOptions">
       </div>
-      <div class="row mb-3">
-        <label for="asset" class="col-sm-2 col-form-label">Asset</label>
-        <div class="col-sm-10">
-          <select formControlName="assets" class="form-select" id="asset">
-            <option *ngIf="data" [value]="data.assets.id" [selected]="true">{{ data.assets.assetsTitle }}</option>
-            <option *ngFor="let asset of assetsData" [value]="asset.id">{{ asset.assetsTitle }}</option>
-          </select>
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="asset" class="col-sm-2 col-form-label">Asset</label>
+      <div class="col-sm-10">
+        <select formControlName="assets" class="form-select" id="asset">
+          <option *ngFor="let asset of assetsData" [value]="asset.id"
+            >{{ asset.assetsTitle }}</option>
+        </select>
       </div>
-      <div class="row mb-3">
-        <label for="issueIsActive" class="col-sm-2 col-form-label">issue is Active</label>
-        <div class="col-sm-10">
-          <input type="checkbox" [checked]="data?.issueIsActive" formControlName="issueIsActive" id="issueIsActive">
-        </div>
-      </div> 
-      <div class="row mb-3">
-        <label for="voteType" class="col-sm-2 col-form-label">Vote Type</label>
-        <div class="col-sm-10">
-          <select formControlName="voteType" class="form-select" id="voteType" required>
-            <option *ngIf="data" [value]="data.voteType.id" [selected]="true">{{ data.voteType.voteTypeTitle }}</option>
-            <option *ngFor="let voteType of voteTypesData" [value]="voteType.id">{{ voteType.voteTypeTitle }}</option>
-          </select>
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="issueIsActive" class="col-sm-2 col-form-label">issue is Active</label>
+      <div class="col-sm-10">
+        <input type="checkbox"  formControlName="issueIsActive" id="issueIsActive">
       </div>
-      <div class="row mb-3">
-        <label for="allowFeedback" class="col-sm-2 col-form-label">Allow Feedback</label>
-        <div class="col-sm-10">
-          <input type="checkbox" [checked]="data?.allowFeedback" formControlName="allowFeedback" id="allowFeedback">
-        </div>
+    </div>
+    <div class="row mb-3">
+      <label for="voteType" class="col-sm-2 col-form-label">Vote Type</label>
+      <div class="col-sm-10">
+        <select formControlName="voteType" class="form-select" id="voteType" required>
+          <option *ngFor="let voteType of voteTypesData" [value]="voteType.id"
+            >{{ voteType.voteTypeTitle }}</option>
+        </select>
       </div>
-      <button type="submit" class="btn btn-success" [innerText]="data ? 'Update' : 'Add'"></button>
-    </form>
-  </div>
-  
+    </div>
+    <div class="row mb-3">
+      <label for="allowFeedback" class="col-sm-2 col-form-label">Allow Feedback</label>
+      <div class="col-sm-10">
+        <input type="checkbox"  formControlName="allowFeedback" id="allowFeedback">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [innerText]="data ? 'Update' : 'Add'"></button>
+  </form>
+</div>
