@@ -30,4 +30,9 @@ export class UserAuthService {
   public isLoggedIn() {
     return this.getToken() !== null;
   }
+
+  public setPreferdRole(role : string){
+    console.log(role);
+    localStorage.setItem('preferedRole', role);
+  }
 }

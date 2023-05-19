@@ -125,9 +125,11 @@ export class LoginService {
         else if(role.includes('Admin'))
         {
           this.tempRole = "Admin";
+          this.userAuthService.setPreferdRole('Admin');
           this.router.navigate(['/admin']);
         }
         else if(role.includes('Tenant')){
+          this.userAuthService.setPreferdRole('Tenant');
           this.tempRole = "Tenant";
           this.router.navigate(['/user']);
         }
