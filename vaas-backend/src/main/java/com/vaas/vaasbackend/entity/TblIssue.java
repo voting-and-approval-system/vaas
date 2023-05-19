@@ -44,7 +44,7 @@ public class TblIssue {
 
     @NotNull
     @Column(name = "allow_feedback", nullable = false)
-    private Integer allowFeedback;
+    private Boolean allowFeedback;
 
     public Integer getId() {
         return id;
@@ -110,11 +110,11 @@ public class TblIssue {
         this.voteType = voteType;
     }
 
-    public Integer getAllowFeedback() {
+    public Boolean getAllowFeedback() {
         return allowFeedback;
     }
 
-    public void setAllowFeedback(Integer allowFeedback) {
+    public void setAllowFeedback(Boolean allowFeedback) {
         this.allowFeedback = allowFeedback;
     }
 

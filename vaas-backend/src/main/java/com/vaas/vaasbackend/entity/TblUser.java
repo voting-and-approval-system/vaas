@@ -28,9 +28,9 @@ public class TblUser {
     @Column(name = "phone_number", nullable = false, length = 12)
     private String phoneNumber;
 
-    @Size(max = 20)
+
     @NotNull
-    @Column(name = "user_email", nullable = false, length = 20)
+    @Column(name = "user_email", nullable = false, length = 120)
     private String userEmail;
 
     @Size(max = 6)

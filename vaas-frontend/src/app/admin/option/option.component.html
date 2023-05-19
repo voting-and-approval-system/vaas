@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="title">
+    <a class="nav-link" routerLink="/admin/addoption"> Add option </a>
+ </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Attachment Path</th>
+            <th scope="col">issue</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let option of data">
+            <th scope="row">{{option.id}}</th>
+            <td>{{option.optionTitle}}</td>
+            <td>{{option.optionDescription}}</td>
+            <td>{{option.optionAttachmentPath}}</td>
+            <td>{{option.issue.issueTitle}}</td>
+            <td>{{option.optionIsActive}}</td>
+            <td><a class="btn btn-primary" (click)="editOption(option.id)">Edit</a></td>
+            <td><a class="btn btn-danger" (click)="deleteOption(option.id)">Delete</a></td>
+          </tr>
+        </tbody>
+    </table>
+</div>

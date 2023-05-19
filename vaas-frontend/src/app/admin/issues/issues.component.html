@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="title">
+        <a class="nav-link" routerLink="/admin/addissues"> Add issues </a>
+     </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Attachment Path</th>
+            <th scope="col">Allow multiple options</th>
+            <th scope="col">Asset</th>
+            <th scope="col">Status</th>
+            <th scope="col">Vote type</th>
+            <th scope="col">allow feedback</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ="let issues of data">
+            <th scope="row">{{issues.id}}</th>
+            <td>{{issues.issueTitle}}</td>
+            <td>{{issues.issueDescription}}</td>
+            <td>{{issues.issueAttachmentPath}}</td>
+            <td>{{issues.allowMultipleOptions ? 'Yes' : 'No' }}</td>
+            <td>{{issues.assets ?  issues.assets.assetsTitle : ''}}</td>
+            <td>{{issues.issueIsActive ? 'Yes' : 'No'}}</td>
+            <td>{{issues.voteType.voteTypeTitle}}</td>
+            <td>{{issues.allowFeedback ? 'Yes' : 'No'}}</td>
+            <td><a class="btn btn-primary" (click)="editIssues(issues.id)">Edit</a></td>
+            <td><a class="btn btn-danger" (click)="deleteIssues(issues.id)">Delete</a></td>
+          </tr>
+        </tbody>
+    </table>
+</div>

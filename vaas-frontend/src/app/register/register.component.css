@@ -1,0 +1,17 @@
+.row{
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.btns{
+    margin: 10px;
+}
+
+.title{
+    font-family: 'Your Font Family', cursive;
+}

@@ -1,12 +1,15 @@
 package com.vaas.vaasbackend.service;
 
+import com.vaas.vaasbackend.entity.TblAsset;
 import com.vaas.vaasbackend.entity.TblVotesType;
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.repository.VoteTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class VoteTypeService {
@@ -50,4 +53,11 @@ public class VoteTypeService {
     }
 
 
+    public TblVotesType showVoteType(Integer id) throws DataNotFoundException {
+        Optional<TblVotesType> asset = voteTypeRepository.findById(id);
+        if (!asset.isPresent()) {
+            throw new DataNotFoundException("Vote type Not Available For Id " + id);
+        }
+        return asset.get();
+    }
 }

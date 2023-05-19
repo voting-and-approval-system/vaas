@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+   <h3 class="title"> Fill The Information</h3>
+</div>
+<form [formGroup]="userForm" (ngSubmit)="registerUser()">
+<div mat-dialog-content>
+    <div class="row">
+        <input matInput formControlName="HouseNo" type="text" placeholder="Enter House Number" required>
+    </div>
+    <div class="row">
+        <input matInput formControlName="PhNo" type="text" placeholder="Enter Phone Number" required>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button class="btns" mat-dialog-close mat-raised-button color="warn">Cancle</button>
+    <button class="btns" [mat-dialog-close]="true" type="submit" mat-raised-button color="primary">Save</button>
+</div>
+</form>

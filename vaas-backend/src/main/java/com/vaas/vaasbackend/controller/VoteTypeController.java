@@ -1,7 +1,9 @@
 package com.vaas.vaasbackend.controller;
 
+import com.vaas.vaasbackend.entity.TblAsset;
 import com.vaas.vaasbackend.entity.TblVotesType;
 
+import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.service.VoteTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,10 +21,16 @@ public class VoteTypeController {
     public TblVotesType saveVoteType(@RequestBody TblVotesType votesType) {
         return voteTypeService.saveVoteType(votesType);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/votetype")
-    public List<TblVotesType> showUserVoteType(){
+    public List<TblVotesType> showVoteType(){
         return voteTypeService.showUserVoteType();
+    }
+
+    @GetMapping("/votetype/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public TblVotesType showVoteType(@PathVariable Integer id) throws DataNotFoundException {
+        return voteTypeService.showVoteType(id);
     }
 
     @DeleteMapping("/votetype/{id}")
