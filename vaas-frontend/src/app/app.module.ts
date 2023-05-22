@@ -31,7 +31,22 @@ import { OptionComponent } from './admin/option/option.component';
 import { AddOptionComponent } from './admin/add-option/add-option.component';
 import { VotingComponent } from './user/voting/voting.component';
 import { VotingFormComponent } from './user/voting-form/voting-form.component';
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import { ResultComponent } from './user/result/result.component';
+=======
+=======
+>>>>>>> Stashed changes
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BodyComponent } from './body/body.component';
+
+
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 const appRoute : Routes = [
  
@@ -55,7 +70,17 @@ const appRoute : Routes = [
     AddOptionComponent,
     VotingComponent,
     VotingFormComponent,
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     ResultComponent
+=======
+    FooterComponent,
+    BodyComponent,
+>>>>>>> Stashed changes
+=======
+    FooterComponent,
+    BodyComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -73,6 +98,7 @@ const appRoute : Routes = [
     FormsModule,
     UserRoutingModule,
     AdminRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

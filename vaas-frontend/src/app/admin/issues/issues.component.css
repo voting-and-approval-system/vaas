@@ -1,0 +1,25 @@
+.container-fluid{
+    padding-left: 10%;
+}
+
+.nav-link{
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+/* .btn{
+    height: 50px;
+} */
+
+.table{
+    margin: auto;
+    border-radius: 8px;
+    border: black;
+}
+
+.border{
+    border: black 5px;
+    border-radius: 8px;
+}
