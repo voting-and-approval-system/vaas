@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="title">
+
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Issue Title</th>
+                <th scope="col">Issue Description</th>
+                <th scope="col">Round Number</th>
+                <th scope="col"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let round of roundData; let i = index">
+                <td>{{round.issue.issueTitle}}</td>
+                <td>{{round.issue.issueDescription}}</td>
+                <td>{{round.roundNumber}}</td>
+                <td>
+                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{i}}"
+                        (click)="viewResult(round.issue.id,round.roundNumber)">View Result</a>
+                </td>
+                <td>
+                    <div class="collapse" [id]="'collapseExample' + i">
+                        <div class="card card-body" *ngFor="let result of resultData">
+                           <p>Winning Option : {{result.optionTitle}}</p>
+                           <p>Total Vote : {{result.count}}</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
