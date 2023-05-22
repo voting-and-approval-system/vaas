@@ -1,9 +1,12 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import { Component, OnInit } from '@angular/core';
-=======
-=======
->>>>>>> Stashed changes
+// <<<<<<< Updated upstream
+// <<<<<<< Updated upstream
+// <<<<<<< Updated upstream
+// import { Component, OnInit } from '@angular/core';
+// =======
+// =======
+// >>>>>>> Stashed changes
+// =======
+// >>>>>>> Stashed changes
 // import { Component } from '@angular/core';
 // import { UserAuthService } from '../_services/user-auth.service';
 // import { Router } from '@angular/router';
@@ -27,13 +30,21 @@ import { Component, OnInit } from '@angular/core';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+// <<<<<<< Updated upstream
+// <<<<<<< Updated upstream
+// >>>>>>> Stashed changes
+// =======
+// >>>>>>> Stashed changes
+// =======
+// >>>>>>> Stashed changes
 import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../_services/login.service';
+
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
 
 interface SideNavToggle {
   screenWidth: number;
@@ -69,20 +80,25 @@ interface SideNavToggle {
 })
 export class AdminComponent implements OnInit {
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
+// <<<<<<< Updated upstream
+// <<<<<<< Updated upstream
   constructor(public userAuthService : UserAuthService,public router : Router,private loginService : LoginService){}
   ngOnInit(): void {
     if(!this.userAuthService.isLoggedIn()){
       this.router.navigate(['/home']);
+      this.screenWidth = window.innerWidth;
     }
   }
-=======
-  constructor(public userAuthService: UserAuthService, public router: Router) { }
->>>>>>> Stashed changes
-=======
-  constructor(public userAuthService: UserAuthService, public router: Router) { }
->>>>>>> Stashed changes
+// =======
+//   constructor(public userAuthService: UserAuthService, public router: Router) { }
+// >>>>>>> Stashed changes
+// =======
+//   constructor(public userAuthService: UserAuthService, public router: Router) { }
+// >>>>>>> Stashed changes
+// =======
+//   constructor(public userAuthService: UserAuthService, public router: Router) { }
+// >>>>>>> Stashed changes
 
   public logout() {
     console.log("After Clear :" +localStorage.getItem('preferedRole'));
@@ -103,10 +119,6 @@ export class AdminComponent implements OnInit {
       this.collapsed = false;
       this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
     }
-  }
-
-  ngOnInit(): void {
-    this.screenWidth = window.innerWidth;
   }
 
   toggleCollapse(): void {
