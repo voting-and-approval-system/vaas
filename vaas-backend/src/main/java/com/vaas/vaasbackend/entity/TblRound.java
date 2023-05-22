@@ -18,6 +18,17 @@ public class TblRound {
     @Column
     private Integer roundNumber;
 
+    @Column(name = "round_is_active", nullable = false)
+    private Boolean roundIsActive = false;
+
+    public Boolean getRoundIsActive() {
+        return roundIsActive;
+    }
+
+    public void setRoundIsActive(Boolean roundIsActive) {
+        this.roundIsActive = roundIsActive;
+    }
+
     public Integer getId() {
         return id;
     }

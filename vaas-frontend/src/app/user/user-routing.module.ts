@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './user.component';
 import { VotingComponent } from './voting/voting.component';
 import { VotingFormComponent } from './voting-form/voting-form.component';
+import { ResultComponent } from './result/result.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'user/voting', component : VotingComponent },
-      { path: 'user/votingForm', component : VotingFormComponent}
+      { path: 'user/votingForm', component : VotingFormComponent},
+      { path: 'user/result', component : ResultComponent}
     ]
   }
 ];

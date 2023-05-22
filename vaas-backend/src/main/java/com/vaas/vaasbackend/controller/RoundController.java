@@ -25,6 +25,7 @@ public class RoundController {
     }
 
     @PostMapping("/round")
+    @CrossOrigin(origins = "http://localhost:4200")
     public TblRound saveRound(@RequestBody TblRound round){
         return roundService.saveRound(round);
     }
@@ -38,5 +39,17 @@ public class RoundController {
     @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> roundUserNotVote(@PathVariable Integer id) throws DataNotFoundException {
         return roundService.roundUserNotVote(id);
+    }
+
+    @GetMapping("/round/issueIsNotActive")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public List<TblRound> roundWithDeactiveIssues() throws DataNotFoundException {
+        return roundService.roundWithDeactiveIssues();
+    }
+
+    @GetMapping("/round/deactive")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public List<TblRound> deactiveRounds() throws DataNotFoundException {
+        return roundService.deactiveRounds();
     }
 }

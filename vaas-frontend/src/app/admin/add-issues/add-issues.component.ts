@@ -16,6 +16,7 @@ export class AddIssuesComponent implements OnInit {
   data = null;
   assetsData: any;
   voteTypesData: any;
+  round = {issue : '',roundNumber : 1};
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
     private _router: Router, private _route: ActivatedRoute) {
@@ -164,7 +165,14 @@ export class AddIssuesComponent implements OnInit {
 
     try {
       const val = await this._adminService.updateIssues(id, this.issuesForm.value).toPromise();
+      this.round.issue = this.issuesForm.value;
+      console.log("Round:" + this.round);
+      const roundData = await this._adminService.addRound(this.round).toPromise();
+
       alert("issues Updated !!");
+
+
+
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {

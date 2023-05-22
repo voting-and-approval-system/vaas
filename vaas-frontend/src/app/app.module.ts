@@ -31,6 +31,7 @@ import { OptionComponent } from './admin/option/option.component';
 import { AddOptionComponent } from './admin/add-option/add-option.component';
 import { VotingComponent } from './user/voting/voting.component';
 import { VotingFormComponent } from './user/voting-form/voting-form.component';
+import { ResultComponent } from './user/result/result.component';
 
 const appRoute : Routes = [
  
@@ -53,7 +54,8 @@ const appRoute : Routes = [
     OptionComponent,
     AddOptionComponent,
     VotingComponent,
-    VotingFormComponent
+    VotingFormComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

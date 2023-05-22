@@ -79,4 +79,7 @@ export class AdminServicesService {
     return this._http.delete(this.basrUrl + `/option/${id}`,{headers : this.headers});
   }
 
+  addRound(data : any){
+    return this._http.post(this.basrUrl + '/round/',data,{headers : this.headers});
+  }
 }

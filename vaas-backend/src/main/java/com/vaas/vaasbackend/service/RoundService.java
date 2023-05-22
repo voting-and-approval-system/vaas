@@ -36,7 +36,23 @@ public class RoundService{
     public List<TblRound> roundUserNotVote(Integer id) throws DataNotFoundException {
         List<TblRound> rounds = roundRepository.roundUserNotVote(id);
         if (rounds.isEmpty()) {
-            throw new DataNotFoundException("No Options Found");
+            throw new DataNotFoundException("No Round Found");
+        }
+        return rounds;
+    }
+
+    public List<TblRound> roundWithDeactiveIssues() throws DataNotFoundException {
+        List<TblRound> rounds = roundRepository.roundWithDeactiveIssues();
+        if (rounds.isEmpty()) {
+            throw new DataNotFoundException("No Round Found");
+        }
+        return rounds;
+    }
+
+    public List<TblRound> deactiveRounds() throws DataNotFoundException {
+        List<TblRound> rounds = roundRepository.deactiveRounds();
+        if (rounds.isEmpty()) {
+            throw new DataNotFoundException("No Round Found");
         }
         return rounds;
     }
