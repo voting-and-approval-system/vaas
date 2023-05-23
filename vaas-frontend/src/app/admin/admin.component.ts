@@ -27,7 +27,7 @@
 
 // }
 
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
 // <<<<<<< Updated upstream
@@ -83,7 +83,6 @@ export class AdminComponent implements OnInit {
 // <<<<<<< Updated upstream
 // <<<<<<< Updated upstream
 // <<<<<<< Updated upstream
-
   constructor(public userAuthService : UserAuthService,public router : Router,private loginService : LoginService){}
   ngOnInit(): void {
     if(!this.userAuthService.isLoggedIn()){
@@ -130,19 +129,6 @@ export class AdminComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
-  }
-
-  // @Input() collapsed = false;
-  // @Input() screenWidth = 0;
-
-  getBodyClass(): string{
-    let styleClass = '';
-    if(this.collapsed && this.screenWidth > 768){
-      styleClass = 'body-trimmed';
-    }else if(this.collapsed && this.screenWidth <= 768 && this.screenWidth > 0){
-      styleClass = 'body-md-screen'
-    }
-    return styleClass;
   }
 }
 
