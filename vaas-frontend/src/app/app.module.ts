@@ -62,7 +62,6 @@ const appRoute : Routes = [
     VotingFormComponent,
     ResultComponent,
     FooterComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
