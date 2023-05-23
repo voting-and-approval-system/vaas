@@ -1,7 +1,7 @@
-<div class="container-fluid title">
+<div class="container title">
     <h1>Option Form</h1>
   </div>
-  <div class="container-fluid regestration-form">
+  <div class="container regestration-form">
     <form [formGroup]="optionForm" (ngSubmit)="data ? updateOption(data.id) : addOption()">
       <div class="row mb-3">
         <label for="optionTitle" class="col-sm-2 col-form-label">Title</label>

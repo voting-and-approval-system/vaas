@@ -33,8 +33,8 @@
   <div class="l-nav bar" id="nav-bar">
     <div class="relative sidenav"  [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
       <div class="logo-container">
-          <button class="logo" (click)="toggleCollapse()"><img
-                  src="assets/voting-and-approval-system-website-favicon-color.png" height="45" /></button>
+          <button class="logo" (click)="toggleCollapse()">
+            <img src="assets/voting-and-approval-system-website-favicon-color.png" height="45" /></button>
           <div class="logo-text" @fadeInOut *ngIf="collapsed"></div>
           <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
               <i class="fal fa-times close-icon"></i>

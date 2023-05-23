@@ -186,4 +186,10 @@
   .title{
     text-align: center;
     font-style: bold;
+    font-size: larger;
+    color: white;
+  }
+
+  .bg{
+    background: #124265;
   }
