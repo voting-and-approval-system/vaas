@@ -1,4 +1,4 @@
-.container-fluid{
+.container{
     padding-left: 10%;
 }
 
@@ -9,9 +9,10 @@
     margin-top: 2%;
 }
 
-/* .btn{
+.btn{
+    padding: auto;
     height: 50px;
-} */
+}
 
 .table{
     margin: auto;

@@ -185,5 +185,12 @@
 
   .title{
     text-align: center;
-    font-style: bold;
+    font-style: italic;
+    font-weight: 500;
+    font-size: larger ;
+    color: white;
+  }
+
+  header{
+    background-color: #124265;
   }
