@@ -1,26 +1,28 @@
-<div class="container-fluid">
+<div class="container">
     <div class="title">
-       <a class="nav-link" routerLink="/admin/addassets"> Add Assets </a>
+       <a class="btn btn-primary bg-black text-white" routerLink="/admin/addassets"> Add Assets </a>
     </div>
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor ="let asset of data">
-            <th scope="row">{{asset.id}}</th>
-            <td>{{asset.assetsTitle}}</td>
-            <td>{{asset.assetsDescription}}</td>
-            <td><a class="btn btn-primary" (click)="editAssets(asset.id)">Edit</a></td>
-            <td><a class="btn btn-danger" (click)="deleteAssets(asset.id)">Delete</a></td>
-          </tr>
-        </tbody>
-    </table>
+    <div class="overflow-x-auto w-full border">
+      <table class="table table-hover mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-black divide-y divide-gray-300 overflow-hidden">
+          <thead class="text-white text-left">
+            <tr>
+              <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Description</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor ="let asset of data">
+              <!-- <th class="bg-white" scope="row">{{asset.id}}</th> -->
+              <td class="bg-white px-6 py-4">{{asset.assetsTitle}}</td>
+              <td class="bg-white px-6 py-4">{{asset.assetsDescription}}</td>
+              <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="editAssets(asset.id)">Edit</a></td>
+              <td class="bg-white px-6 py-4"><a class="btn btn-outline-danger" (click)="deleteAssets(asset.id)">Delete</a></td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
 </div>
 

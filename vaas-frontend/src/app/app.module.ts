@@ -32,6 +32,11 @@ import { AddOptionComponent } from './admin/add-option/add-option.component';
 import { VotingComponent } from './user/voting/voting.component';
 import { VotingFormComponent } from './user/voting-form/voting-form.component';
 import { ResultComponent } from './user/result/result.component';
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 const appRoute : Routes = [
  
@@ -55,7 +60,9 @@ const appRoute : Routes = [
     AddOptionComponent,
     VotingComponent,
     VotingFormComponent,
-    ResultComponent
+    ResultComponent,
+    FooterComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +80,7 @@ const appRoute : Routes = [
     FormsModule,
     UserRoutingModule,
     AdminRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

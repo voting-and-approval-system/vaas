@@ -176,3 +176,14 @@
   .google-icon{
     height: 30px;
   }
+
+  .head{
+    height: 50px;
+    background-color: black;
+    color: white;
+  }
+
+  .title{
+    text-align: center;
+    font-style: bold;
+  }

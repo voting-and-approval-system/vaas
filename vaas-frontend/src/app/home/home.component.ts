@@ -11,8 +11,17 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public uas: UserAuthService, public us: UsersService, public ls: LoginService,private router : Router) {
 
+  // constructor(public uas: UserAuthService, public us: UsersService, public ls: LoginService,private router : Router) {}
+
+
+  constructor(public uas : UserAuthService,public us : UsersService,public ls : LoginService,public userAuthService: UserAuthService, public router: Router){
+
+  }
+
+  public logout() {
+    this.userAuthService.clear();
+    this.router.navigate(['/home']);
   }
   ngOnInit(): void {
     console.log(this.isLoggedIn());
@@ -26,6 +35,7 @@ export class HomeComponent implements OnInit {
         console.log(preferedRole);
       }
     }
+
   }
 
   public isLoggedIn() {
