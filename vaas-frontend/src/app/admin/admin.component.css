@@ -3,7 +3,7 @@
 } */
 
 .sidenav{
-    background: #263238;
+    background: black;
     transition: all .5s ease;
     position: fixed;
     z-index: 1;
@@ -19,7 +19,6 @@
         width: 100%;
 
         .logo{
-            background: #fff;
             text-align: center;
             width: 3rem;
             min-width: 3rem;
@@ -29,13 +28,10 @@
             font-weight: 900;
             cursor: pointer;
             border: none;
+            background: transparent;
         }
 
-        .logo-text{
-            margin-left: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-        }
+        
 
         .btn-close{
             margin-left: auto;
@@ -133,3 +129,28 @@
     background-color:gray;
     color: #000;
 }
+
+.head{
+    height: 65px;
+    background-color: black;
+    color: white;
+    font-size: larger;
+    text-align: center;
+    font-style: bold;
+    margin-left: 80px;
+  }
+
+  .content-wrapper {
+    display: flex;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .router-outlet-wrapper {
+    flex: 1;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .router-outlet-wrapper.move-right {
+    transform: translateX(250px); /* Adjust the value to match the width of your sidebar */
+  }

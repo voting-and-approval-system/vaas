@@ -84,12 +84,7 @@ export class AdminComponent implements OnInit {
 // <<<<<<< Updated upstream
 // <<<<<<< Updated upstream
   constructor(public userAuthService : UserAuthService,public router : Router,private loginService : LoginService){}
-  ngOnInit(): void {
-    if(!this.userAuthService.isLoggedIn()){
-      this.router.navigate(['/home']);
-      this.screenWidth = window.innerWidth;
-    }
-  }
+  
 // =======
 //   constructor(public userAuthService: UserAuthService, public router: Router) { }
 // >>>>>>> Stashed changes
@@ -112,6 +107,7 @@ export class AdminComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
 
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
@@ -119,6 +115,15 @@ export class AdminComponent implements OnInit {
       this.collapsed = false;
       this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
     }
+  }
+
+  ngOnInit(): void {
+    
+    this.screenWidth = window.innerWidth;
+    if(!this.userAuthService.isLoggedIn()){
+      this.router.navigate(['/home']);
+    }
+    
   }
 
   toggleCollapse(): void {

@@ -30,15 +30,28 @@
 <router-outlet></router-outlet> -->
 <!-- <app-admin (onToggleSideNav)="onToggleSideNav($event)"></app-admin> -->
 
-  <div class="l-nav bar" id="nav-bar">
-    <div class="relative sidenav"  [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+<header class="d-flex flex-wrap align-items-centerv head justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+  <div class="col-md-3 mb-2 mb-md-0">
+  </div>
+  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <img src="assets/MicrosoftTeams-image (10).png" height="35" width="40"/>
+      Voting and Approval System
+  </ul>
+    <div class="col-md-3 text-end">
+      <!-- <button type="button" class="btn btn-outline-primary me-2" (click)="logout()">Logout</button> -->
+    </div>
+</header>
+
+  <div class="l-nav bar " id="nav-bar">
+    <div class="relative sidenav"  [ngClass]="collapsed ? 'sidenav-collapsed' : 'position-relative'">
       <div class="logo-container">
           <button class="logo" (click)="toggleCollapse()">
-            <img src="assets/voting-and-approval-system-website-favicon-color.png" height="45" /></button>
-          <div class="logo-text" @fadeInOut *ngIf="collapsed"></div>
+            <img src="assets/MicrosoftTeams-image (10).png" height="45" /></button>
+          <div @fadeInOut *ngIf="collapsed">
           <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
               <i class="fal fa-times close-icon"></i>
           </button>
+        </div>
       </div>
       <ul class="sidenav-nav">
           <li class="sidenav-nav-item" *ngFor="let data of navData">
@@ -62,7 +75,7 @@
       </ul>
     </div>
   </div>
-    <div >
+    <div [ngClass]="{ 'move-right': collapsed }">
       <!-- <p>kryhudgyfhisjopkfojighfcgyijopiuytryguhijougyfguhijougyfguhijihgfyguhigyf</p> -->
       <router-outlet></router-outlet>
     </div>

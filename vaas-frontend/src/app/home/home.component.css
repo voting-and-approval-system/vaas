@@ -178,18 +178,14 @@
   }
 
   .head{
-    height: 50px;
-    background-color: black;
+    height: 65px;
+    background-color: #124265;
     color: white;
-  }
-
-  .title{
+    font-size: larger;
     text-align: center;
     font-style: bold;
-    font-size: larger;
-    color: white;
   }
 
-  .bg{
-    background: #124265;
-  }
+
+
+  
