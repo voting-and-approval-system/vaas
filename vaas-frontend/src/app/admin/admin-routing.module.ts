@@ -8,6 +8,8 @@ import { IssuesComponent } from './issues/issues.component';
 import { AddIssuesComponent } from './add-issues/add-issues.component';
 import { OptionComponent } from './option/option.component';
 import { AddOptionComponent } from './add-option/add-option.component';
+import { ShowUserComponent } from './show-user/show-user.component';
+import { AddUserroleComponent } from './add-userrole/add-userrole.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,10 @@ const routes: Routes = [
       {path: 'admin/issues',component : IssuesComponent},
       {path: 'admin/addissues',component : AddIssuesComponent},
       {path: 'admin/option',component : OptionComponent},
-      {path: 'admin/addoption',component : AddOptionComponent}
+      {path: 'admin/addoption',component : AddOptionComponent},
+      {path: 'admin/showuser',component : ShowUserComponent},
+      {path: 'admin/userrole',component : AddUserroleComponent}
+
     ]
   }
 ];
