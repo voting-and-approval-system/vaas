@@ -1,42 +1,7 @@
-// <<<<<<< Updated upstream
-// <<<<<<< Updated upstream
-// <<<<<<< Updated upstream
-// import { Component, OnInit } from '@angular/core';
-// =======
-// =======
-// >>>>>>> Stashed changes
-// =======
-// >>>>>>> Stashed changes
-// import { Component } from '@angular/core';
-// import { UserAuthService } from '../_services/user-auth.service';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-admin',
-//   templateUrl: './admin.component.html',
-//   styleUrls: ['./admin.component.css']
-// })
-// export class AdminComponent {
-
-//   constructor(public userAuthService : UserAuthService,public router : Router){}
-
-//   public logout() {
-//     this.userAuthService.clear();
-//     this.router.navigate(['/home']);
-//   }
-
-// }
-
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
-// <<<<<<< Updated upstream
-// <<<<<<< Updated upstream
-// >>>>>>> Stashed changes
-// =======
-// >>>>>>> Stashed changes
-// =======
-// >>>>>>> Stashed changes
+
 import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../_services/login.service';
@@ -89,20 +54,9 @@ interface SideNavToggle {
 })
 export class AdminComponent implements OnInit {
 
-// <<<<<<< Updated upstream
-// <<<<<<< Updated upstream
-// <<<<<<< Updated upstream
+
   constructor(public userAuthService : UserAuthService,public router : Router,private loginService : LoginService){}
-  
-// =======
-//   constructor(public userAuthService: UserAuthService, public router: Router) { }
-// >>>>>>> Stashed changes
-// =======
-//   constructor(public userAuthService: UserAuthService, public router: Router) { }
-// >>>>>>> Stashed changes
-// =======
-//   constructor(public userAuthService: UserAuthService, public router: Router) { }
-// >>>>>>> Stashed changes
+
 
   public logout() {
     console.log("After Clear :" +localStorage.getItem('preferedRole'));
