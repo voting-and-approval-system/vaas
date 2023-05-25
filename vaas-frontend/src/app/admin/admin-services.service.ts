@@ -80,6 +80,24 @@ export class AdminServicesService {
   }
 
   addRound(data : any){
-    return this._http.post(this.basrUrl + '/round/',data,{headers : this.headers});
+    return this._http.post(this.basrUrl + '/round',data,{headers : this.headers});
   }
+
+  getUsers() : Observable<any> {
+    return this._http.get(this.basrUrl + '/users',{headers : this.headers});
+  }
+
+  getRoles() : Observable<any> {
+    return this._http.get(this.basrUrl + '/roles',{headers : this.headers});
+  }
+
+  findRoleById(id : number): Observable<any>{
+    return this._http.get(this.basrUrl + `/roles/${id}`,{headers : this.headers});
+  }
+
+  addRole(data : any){
+    return this._http.post(this.basrUrl + '/userrole',data,{headers : this.headers});
+}
+
+
 }

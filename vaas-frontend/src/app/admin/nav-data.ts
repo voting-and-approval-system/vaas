@@ -23,5 +23,10 @@ export const navbarData = [
         routeLink: '/admin/option',
         icon: 'fal fa-thin fa-ballot-check',
         label: 'Options'
+    },
+    {
+        routeLink: '/admin/showuser',
+        icon: 'fal fa-thin fa-person-sign',
+        label: 'Users'
     }
 ];

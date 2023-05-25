@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="overflow-x-auto w-full border">
+      <table class="table table-hover mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-black divide-y divide-gray-300 overflow-hidden">
+          <thead class="text-white text-left">
+            <tr>
+              <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">First name</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Last name</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">phoneNumber</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">User Email</th>
+              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">House Number</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr *ngFor ="let users of data">
+              <!-- <th class="bg-white" scope="row">{{asset.id}}</th> -->
+              <td class="bg-white px-6 py-4">{{users.firstName}}</td>
+              <td class="bg-white px-6 py-4">{{users.lastName}}</td>
+              <td class="bg-white px-6 py-4">{{users.phoneNumber}}</td>
+              <td class="bg-white px-6 py-4">{{users.userEmail}}</td>
+              <td class="bg-white px-6 py-4">{{users.houseNumber}}</td>
+              <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="editRole(users.id)">Assign role</a></td>
+            
+            </tr>
+          </tbody>
+      </table>
+  </div>
+  </div>
+  
+  
