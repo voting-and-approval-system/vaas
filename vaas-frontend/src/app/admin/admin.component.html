@@ -30,54 +30,52 @@
 <router-outlet></router-outlet> -->
 <!-- <app-admin (onToggleSideNav)="onToggleSideNav($event)"></app-admin> -->
 
-<header class="d-flex flex-wrap align-items-centerv head justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+<header 
+  class="d-flex flex-wrap align-items-center head justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
   <div class="col-md-3 mb-2 mb-md-0">
   </div>
   <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <img src="assets/MicrosoftTeams-image (10).png" height="35" width="40"/>
-      Voting and Approval System
+    <img src="assets/MicrosoftTeams-image (10).png" height="35" width="40" />
+    Voting and Approval System
   </ul>
-    <div class="col-md-3 text-end">
-      <!-- <button type="button" class="btn btn-outline-primary me-2" (click)="logout()">Logout</button> -->
-    </div>
+  <div class="col-md-3 text-end">
+    <!-- <button type="button" class="btn btn-outline-primary me-2" (click)="logout()">Logout</button> -->
+  </div>
 </header>
 
-  <div class="l-nav bar " id="nav-bar">
-    <div class="relative sidenav"  [ngClass]="collapsed ? 'sidenav-collapsed' : 'position-relative'">
-      <div class="logo-container">
-          <button class="logo" (click)="toggleCollapse()">
-            <img src="assets/MicrosoftTeams-image (10).png" height="45" /></button>
-          <div @fadeInOut *ngIf="collapsed">
-          <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
-              <i class="fal fa-times close-icon"></i>
-          </button>
-        </div>
+<div class="l-nav bar " id="nav-bar " >
+  <div class="relative sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+    <div class="logo-container">
+      <button class="logo" (click)="toggleCollapse()">
+        <img src="assets/MicrosoftTeams-image (10).png" height="45" /></button>
+      <div @fadeInOut @rotate *ngIf="collapsed">
+        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+          <i class="fal fa-times close-icon"></i>
+        </button>
       </div>
-      <ul class="sidenav-nav">
-          <li class="sidenav-nav-item" *ngFor="let data of navData">
-              <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
-                  [routerLinkActiveOptions]="{exact: true}">
-                  <i class="sidenav-link-icon" [class]="data.icon"></i>
-                  <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
-                      {{data.label}}
-                  </span>
-              </a>
-          </li>
-          <li class="bottom">
-              <a>
-                  <button mat-button type="button" color="warn" (click)="logout()">
-                      <i class="fa fa-sign-out"  aria-hidden="true"></i>
-                      
-                  </button>
-              </a>
-              
-          </li>
-      </ul>
     </div>
-  </div>
-    <div [ngClass]="{ 'move-right': collapsed }">
-      <!-- <p>kryhudgyfhisjopkfojighfcgyijopiuytryguhijougyfguhijougyfguhijihgfyguhigyf</p> -->
-      <router-outlet></router-outlet>
-    </div>
-  
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+            {{data.label}}
+          </span>
+        </a>
+      </li>
+      <li class="bottom">
+        <a>
+          <button mat-button type="button" color="warn" (click)="logout()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
 
+          </button>
+        </a>
+
+      </li>
+    </ul>
+  </div>
+</div>
+<div [ngClass]="{ 'move-right': collapsed }" class="router-outlet-wrapper">
+  <router-outlet></router-outlet>
+</div>

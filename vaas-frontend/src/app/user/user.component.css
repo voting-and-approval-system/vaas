@@ -1,3 +1,13 @@
 .navbar{
     background-color: #124265;
 }
+
+.head{
+    height: 65px;
+    background-color: black;
+    color: white;
+    font-size: larger;
+    text-align: center;
+    font-style: bold;
+    margin-left: 80px;
+  }

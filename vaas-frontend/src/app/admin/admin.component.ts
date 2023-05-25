@@ -46,7 +46,7 @@ interface SideNavToggle {
   collapsed: boolean;
 }
 
-interface SideNavToggle {
+interface ngOnInit {
   screenWidth: number;
   collapsed: boolean;
 }
@@ -74,6 +74,15 @@ interface SideNavToggle {
         animate('350ms',
           style({ opacity: 0 })
         )
+      ])
+    ]),
+    trigger('rotate',[
+      transition(':enter',[
+        animate('1000ms',
+        keyframes([
+          style({transform: 'rotate(0deg)',offset: '0'}),
+          style({transform: 'rotate(2turn)',offset: '1'})
+        ]))
       ])
     ])
   ]
@@ -118,12 +127,10 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.screenWidth = window.innerWidth;
     if(!this.userAuthService.isLoggedIn()){
       this.router.navigate(['/home']);
     }
-    
+    this.screenWidth = window.innerWidth;
   }
 
   toggleCollapse(): void {
