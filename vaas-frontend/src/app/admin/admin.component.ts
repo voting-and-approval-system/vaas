@@ -11,7 +11,7 @@ interface SideNavToggle {
   collapsed: boolean;
 }
 
-interface SideNavToggle {
+interface ngOnInit {
   screenWidth: number;
   collapsed: boolean;
 }
@@ -40,6 +40,15 @@ interface SideNavToggle {
           style({ opacity: 0 })
         )
       ])
+    ]),
+    trigger('rotate',[
+      transition(':enter',[
+        animate('1000ms',
+        keyframes([
+          style({transform: 'rotate(0deg)',offset: '0'}),
+          style({transform: 'rotate(2turn)',offset: '1'})
+        ]))
+      ])
     ])
   ]
 })
@@ -47,12 +56,6 @@ export class AdminComponent implements OnInit {
 
 
   constructor(public userAuthService : UserAuthService,public router : Router,private loginService : LoginService){}
-  ngOnInit(): void {
-    if(!this.userAuthService.isLoggedIn()){
-      this.router.navigate(['/home']);
-      this.screenWidth = window.innerWidth;
-    }
-  }
 
 
   public logout() {
@@ -67,6 +70,7 @@ export class AdminComponent implements OnInit {
   screenWidth = 0;
   navData = navbarData;
 
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
@@ -74,6 +78,13 @@ export class AdminComponent implements OnInit {
       this.collapsed = false;
       this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
     }
+  }
+
+  ngOnInit(): void {
+    if(!this.userAuthService.isLoggedIn()){
+      this.router.navigate(['/home']);
+    }
+    this.screenWidth = window.innerWidth;
   }
 
   toggleCollapse(): void {

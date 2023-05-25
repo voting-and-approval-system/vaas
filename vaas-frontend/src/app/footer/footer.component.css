@@ -43,6 +43,7 @@
   
   .content {
     flex: 1;
+    position:fixed bottom;
   }
   
   .sticky-footer {
