@@ -141,11 +141,7 @@
     margin-left: 80px;
   }
 
-  .content-wrapper {
-    display: flex;
-    height: 100vh;
-    overflow-x: hidden;
-  }
+
 
   .router-outlet-wrapper {
     flex: 1;
