@@ -23,6 +23,7 @@ public class UsersController {
 
     @GetMapping("/users")
     @PreAuthorize("hasRole('ROLE_Admin')")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblUser> showUsers(){
         return usersService.showUsers();
     }
