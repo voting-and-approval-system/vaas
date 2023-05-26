@@ -2,10 +2,11 @@
     width: 100%;
     height: 100vh;
     position: relative;
-    background-size: cover;
-    position: relative;
+    background-image: url("src\assets\Voting & Approval System (2).png"); 
+    background-size: cover; 
+    background-position: center;
   }
-  
+
   #hero:before {
     content: "";
     background: rgba(255, 255, 255, 0.8);
