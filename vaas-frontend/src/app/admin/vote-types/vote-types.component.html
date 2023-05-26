@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="title">
     </div>
     <div class="overflow-x-auto w-full border">
@@ -8,17 +8,12 @@
             <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
             <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
             <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Description</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
-          </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
           <tr *ngFor ="let votetype of data">
             <!-- <th class="bg-white" scope="row">{{votetype.id}}</th> -->
             <td class="bg-white px-6 py-4">{{votetype.voteTypeTitle}}</td>
             <td class="bg-white px-6 py-4">{{votetype.voteTypeDescription}}</td>
-            <td class="bg-white px-6 py-4"></td>
-            <td class="bg-white px-6 py-4"></td>
           </tr>
         </tbody>
     </table>
