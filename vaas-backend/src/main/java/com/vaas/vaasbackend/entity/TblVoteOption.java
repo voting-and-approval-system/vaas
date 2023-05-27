@@ -30,7 +30,7 @@ import javax.validation.constraints.NotNull;
                 "and tbl_issue.issue_id = tbl_round.issue_id and tbl_users_vote.user_vote_id = tbl_vote_option.user_vote_id and\n" +
                 "tbl_votes_type.vote_type_id = tbl_issue.vote_type_id and \n" +
                 "tbl_users_vote.round_id = tbl_round.round_id and tbl_issue.issue_id = ? and tbl_round.round_number = ? and\n" +
-                "tbl_issue.issue_is_active = 0 and tbl_round.round_is_active = 0\n" +
+                "tbl_round.round_is_active = 0\n" +
                 "group by tbl_option.option_id,tbl_option.option_title,vote_type_title,tbl_vote_option.preference,tbl_round.round_number",
         resultSetMapping = "TotalVoteForIssueMapping"
 )
@@ -42,7 +42,7 @@ import javax.validation.constraints.NotNull;
                 "and tbl_issue.issue_id = tbl_round.issue_id and tbl_users_vote.user_vote_id = tbl_vote_option.user_vote_id and\n" +
                 "tbl_votes_type.vote_type_id = tbl_issue.vote_type_id and tbl_vote_option.preference = ? and\n" +
                 "tbl_users_vote.round_id = tbl_round.round_id and tbl_issue.issue_id = ? and tbl_round.round_number = ?" +
-                "and tbl_issue.issue_is_active = 0 and tbl_round.round_is_active = 0 and tbl_users_vote.user_id IN(?)\n" +
+                "and tbl_round.round_is_active = 0 and tbl_users_vote.user_id IN(?)\n" +
                 "group by tbl_option.option_id,tbl_option.option_title,vote_type_title,tbl_vote_option.preference,tbl_round.round_number",
         resultSetMapping = "TotalVoteForIssueMapping"
 )

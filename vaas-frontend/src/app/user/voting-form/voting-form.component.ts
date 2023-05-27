@@ -21,14 +21,16 @@ export class VotingFormComponent implements OnInit {
     votePreferences: [{
       optionId: '',
       preference: ''
-    }]
+    }],
+    feedback: ''
   }
 
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder) {
     this.votingForm = this._formBuilder.group({
       optionId: '',
-      preference: ''
+      preference: '',
+      feedback: ''
     })
   }
 
@@ -57,20 +59,22 @@ export class VotingFormComponent implements OnInit {
   voting() {
     this.votingData.userId = this.userData.id;
     this.votingData.roundId = this.roundData.id;
-    this.votingData.votePreferences = this.optionData.filter(x => x.isSelected != false).map((option : any)=>{
-      return{
-        optionId : option.id
+    this.votingData.votePreferences = this.optionData.filter(x => x.isSelected != false).map((option: any) => {
+      return {
+        optionId: option.id
       }
     });
+    this.votingData.feedback = this.votingForm.get('feedback').value;
+
     console.log(JSON.stringify(this.votingData));
 
     console.log(JSON.stringify(this.votingForm.value));
 
     return this._userService.voting(this.votingData).subscribe({
-      next : (res) => {
+      next: (res) => {
         this._router.navigate(['/user/voting']);
       },
-      error : (err) => {
+      error: (err) => {
         console.log(err);
       }
     });

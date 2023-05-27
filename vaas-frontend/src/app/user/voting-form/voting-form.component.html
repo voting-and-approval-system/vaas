@@ -19,6 +19,10 @@
                         <input class="form-control" type="text" *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'" name="preference">
                     </div>
                 </div>
+                <div *ngIf="roundData.issue?.allowFeedback" class="justify-content-left form-check col">
+                    <label for="">Feedback</label>
+                    <textarea class="form-control" [formControlName]="'feedback'"></textarea>
+                </div>
             </div>
         </div>
     </div>
