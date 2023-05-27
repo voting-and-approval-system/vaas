@@ -50,7 +50,7 @@ public class VotingService {
                 voteOption.setPreference(votePreference.getPreference());
                 entityManager.persist(voteOption);
             }
-
+            
             if(!voting.getFeedback().isEmpty()){
                 TblFeedback tblFeedback = new TblFeedback();
                 tblFeedback.setFeedbackDescription(voting.getFeedback());

@@ -21,7 +21,7 @@
                 </div>
                 <div *ngIf="roundData.issue?.allowFeedback" class="justify-content-left form-check col">
                     <label for="">Feedback</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea class="form-control" [formControlName]="'feedback'"></textarea>
                 </div>
             </div>
         </div>

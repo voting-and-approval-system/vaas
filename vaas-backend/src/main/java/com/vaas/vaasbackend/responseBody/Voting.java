@@ -5,15 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Voting {
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
-
-    public static class VotePreference{
+        public static class VotePreference{
         int optionId;
         int preference;
 
@@ -40,7 +32,6 @@ public class Voting {
         public void setPreference(int preference) {
             this.preference = preference;
         }
-
         @Override
         public String toString() {
             return "VotePreference{" +
@@ -53,7 +44,6 @@ public class Voting {
     private int roundId;
     private LocalDate voteDate;
     private List<VotePreference> votePreferences = new ArrayList<>();
-
     private String feedback;
 
     public Voting() {
@@ -97,6 +87,14 @@ public class Voting {
 
     public void setVotePreferences(List<VotePreference> votePreferences) {
         this.votePreferences = votePreferences;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
     @Override
