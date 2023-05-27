@@ -118,4 +118,12 @@ public class IssueService {
         }
         return list;
     }
+
+    public Integer getIdOfLastAddedIssue() throws DataNotFoundException {
+        Integer id = issueRepository.getIdOfLastAddedIssue();
+        if(id == null){
+            throw new DataNotFoundException("No Id Found");
+        }
+        return id;
+    }
 }

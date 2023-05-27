@@ -8,96 +8,99 @@ import { UserAuthService } from '../_services/user-auth.service';
 })
 export class AdminServicesService {
 
-  constructor(private _http : HttpClient,private _userAuthService : UserAuthService) { }
+  constructor(private _http: HttpClient, private _userAuthService: UserAuthService) { }
   headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${this._userAuthService.getToken()}`)
-      .set('Content-Type', 'application/json');
+    .set('Authorization', `Bearer ${this._userAuthService.getToken()}`)
+    .set('Content-Type', 'application/json');
 
-  basrUrl = "http://localhost:8080";
+  baseUrl = "http://localhost:8080";
 
-  getAssets() : Observable<any> {
-    return this._http.get(this.basrUrl + '/assets',{headers : this.headers});
-  }
-
-  addAssets(data : any) {
-    return this._http.post(this.basrUrl + '/assets',data,{headers : this.headers});
+  getAssets(): Observable<any> {
+    return this._http.get(this.baseUrl + '/assets', { headers: this.headers });
   }
 
-  deleteAssets(id : number){
-    return this._http.delete(this.basrUrl + `/assets/${id}`,{headers : this.headers});
+  addAssets(data: any) {
+    return this._http.post(this.baseUrl + '/assets', data, { headers: this.headers });
   }
 
-  findAssetsById(id : number) : Observable<any> {
-    return this._http.get(this.basrUrl + `/assets/${id}`,{headers : this.headers});
+  deleteAssets(id: number) {
+    return this._http.delete(this.baseUrl + `/assets/${id}`, { headers: this.headers });
   }
 
-  updateAssets(id : number,data : any){
-    return this._http.put(this.basrUrl + `/assets/${id}`,data,{headers : this.headers});
+  findAssetsById(id: number): Observable<any> {
+    return this._http.get(this.baseUrl + `/assets/${id}`, { headers: this.headers });
   }
 
-  getVoteTypes() : Observable<any> {
-    return this._http.get(this.basrUrl + '/votetype',{headers : this.headers});
+  updateAssets(id: number, data: any) {
+    return this._http.put(this.baseUrl + `/assets/${id}`, data, { headers: this.headers });
   }
 
-  findVoteTypeById(id : number) : Observable<any>{
-    return this._http.get(this.basrUrl + `/votetype/${id}`,{headers : this.headers});
+  getVoteTypes(): Observable<any> {
+    return this._http.get(this.baseUrl + '/votetype', { headers: this.headers });
   }
 
-  getIssues() : Observable<any> {
-    return this._http.get(this.basrUrl + '/issue',{headers : this.headers});
+  findVoteTypeById(id: number): Observable<any> {
+    return this._http.get(this.baseUrl + `/votetype/${id}`, { headers: this.headers });
   }
 
-  addIssues(data : any) {
-    return this._http.post(this.basrUrl + '/issue',data,{headers : this.headers});
-  }
-  updateIssues(id : number,data : any){
-    return this._http.put(this.basrUrl + `/issue/${id}`,data,{headers : this.headers});
-  }
-  findIssuesById(id : number): Observable<any>{
-    return this._http.get(this.basrUrl + `/issue/${id}`,{headers : this.headers});
+  getIssues(): Observable<any> {
+    return this._http.get(this.baseUrl + '/issue', { headers: this.headers });
   }
 
-  deleteIssues(id : number){
-    return this._http.delete(this.basrUrl + `/issue/${id}`,{headers : this.headers});
+  addIssues(data: any) {
+    return this._http.post(this.baseUrl + '/issue', data, { headers: this.headers });
+  }
+  updateIssues(id: number, data: any) {
+    return this._http.put(this.baseUrl + `/issue/${id}`, data, { headers: this.headers });
+  }
+  findIssuesById(id: number): Observable<any> {
+    return this._http.get(this.baseUrl + `/issue/${id}`, { headers: this.headers });
   }
 
-  getOptions() : Observable<any> {
-    return this._http.get(this.basrUrl + '/option',{headers : this.headers});
+  deleteIssues(id: number) {
+    return this._http.delete(this.baseUrl + `/issue/${id}`, { headers: this.headers });
   }
 
-  addOption(data : any) {
-    return this._http.post(this.basrUrl + '/option',data,{headers : this.headers});
+  getOptions(): Observable<any> {
+    return this._http.get(this.baseUrl + '/option', { headers: this.headers });
   }
 
-  updateOption(id : number,data : any){
-    return this._http.put(this.basrUrl + `/option/${id}`,data,{headers : this.headers});
-  }
-  findOptionById(id : number): Observable<any>{
-    return this._http.get(this.basrUrl + `/option/${id}`,{headers : this.headers});
-  }
-  deleteOption(id : number){
-    return this._http.delete(this.basrUrl + `/option/${id}`,{headers : this.headers});
+  addOption(data: any) {
+    return this._http.post(this.baseUrl + '/option', data, { headers: this.headers });
   }
 
-  addRound(data : any){
-    return this._http.post(this.basrUrl + '/round',data,{headers : this.headers});
+  updateOption(id: number, data: any) {
+    return this._http.put(this.baseUrl + `/option/${id}`, data, { headers: this.headers });
+  }
+  findOptionById(id: number): Observable<any> {
+    return this._http.get(this.baseUrl + `/option/${id}`, { headers: this.headers });
+  }
+  deleteOption(id: number) {
+    return this._http.delete(this.baseUrl + `/option/${id}`, { headers: this.headers });
   }
 
-  getUsers() : Observable<any> {
-    return this._http.get(this.basrUrl + '/users',{headers : this.headers});
+  addRound(data: any) {
+    return this._http.post(this.baseUrl + '/round', data, { headers: this.headers });
   }
 
-  getRoles() : Observable<any> {
-    return this._http.get(this.basrUrl + '/roles',{headers : this.headers});
+  getUsers(): Observable<any> {
+    return this._http.get(this.baseUrl + '/users', { headers: this.headers });
   }
 
-  findRoleById(id : number): Observable<any>{
-    return this._http.get(this.basrUrl + `/roles/${id}`,{headers : this.headers});
+  getRoles(): Observable<any> {
+    return this._http.get(this.baseUrl + '/roles', { headers: this.headers });
   }
 
-  addRole(data : any){
-    return this._http.post(this.basrUrl + '/userrole',data,{headers : this.headers});
-}
+  findRoleById(id: number): Observable<any> {
+    return this._http.get(this.baseUrl + `/roles/${id}`, { headers: this.headers });
+  }
 
+  addRole(data: any) {
+    return this._http.post(this.baseUrl + '/userrole', data, { headers: this.headers });
+  }
+
+  getLastAddedIssueId() {
+    return this._http.get(this.baseUrl + '/lastissue', { headers: this.headers });
+  }
 
 }
