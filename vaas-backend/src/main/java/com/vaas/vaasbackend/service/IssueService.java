@@ -126,4 +126,12 @@ public class IssueService {
         }
         return id;
     }
+
+    public TblIssue getIssueByRoundId(int roundId) throws DataNotFoundException {
+        TblIssue issue = issueRepository.getIssueByRoundId(roundId);
+        if(issue == null){
+            throw new DataNotFoundException("No Issue Found");
+        }
+        return issue;
+    }
 }

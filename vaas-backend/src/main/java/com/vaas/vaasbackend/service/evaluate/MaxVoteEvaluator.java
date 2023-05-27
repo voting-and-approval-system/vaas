@@ -25,7 +25,7 @@ public class MaxVoteEvaluator implements Evaluator {
             }
         }
         if(totalVoteForIssues.size() > 1){
-            throw new Exception("There Is clash between : " + totalVoteForIssues.stream().map(totalVoteForIssue -> totalVoteForIssues));
+            throw new Exception("There Is clash between two options");
         }
         return totalVoteForIssues;
     }

@@ -5,6 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Voting {
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
     public static class VotePreference{
         int optionId;
         int preference;
@@ -46,14 +54,17 @@ public class Voting {
     private LocalDate voteDate;
     private List<VotePreference> votePreferences = new ArrayList<>();
 
+    private String feedback;
+
     public Voting() {
     }
 
-    public Voting(int userId, int roundId, LocalDate voteDate, List<VotePreference> votePreferences) {
+    public Voting(int userId, int roundId, LocalDate voteDate, List<VotePreference> votePreferences, String feedback) {
         this.userId = userId;
         this.roundId = roundId;
         this.voteDate = voteDate;
         this.votePreferences = votePreferences;
+        this.feedback = feedback;
     }
 
     public int getUserId() {
@@ -95,6 +106,7 @@ public class Voting {
                 ", roundId=" + roundId +
                 ", voteDate=" + voteDate +
                 ", votePreferences=" + votePreferences +
+                ", feedback='" + feedback + '\'' +
                 '}';
     }
 }

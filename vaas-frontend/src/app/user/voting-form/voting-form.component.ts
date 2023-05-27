@@ -21,14 +21,16 @@ export class VotingFormComponent implements OnInit {
     votePreferences: [{
       optionId: '',
       preference: ''
-    }]
+    }],
+    feedback : ''
   }
 
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder) {
     this.votingForm = this._formBuilder.group({
       optionId: '',
-      preference: ''
+      preference: '',
+      feedback : ''
     })
   }
 

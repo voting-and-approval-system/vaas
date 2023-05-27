@@ -16,7 +16,7 @@ export class AddIssuesComponent implements OnInit {
   data = null;
   assetsData: any;
   voteTypesData: any;
-  round = {issue : {id : ''},roundNumber : 1};
+  round = {issue : {id : ''},roundNumber : 1,roundIsActive : true};
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
     private _router: Router, private _route: ActivatedRoute) {
@@ -76,12 +76,15 @@ export class AddIssuesComponent implements OnInit {
     const allowFeedback = this.issuesForm.get('allowFeedback').value;
 
     let _assets = [];
-    try {
-      const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
-      _assets = assetRes;
-    } catch (err) {
-      console.log("Error while fetching assets: " + JSON.stringify(err));
+    if(assetId != ''){
+      try {
+        const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
+        _assets = assetRes;
+      } catch (err) {
+        console.log("Error while fetching assets: " + JSON.stringify(err));
+      }
     }
+    
 
     let _voteType = [];
     try {
@@ -97,11 +100,10 @@ export class AddIssuesComponent implements OnInit {
 
     try {
       const val = await this._adminService.addIssues(this.issuesForm.value).toPromise();
-
       const issueId = await this._adminService.getLastAddedIssueId().toPromise();
       this.round.issue.id = issueId.toString();
       const addRound = await this._adminService.addRound(this.round).toPromise();
-       
+
       alert("issues Added !!");
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();

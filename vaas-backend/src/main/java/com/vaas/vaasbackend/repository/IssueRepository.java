@@ -17,4 +17,7 @@ public interface IssueRepository extends JpaRepository<TblIssue,Integer> {
 
     @Query(nativeQuery = true,value = "select top 1 issue_id from tbl_issue order by issue_id desc")
     Integer getIdOfLastAddedIssue();
+
+    @Query(nativeQuery = true,value = "select tbl_issue.* from tbl_issue,tbl_round where tbl_round.issue_id = tbl_issue.issue_id and tbl_round.round_id = ?")
+    TblIssue getIssueByRoundId(int roundId);
 }

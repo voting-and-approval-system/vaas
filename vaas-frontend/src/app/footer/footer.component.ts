@@ -1,15 +1,6 @@
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-footer',
-//   templateUrl: './footer.component.html',
-//   styleUrls: ['./footer.component.css']
-// })
-// export class FooterComponent {
-
-// }
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
@@ -27,5 +18,7 @@ import { Component } from '@angular/core';
   ]
 })
 
-export class FooterComponent {}
+export class FooterComponent {
+  date = formatDate(new Date(), 'MMM yyyy', 'en-US');
+}
 

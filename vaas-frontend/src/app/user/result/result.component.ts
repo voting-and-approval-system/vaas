@@ -7,29 +7,41 @@ import { UserServicesService } from '../user-services.service';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent implements OnInit{
+export class ResultComponent implements OnInit {
   roundData = [];
-  resultData : any = [];
-  
+  resultData: any = [];
+  errorMessage = '';
+  currentCollapseIndex: number = -1;
+
   ngOnInit(): void {
     this.displayRound();
   }
 
-  constructor(private _userService : UserServicesService,private _router : Router){}
+  constructor(private _userService: UserServicesService, private _router: Router) { }
 
-  displayRound(){
+  displayRound() {
     this._userService.displayDeactiveRounds().subscribe(
-      (res : any) => {
+      (res: any) => {
         this.roundData = res;
       });
   }
 
-  viewResult(issueId : number,roundNumber : number){
-    this._userService.displayResult(issueId,roundNumber).subscribe(
-      (res : any) => {
-        this.resultData = res;
-        console.log(this.resultData);
+  viewResult(issueId: number, roundNumber: number, index: number) {
+    if (this.currentCollapseIndex === index) {
+      this.currentCollapseIndex = -1;
+    } else {
+      this.currentCollapseIndex = index;
+      this._userService.displayResult(issueId, roundNumber).subscribe({
+        next: (res: any) => {
+          this.errorMessage = '';
+          this.resultData = res;
+        },
+        error: (err: any) => {
+          this.resultData = [];
+          this.errorMessage = err.error.message;
+        }
       });
+    }
   }
 
 }

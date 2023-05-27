@@ -1,12 +1,11 @@
 package com.vaas.vaasbackend.service;
 
+import com.vaas.vaasbackend.entity.TblFeedback;
+import com.vaas.vaasbackend.entity.TblIssue;
 import com.vaas.vaasbackend.entity.TblUsersVote;
 import com.vaas.vaasbackend.entity.TblVoteOption;
 import com.vaas.vaasbackend.errors.UserAlreadyVoteException;
-import com.vaas.vaasbackend.repository.OptionRepository;
-import com.vaas.vaasbackend.repository.RoundRepository;
-import com.vaas.vaasbackend.repository.UserVoteRepository;
-import com.vaas.vaasbackend.repository.UsersRepository;
+import com.vaas.vaasbackend.repository.*;
 import com.vaas.vaasbackend.responseBody.Voting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +24,9 @@ public class VotingService {
     private UsersRepository usersRepository;
     @Autowired
     private UserVoteRepository userVoteRepository;
+
+    @Autowired
+    private IssueRepository issueRepository;
     @Autowired
     OptionRepository optionRepository;
 
@@ -47,6 +49,15 @@ public class VotingService {
                 voteOption.setOption(optionRepository.findById(votePreference.getOptionId()).get());
                 voteOption.setPreference(votePreference.getPreference());
                 entityManager.persist(voteOption);
+            }
+
+            if(!voting.getFeedback().isEmpty()){
+                TblFeedback tblFeedback = new TblFeedback();
+                tblFeedback.setFeedbackDescription(voting.getFeedback());
+                tblFeedback.setFeedbackDate(voting.getVoteDate());
+                tblFeedback.setUser(usersRepository.findById(voting.getUserId()).get());
+                tblFeedback.setIssue(issueRepository.getIssueByRoundId(voting.getRoundId()));
+                entityManager.persist(tblFeedback);
             }
             return voting;
         } catch (Exception e) {
