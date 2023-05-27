@@ -31,5 +31,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.loginService.loadGoogleApi();
+    this.loginService.signInWithGoogle();
   }
 }

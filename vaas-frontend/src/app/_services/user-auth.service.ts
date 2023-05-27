@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserAuthService {
-  constructor() {}
+  constructor() { }
 
   public setRoles(roles: any[]) {
     localStorage.setItem('roles', JSON.stringify(roles));
@@ -31,8 +31,7 @@ export class UserAuthService {
     return this.getToken() !== null;
   }
 
-  public setPreferdRole(role : string){
-    console.log(role);
+  public setPreferdRole(role: string) {
     localStorage.setItem('preferedRole', role);
   }
 }
