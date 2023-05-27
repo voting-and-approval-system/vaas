@@ -55,4 +55,11 @@ public class IssueController {
     public void deleteIssue(@PathVariable Integer id) throws DataNotFoundException {
         issueService.deleteIssue(id);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/lastissue")
+    @PreAuthorize("hasRole('ROLE_Admin')")
+    public Integer getIdOfLastAddedIssue() throws DataNotFoundException {
+        return issueService.getIdOfLastAddedIssue();
+    }
 }

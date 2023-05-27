@@ -16,7 +16,7 @@ export class AddIssuesComponent implements OnInit {
   data = null;
   assetsData: any;
   voteTypesData: any;
-  round = {issue : '',roundNumber : 1};
+  round = {issue : {id : ''},roundNumber : 1};
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
     private _router: Router, private _route: ActivatedRoute) {
@@ -55,13 +55,13 @@ export class AddIssuesComponent implements OnInit {
 
   getAssets() {
     this._adminService.getAssets().subscribe((res) => {
-      this.assetsData = res; // Assign the response to the assets variable
+      this.assetsData = res; 
     });
   }
 
   getVoteTypes() {
     this._adminService.getVoteTypes().subscribe((res) => {
-      this.voteTypesData = res; // Assign the response to the voteTypes variable
+      this.voteTypesData = res; 
     });
   }
 
@@ -79,7 +79,6 @@ export class AddIssuesComponent implements OnInit {
     try {
       const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
       _assets = assetRes;
-      console.log("DATA +++ : " + JSON.stringify(_assets))
     } catch (err) {
       console.log("Error while fetching assets: " + JSON.stringify(err));
     }
@@ -98,6 +97,11 @@ export class AddIssuesComponent implements OnInit {
 
     try {
       const val = await this._adminService.addIssues(this.issuesForm.value).toPromise();
+
+      const issueId = await this._adminService.getLastAddedIssueId().toPromise();
+      this.round.issue.id = issueId.toString();
+      const addRound = await this._adminService.addRound(this.round).toPromise();
+       
       alert("issues Added !!");
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
@@ -165,9 +169,7 @@ export class AddIssuesComponent implements OnInit {
 
     try {
       const val = await this._adminService.updateIssues(id, this.issuesForm.value).toPromise();
-      this.round.issue = this.issuesForm.value;
       console.log("Round:" + this.round);
-      const roundData = await this._adminService.addRound(this.round).toPromise();
 
       alert("issues Updated !!");
 
@@ -176,7 +178,7 @@ export class AddIssuesComponent implements OnInit {
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {
-      console.log("Error while adding issues: " + JSON.stringify(err));
+      console.log("Error while Updating issues: " + JSON.stringify(err));
       this.issuesForm.reset();
     }
   }
