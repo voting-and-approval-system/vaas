@@ -12,7 +12,7 @@ declare const gapi: any;
   providedIn: 'root'
 })
 export class LoginService {
-  userEmail!: string; // Variable to store the user's email
+  userEmail!: string;
   public tempRole : string;
 
 
@@ -25,28 +25,17 @@ export class LoginService {
 
   openForm(newUser : any,userEmail : string) {
     const dialogRef = this.register.open(RegisterComponent);
-    dialogRef.componentInstance.formSubmitted.subscribe(({ houseNumber, phoneNumber }) => {
-      // console.log("Data On Login Page : " + houseNumber + " " + phoneNumber);
-      // If the error is 500 (user not found), prompt for house number and phone number
-          
+    dialogRef.componentInstance.formSubmitted.subscribe(({ houseNumber, phoneNumber }) => {         
           if(houseNumber == null || phoneNumber == null){
             return;
           }
-          
           newUser.houseNumber = houseNumber || '';
           newUser.phoneNumber = phoneNumber || '';
-  
-          // Register the user with the entered details
           this.userService.register(newUser).subscribe(
             (response: any) => {
-              // Registration successful, perform login actions
-              // console.log('User registered successfully:', response);
-  
-              // You can perform the login actions here or call the loginWithGoogle method again
               this.loginWithGoogle(userEmail);
             },
             (error: any) => {
-              // console.log('Error occurred during user registration', error);
             }
           );
     });
@@ -56,16 +45,14 @@ export class LoginService {
   loadGoogleApi(): void {
     gapi.load('auth2', () => {
       gapi.auth2.init({
-        client_id: '374191778060-j6pbqqlneq1hv5c8lijgmj6ihhkf12gi.apps.googleusercontent.com', // Replace with your actual client ID
+        client_id: '374191778060-j6pbqqlneq1hv5c8lijgmj6ihhkf12gi.apps.googleusercontent.com', 
         scope: 'email', 
         plugin_name: 'vaas-frontend',
-        prompt: 'select_account'// Add the scope for retrieving the user's email
+        prompt: 'select_account'
       }).then((error:any)=>{
         console.log("Success");
-        // console.log(error);
       }).catch((error:any)=>{
         console.log("Error");
-        // console.log(error);
       });
     });
    
@@ -75,7 +62,6 @@ export class LoginService {
   signInWithGoogle(): void {
     Promise.resolve(gapi.auth2.getAuthInstance().signIn())
       .then((googleUser: any) => {
-        // console.log(googleUser);
         const userEmail = googleUser.getBasicProfile().getEmail();
         this.loginWithGoogle(userEmail);
       })
@@ -91,7 +77,6 @@ export class LoginService {
 
   loginWithGoogle(userEmail: string): void {
     localStorage.setItem('userEmail',userEmail);
-    // console.log('User email:', userEmail);
 
     const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
     const profile = googleUser.getBasicProfile();
@@ -109,13 +94,10 @@ export class LoginService {
       userUpdatedDate: formatDate(new Date(), 'yyyy-MM-dd', 'en-US'),
       userIsActive: true
     };
-    // console.log(firstName);
 
-    // Perform any additional login actions if needed
     this.userService.login({ userEmail }).subscribe(
       (response: any) => {
         this.userAuthService.setRoles(response.roles);
-        // console.log(response.roles);
         this.userAuthService.setToken(response.jwtToken);
 
         const role = response.roles;
@@ -150,15 +132,11 @@ export class LoginService {
     
   }
   private logoutAndNotifyGoogle(): void {
-    // Clear the token and expiration time from localStorage
     localStorage.removeItem('userEmail');
     localStorage.removeItem('jwtToken');
-
-    // Use gapi.auth2 to sign out from the user's Google account
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       console.log('User signed out from Google');
-      // Perform any additional logout actions as needed
     });
   }
 
@@ -171,7 +149,6 @@ export class LoginService {
       const currentTime = new Date().getTime();
   
       if (currentTime >= expirationTime) {
-        // Token has expired, perform logout actions and redirect to home page
         this.logoutAndNotifyGoogle();
         this.router.navigate(['/home']);
       }
