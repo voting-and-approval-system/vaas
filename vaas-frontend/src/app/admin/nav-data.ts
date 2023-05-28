@@ -27,6 +27,6 @@ export const navbarData = [
     {
         routeLink: '/admin/showuser',
         icon: 'fal fa-thin fa-person-sign',
-        label: 'Users'
+        label: 'Approve user'
     }
 ];
