@@ -35,7 +35,6 @@ import { ResultComponent } from './user/result/result.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserComponent } from './admin/show-user/show-user.component';
-import { AddUserroleComponent } from './admin/add-userrole/add-userrole.component';
 
 
 
@@ -64,8 +63,7 @@ const appRoute : Routes = [
     VotingFormComponent,
     ResultComponent,
     FooterComponent,
-    ShowUserComponent,
-    AddUserroleComponent
+    ShowUserComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ShowUserComponent {
   data = [];
+  addRoleForm: any;
 
 
   constructor(private _adminService: AdminServicesService, private _router: Router) { }
@@ -26,8 +27,27 @@ export class ShowUserComponent {
       });
   }
 
+  addRoleAndNavigate(id: number) {
+    const data = {
+      user: {
+        id: id
+      },
+      role: {
+        id: 2
+      }
+    };
 
-  editRole(id: number) {
-    this._router.navigate(['admin/userrole', {id : id}]);
+    this._adminService.addUserRole(data).subscribe({
+      next: (val: any) => {
+        // Reload the current page
+        this._router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this._router.navigate(['/admin/showuser']);
+        });
+      },
+      error: (err: any) => {
+        console.log("Error while assigning role: " + err);
+      }
+    });
   }
+
 }
