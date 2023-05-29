@@ -11,11 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-
-  // constructor(public uas: UserAuthService, public us: UsersService, public ls: LoginService,private router : Router) {}
-
-
-  constructor(public uas : UserAuthService,public us : UsersService,public ls : LoginService,public userAuthService: UserAuthService, public router: Router){
+  constructor(public uas: UserAuthService, public us: UsersService, public ls: LoginService, public userAuthService: UserAuthService, public router: Router) {
 
   }
 
@@ -24,15 +20,12 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home']);
   }
   ngOnInit(): void {
-    console.log(this.isLoggedIn());
     if (this.isLoggedIn()) {
       const preferedRole = localStorage.getItem('preferedRole');
-      if(preferedRole == 'Admin'){
+      if (preferedRole == 'Admin') {
         this.router.navigate(['/admin']);
-        console.log(preferedRole);
-      }else{
+      } else {
         this.router.navigate(['/user']);
-        console.log(preferedRole);
       }
     }
 
