@@ -104,9 +104,9 @@ async addOption() {
     const issueId = this.optionForm.get('issue').value;
     const issueRes : any = await this._adminService.findIssuesById(issueId).toPromise();
     _issue = issueRes;
-    console.log("DATA +++ : " + JSON.stringify(issueId))
+    
   } catch (err) {
-    console.log("Error while fetching issue: " + JSON.stringify(err));
+    console.error("Error while fetching issue: " + JSON.stringify(err));
   }
 
   this.optionForm.get('issue').setValue(_issue);
@@ -116,7 +116,7 @@ async addOption() {
     this._router.navigate(['/admin/option']);
     this.optionForm.reset();
   } catch (err) {
-    console.log("Error while adding option: " + JSON.stringify(err));
+    console.error("Error while adding option: " + JSON.stringify(err));
     this.optionForm.reset();
   }
 }

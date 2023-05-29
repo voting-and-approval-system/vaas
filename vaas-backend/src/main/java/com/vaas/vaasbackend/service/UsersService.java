@@ -76,5 +76,11 @@ public class UsersService {
     public List<String> getRole(TblUser tblUser){
         return usersRepository.getRole(tblUser.getId());
     }
+
+
+    public List<TblUser> showUserWithNoRole() {
+        return usersRepository.showUserWithNoRole();
+    }
+
 }
  

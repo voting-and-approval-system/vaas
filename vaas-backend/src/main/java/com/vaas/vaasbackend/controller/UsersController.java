@@ -51,4 +51,12 @@ public class UsersController {
     {
         return this.usersService.findByUserEmail(userEmail);
     }
+
+
+    @GetMapping("/newusers")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public List<TblUser> showUserWithNoRole()
+    {
+        return this.usersService.showUserWithNoRole();
+    }
 }

@@ -4,7 +4,6 @@
           <thead class="text-white text-left">
             <tr>
               <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
-              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
               <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">First name</th>
               <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Last name</th>
               <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">phoneNumber</th>
@@ -20,7 +19,7 @@
               <td class="bg-white px-6 py-4">{{users.phoneNumber}}</td>
               <td class="bg-white px-6 py-4">{{users.userEmail}}</td>
               <td class="bg-white px-6 py-4">{{users.houseNumber}}</td>
-              <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="editRole(users.id)">Assign role</a></td>
+              <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="addRoleAndNavigate(users.id)">Approve</a></td>
             
             </tr>
           </tbody>
