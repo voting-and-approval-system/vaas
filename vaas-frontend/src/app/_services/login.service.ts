@@ -143,6 +143,6 @@ export class LoginService {
         this.router.navigate(['/home']);
       }
     }
+  }
   
-
 }
