@@ -119,12 +119,10 @@ export class LoginService {
       }
 
     );
-
-
   }
+
   private logoutAndNotifyGoogle(): void {
-    // Clear the token and expiration time from localStorage
-    localStorage.removeItem('roles');
+    localStorage.removeItem('userEmail');
     localStorage.removeItem('jwtToken');
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
@@ -134,11 +132,17 @@ export class LoginService {
 
   checkTokenExpiration(): void {
     const jwtToken = localStorage.getItem('jwtToken');
-    const roles = localStorage.getItem('roles');
-  
+    const tokenExpiration = localStorage.getItem('tokenExpiration');
 
+    if (jwtToken && tokenExpiration) {
+      const expirationTime = new Date(tokenExpiration).getTime();
+      const currentTime = new Date().getTime();
+
+      if (currentTime >= expirationTime) {
+        this.logoutAndNotifyGoogle();
+        this.router.navigate(['/home']);
       }
     }
   
 
-
+}
