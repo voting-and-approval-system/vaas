@@ -14,7 +14,7 @@ import java.util.List;
 public class AssetsController {
     @Autowired
     AssetsService assetsService;
-
+    
     @GetMapping("/assets")
     @CrossOrigin(origins = "http://localhost:4200")
     public List<TblAsset> showAssets() throws DataNotFoundException {

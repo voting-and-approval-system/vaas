@@ -1,0 +1,14 @@
+.container{
+    padding-right: 15%;
+}
+
+.table{
+    margin: auto;
+    border-radius: 8px;
+    border: black;
+}
+
+.border{
+    border: black 5px;
+    border-radius: 8px;
+}
