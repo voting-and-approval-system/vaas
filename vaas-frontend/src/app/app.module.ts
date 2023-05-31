@@ -32,7 +32,6 @@ import { AddOptionComponent } from './admin/add-option/add-option.component';
 import { VotingComponent } from './user/voting/voting.component';
 import { VotingFormComponent } from './user/voting-form/voting-form.component';
 import { ResultComponent } from './user/result/result.component';
-import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserComponent } from './admin/show-user/show-user.component';
 
@@ -62,7 +61,6 @@ const appRoute: Routes = [
     VotingComponent,
     VotingFormComponent,
     ResultComponent,
-    FooterComponent,
     ShowUserComponent
   ],
   imports: [
