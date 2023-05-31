@@ -22,7 +22,7 @@ export class AddOptionComponent implements OnInit {
       optionDescription: '',
       optionAttachmentPath: '',
       issue: '',
-      optionIsActive: ''
+      optionIsActive: true
     })
   }
 
