@@ -1,28 +1,29 @@
-<div class="container responsive">
-    <div class="title">
-      <button class="nav-link btn btn-outline-primary bg-black text-white" type="button" routerLink="/admin/addassets"> Add assets </button>
-    </div>
-    <div class="  overflow-x-auto w-full border">
-      <table class="table  table-hover mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-black divide-y divide-gray-300 overflow-hidden">
-          <thead class="text-white text-left">
+<div class="d-flex justify-content-center p-3 m-1 container-fluid">
+  <div class="card shadow p-3 mt-4">
+    <div div id="filter">
+      <div class="p-3">
+        <button class="btn btn-dark" routerLink="/admin/addassets"> Add Assets</button>
+      </div>
+      <div class="p-3 mb-3 table-responsive border">
+        <table class="table bg-black">
+          <thead id="tableHead" class="thead-dark text-white jus">
             <tr>
-              <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
-              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
-              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Description</th>
-              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
-              <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
+              <th class="font-weight-bold" scope="col">Title</th>
+              <th class="font-weight-bold" scope="col">Description</th>
+              <th class="font-weight-bold" scope="col"></th>
+              <th class="font-weight-bold" scope="col"></th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr *ngFor ="let asset of data">
-              <!-- <th class="bg-white" scope="row">{{asset.id}}</th> -->
-              <td class="bg-white px-6 py-4">{{asset.assetsTitle}}</td>
-              <td class="bg-white px-6 py-4">{{asset.assetsDescription}}</td>
-              <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="editAssets(asset.id)">Edit</a></td>
-              <td class="bg-white px-6 py-4"><a class="btn btn-outline-danger" (click)="deleteAssets(asset.id)">Delete</a></td>
+          <tbody>
+            <tr *ngFor="let asset of data">
+              <td class="bg-white ">{{asset.assetsTitle}}</td>
+              <td class="bg-white ">{{asset.assetsDescription}}</td>
+              <td class="bg-white "><a class="btn btn-outline-primary" (click)="editAssets(asset.id)">Edit</a></td>
+              <td class="bg-white "><a class="btn btn-outline-danger" (click)="deleteAssets(asset.id)">Delete</a></td>
             </tr>
           </tbody>
-      </table>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-

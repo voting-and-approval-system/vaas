@@ -7,5 +7,5 @@ import { UserAuthService } from '../_services/user-auth.service';
   styleUrls: ['./admin-option.component.css']
 })
 export class AdminOptionComponent {
-  constructor(public userAuthService : UserAuthService){}
+  constructor(public userAuthService: UserAuthService) { }
 }

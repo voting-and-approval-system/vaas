@@ -1,79 +1,65 @@
-<!-- <nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-dark bg-dark">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler border-white" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <img src="assets/MicrosoftTeams-image (10).png" height="35" width="35" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/admin">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/admin/assets">Assets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/admin/votetypes">Vote Types</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/admin/issues">Issues</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/admin/option">options</a>
-        </li>
-      </ul>
-    </div>
-    <div class="d-flex">
-      <button  mat-button type="button" color="warn" (click)="logout()" >Logout</button>
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><img src="assets/MicrosoftTeams-image (10).png"
+            height="40" width="40">Voting & Approval System</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin" routerLinkActive="active">
+              <i class="fal fa-home sidenav-link-icon"></i>
+              <label>Home</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin/assets" routerLinkActive="active">
+              <i class="fal fa-thin fa-landmark sidenav-link-icon"></i>
+              <label>Assets</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin/votetypes" routerLinkActive="active">
+              <i class="fal fa-light fa-person-booth sidenav-link-icon"></i>
+              <label>Vote Types</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin/issues" routerLinkActive="active">
+              <i class="fal fa-solid fa-exclamation sidenav-link-icon"></i>
+              <label>Issues</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin/option" routerLinkActive="active">
+              <i class="fal fa-thin fa-ballot-check sidenav-link-icon"></i>
+              <label>Options</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/admin/showuser" routerLinkActive="active">
+              <i class="fal fa-thin fa-person-sign sidenav-link-icon"></i>
+              <label>Approve User</label>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a class="bottom">
+        <button mat-button type="button" color="warn" (click)="logout()">
+          <i class="fa fa-sign-out sidenav-link-icon" aria-hidden="true"></i>
+          Logout
+        </button>
+      </a>
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet> -->
-<!-- <app-admin (onToggleSideNav)="onToggleSideNav($event)"></app-admin> -->
-
-<header 
-  class="d-flex flex-wrap align-items-center head justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-  <div class="col-md-3 mb-2 mb-md-0">
-  </div>
-  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <img src="assets/MicrosoftTeams-image (10).png" height="35" width="40" />
-    Voting and Approval System
-  </ul>
-  <div class="col-md-3 text-end">
-    <!-- <button type="button" class="btn btn-outline-primary me-2" (click)="logout()">Logout</button> -->
-  </div>
-</header>
-
-<div class="l-nav bar" id="nav-bar " >
-  <div class="relative sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
-    <div class="logo-container">
-      <button class="logo" (click)="toggleCollapse()">
-        <img src="assets/MicrosoftTeams-image (10).png" height="45" /></button>
-      <div @fadeInOut @rotate *ngIf="collapsed">
-        <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
-          <i class="fal fa-times close-icon"></i>
-        </button>
-      </div>
-    </div>
-    <ul class="sidenav-nav">
-      <li class="sidenav-nav-item" *ngFor="let data of navData">
-        <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: true}">
-          <i class="sidenav-link-icon" [class]="data.icon"></i>
-          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
-            {{data.label}}
-          </span>
-        </a>
-      </li>
-      <li class="bottom">
-        <a>
-          <button mat-button type="button" color="warn" (click)="logout()">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-          </button>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div [ngClass]="{ 'move-right': collapsed }" class="router-outlet-wrapper">
+<div>
   <router-outlet></router-outlet>
 </div>

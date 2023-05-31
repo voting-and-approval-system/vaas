@@ -8,9 +8,9 @@ describe('VotingFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VotingFormComponent ]
+      declarations: [VotingFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(VotingFormComponent);
     component = fixture.componentInstance;

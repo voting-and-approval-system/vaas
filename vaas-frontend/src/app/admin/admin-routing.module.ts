@@ -15,14 +15,14 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
-      {path: 'admin/assets',component:AssetsComponent},
-      {path: 'admin/addassets',component : AddAssetsComponent},
-      {path: 'admin/votetypes',component : VoteTypesComponent},
-      {path: 'admin/issues',component : IssuesComponent},
-      {path: 'admin/addissues',component : AddIssuesComponent},
-      {path: 'admin/option',component : OptionComponent},
-      {path: 'admin/addoption',component : AddOptionComponent},
-      {path: 'admin/showuser',component : ShowUserComponent},
+      { path: 'admin/assets', component: AssetsComponent },
+      { path: 'admin/addassets', component: AddAssetsComponent },
+      { path: 'admin/votetypes', component: VoteTypesComponent },
+      { path: 'admin/issues', component: IssuesComponent },
+      { path: 'admin/addissues', component: AddIssuesComponent },
+      { path: 'admin/option', component: OptionComponent },
+      { path: 'admin/addoption', component: AddOptionComponent },
+      { path: 'admin/showuser', component: ShowUserComponent },
 
 
     ]

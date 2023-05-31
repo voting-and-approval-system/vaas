@@ -1,24 +1,18 @@
-.container{
-    padding-right: 15%;
-}
-.nav-link{
-    padding-left: 2%;
-    padding-right: 2%;
-    margin-bottom: 2%;
-    margin-top: 2%;
+.container-fluid {
+    padding-right: 10%;
 }
 
-.btn{
-    height: 50px;
-}
-
-.table{
-    margin: auto;
+.table {
     border-radius: 8px;
     border: black;
+    position: relative;
 }
 
-.border{
-    border: black 5px;
-    border-radius: 8px;
+.card {
+    width: -webkit-fill-available;
+    align-content: center;
+}
+
+.main {
+    width: fit-content;
 }

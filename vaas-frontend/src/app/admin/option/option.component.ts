@@ -27,7 +27,7 @@ export class OptionComponent implements OnInit {
   }
 
   editOption(id: number) {
-    this._router.navigate(['/admin/addoption', {id : id}]);
+    this._router.navigate(['/admin/addoption', { id: id }]);
   }
 
 

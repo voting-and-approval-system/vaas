@@ -8,9 +8,9 @@ describe('AddOptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddOptionComponent ]
+      declarations: [AddOptionComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AddOptionComponent);
     component = fixture.componentInstance;

@@ -1,34 +1,33 @@
-<div class="container">
-  <div >
-    <button class="nav-link btn  bg-black text-white" type="button" routerLink="/admin/addoption"> Add option </button>
- </div>
- <div class="overflow-x-auto w-full border">
-    <table class="table table-hover mx-auto max-w-4xl w-full whitespace-nowrap rounded-lg bg-black divide-y divide-gray-300 overflow-hidden">
-        <thead class="text-white text-left">
-          <tr>
-            <!-- <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Id</th> -->
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Title</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Description</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Attachment Path</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">issue</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col">Status</th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
-            <th class="font-semibold text-sm uppercase px-6 py-4" scope="col"></th>
-
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-          <tr *ngFor ="let option of data">
-            <!-- <th class="bg-white" scope="row">{{option.id}}</th> -->
-            <td class="bg-white px-6 py-4">{{option.optionTitle}}</td>
-            <td class="bg-white px-6 py-4">{{option.optionDescription}}</td>
-            <td class="bg-white px-6 py-4">{{option.optionAttachmentPath}}</td>
-            <td class="bg-white px-6 py-4">{{option.issue.issueTitle}}</td>
-            <td class="bg-white px-6 py-4">{{option.optionIsActive}}</td>
-            <td class="bg-white px-6 py-4"><a class="btn btn-outline-primary" (click)="editOption(option.id)">Edit</a></td>
-            <td class="bg-white px-6 py-4"><a class="btn btn-outline-danger" (click)="deleteOption(option.id)">Delete</a></td>
-          </tr>
-        </tbody>
-    </table>
+<div class="d-flex justify-content-center p-3 m-1 container-fluid">
+  <div class="card shadow p-3 mt-4">
+    <div div id="filter">
+      <div class="p-3">
+        <button class="btn btn-dark" routerLink="/admin/addoption"> Add Options</button>
+      </div>
+      <div class="p-3 mb-3 table-responsive border">
+        <table class="table bg-black">
+          <thead id="tableHead" class="thead-dark text-white jus">
+            <tr>
+              <th class="font-weight-bold" scope="col">Title</th>
+              <th class="font-weight-bold" scope="col">Description</th>
+              <th class="font-weight-bold" scope="col">Issue</th>
+              <th class="font-weight-bold" scope="col">Status</th>
+              <th class="font-weight-bold" scope="col"></th>
+              <th class="font-weight-bold" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let option of data">
+              <td class="bg-white ">{{option.optionTitle}}</td>
+              <td class="bg-white ">{{option.optionDescription}}</td>
+              <td class="bg-white ">{{option.issue.issueTitle}}</td>
+              <td class="bg-white ">{{option.optionIsActive}}</td>
+              <td class="bg-white "><a class="btn btn-outline-primary" (click)="editOption(option.id)">Edit</a></td>
+              <td class="bg-white "><a class="btn btn-outline-danger" (click)="deleteOption(option.id)">Delete</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

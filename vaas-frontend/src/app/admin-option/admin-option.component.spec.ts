@@ -8,9 +8,9 @@ describe('AdminOptionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminOptionComponent ]
+      declarations: [AdminOptionComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AdminOptionComponent);
     component = fixture.componentInstance;

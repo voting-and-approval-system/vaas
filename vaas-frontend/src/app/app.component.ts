@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './_services/login.service';
 import { UsersService } from './_services/users.service';
 
-interface SideNavToggle{
+interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
 }
@@ -19,15 +19,15 @@ export class AppComponent {
   isSideNavCollapsed = false;
   screenWidth = 0;
 
-  onToggleSideNav(data: SideNavToggle): void{
+  onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
   }
 
-  constructor(    
+  constructor(
     public userService: UsersService,
-    public loginService : LoginService
-  ) {}
+    public loginService: LoginService
+  ) { }
 
   ngOnInit(): void {
     // this.loginService.loadGoogleApi();
