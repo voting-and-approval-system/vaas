@@ -7,17 +7,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  userForm : FormGroup;
+  userForm: FormGroup;
 
   @Output() formSubmitted = new EventEmitter<{ houseNumber: number, phoneNumber: string }>();
 
-  constructor(private fb : FormBuilder){
+  constructor(private fb: FormBuilder) {
     this.userForm = this.fb.group({
-      HouseNo : '',
-      PhNo : ''})
+      HouseNo: '',
+      PhNo: ''
+    })
   }
 
-  registerUser(){
+  registerUser() {
     const houseNumber = this.userForm.get('HouseNo').value;
     const phoneNumber = this.userForm.get('PhNo').value;
 

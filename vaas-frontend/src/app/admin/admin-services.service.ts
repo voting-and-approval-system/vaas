@@ -83,8 +83,8 @@ export class AdminServicesService {
     return this._http.post(this.baseUrl + '/round', data, { headers: this.headers });
   }
 
-  getUsers() : Observable<any> {
-    return this._http.get(this.baseUrl + '/newusers',{headers : this.headers});
+  getUsers(): Observable<any> {
+    return this._http.get(this.baseUrl + '/newusers', { headers: this.headers });
   }
 
   getRoles(): Observable<any> {

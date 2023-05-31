@@ -10,9 +10,9 @@ const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      { path: 'user/voting', component : VotingComponent },
-      { path: 'user/votingForm', component : VotingFormComponent},
-      { path: 'user/result', component : ResultComponent}
+      { path: 'user/voting', component: VotingComponent },
+      { path: 'user/votingForm', component: VotingFormComponent },
+      { path: 'user/result', component: ResultComponent }
     ]
   }
 ];

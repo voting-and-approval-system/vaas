@@ -8,9 +8,9 @@ describe('VotingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VotingComponent ]
+      declarations: [VotingComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(VotingComponent);
     component = fixture.componentInstance;

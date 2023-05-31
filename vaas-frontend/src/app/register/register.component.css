@@ -1,17 +1,17 @@
-.row{
+.row {
     display: flex;
     gap: 10px;
     margin: 20px;
 }
 
-mat-form-field{
+mat-form-field {
     width: 100%;
 }
 
-.btns{
+.btns {
     margin: 10px;
 }
 
-.title{
+.title {
     font: 5em 'Josefin Sans', sans-serif;
 }

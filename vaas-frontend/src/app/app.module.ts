@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,8 +39,8 @@ import { ShowUserComponent } from './admin/show-user/show-user.component';
 
 
 
-const appRoute : Routes = [
- 
+const appRoute: Routes = [
+
 ];
 
 @NgModule({
@@ -73,7 +73,7 @@ const appRoute : Routes = [
     RouterModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule, 
+    MatButtonModule,
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,

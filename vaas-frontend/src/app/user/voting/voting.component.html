@@ -1,25 +1,28 @@
-<div class="container-fluid">
-    <div class="title">
-       
+<div class="d-flex justify-content-center p-3 m-1 container-fluid">
+  <div class="card shadow p-3 mt-4">
+    <div div id="filter">
+      <div class="p-3">
+      </div>
+      <div class="p-3 mb-3 table-responsive border">
+        <table class="table bg-black">
+          <thead id="tableHead" class="thead-dark text-white jus">
+            <tr>
+              <th class="font-weight-bold" scope="col">Issue Title</th>
+              <th class="font-weight-bold" scope="col">Issue Description</th>
+              <th class="font-weight-bold" scope="col">Round Number</th>
+              <th class="font-weight-bold" scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let round of roundData">
+              <td class="bg-white ">{{round.issue.issueTitle}}</td>
+              <td class="bg-white ">{{round.issue.issueDescription}}</td>
+              <td class="bg-white ">{{round.roundNumber}}</td>
+              <td class="bg-white "><a class="btn btn-outline-primary" (click)="vote(round.id)">Vote</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            <!-- <th scope="col">Id</th> -->
-            <th scope="col">Issue Title</th>
-            <th scope="col">Issue Description</th>
-            <th scope="col">Round Number</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor ="let round of roundData">
-            <!-- <th scope="row">{{round.id}}</th> -->
-            <td>{{round.issue.issueTitle}}</td>
-            <td>{{round.issue.issueDescription}}</td>
-            <td>{{round.roundNumber}}</td>
-            <td><a class="btn btn-primary" (click)="vote(round.id)">Vote</a></td>
-          </tr>
-        </tbody>
-    </table>
+  </div>
 </div>

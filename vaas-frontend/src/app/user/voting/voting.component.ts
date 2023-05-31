@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./voting.component.css']
 })
 export class VotingComponent implements OnInit {
-  userData : any = [];
-  roundData : any = [];
+  userData: any = [];
+  roundData: any = [];
 
-  async ngOnInit() : Promise<void> {
+  async ngOnInit(): Promise<void> {
     try {
-      const res : any = await this._userService.findUserByEmail(localStorage.getItem('userEmail')).toPromise();
+      const res: any = await this._userService.findUserByEmail(localStorage.getItem('userEmail')).toPromise();
       this.userData = res;
     } catch (error) {
       console.error(error);
@@ -21,15 +21,15 @@ export class VotingComponent implements OnInit {
     await this.displayRound(this.userData.id);
   }
 
-  constructor(private _userService : UserServicesService,private _router : Router){}
+  constructor(private _userService: UserServicesService, private _router: Router) { }
 
-  vote(roundId : number){
-    this._router.navigate(['/user/votingForm', {roundId : roundId}]);
+  vote(roundId: number) {
+    this._router.navigate(['/user/votingForm', { roundId: roundId }]);
   }
 
-  displayRound(id : number){
+  displayRound(id: number) {
     this._userService.displayRound(id).subscribe(
-      (res : any) => {
+      (res: any) => {
         this.roundData = res;
       });
   }

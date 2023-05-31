@@ -31,7 +31,7 @@ export class IssuesComponent implements OnInit {
   }
 
   editIssues(id: number) {
-    this._router.navigate(['/admin/addissues', {id : id}]);
+    this._router.navigate(['/admin/addissues', { id: id }]);
   }
 
 

@@ -12,9 +12,9 @@ export class UsersService {
   constructor(
     private httpclient: HttpClient,
     private userAuthService: UserAuthService
-  ) {}
+  ) { }
 
-  
+
 
   public login(loginData: any) {
     return this.httpclient.post(this.PATH_OF_API + '/authenticate', loginData, {
@@ -24,5 +24,5 @@ export class UsersService {
 
   public register(newUser: any) {
     return this.httpclient.post(this.PATH_OF_API + '/user', newUser);
-  }  
+  }
 }

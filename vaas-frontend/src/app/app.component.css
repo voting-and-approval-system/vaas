@@ -1,16 +1,15 @@
-.navbar{
+.navbar {
   background-color: #124265;
 }
 
 .navbar .vaas-icon {
-    width: 35px;
-    height: auto;
-    display: block;
-  }
+  width: 35px;
+  height: auto;
+  display: block;
+}
 
-  .navbar h5 {
-    font-family: 'Your Font Family', cursive;
-    font-size: 21px;
-    color: white;
-  }
-
+.navbar h5 {
+  font-family: 'Your Font Family', cursive;
+  font-size: 21px;
+  color: white;
+}

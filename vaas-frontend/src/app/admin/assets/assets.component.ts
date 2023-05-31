@@ -39,6 +39,6 @@ export class AssetsComponent implements OnInit {
   }
 
   editAssets(id: number) {
-    this._router.navigate(['/admin/addassets', {id : id}]);
+    this._router.navigate(['/admin/addassets', { id: id }]);
   }
 }

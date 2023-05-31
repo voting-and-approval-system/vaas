@@ -38,7 +38,7 @@ export class UserServicesService {
     return this._http.get(this.baseUrl + '/round/deactive', { headers: this.headers });
   }
 
-  displayResult(issueId : number, roundNumber : number){
+  displayResult(issueId: number, roundNumber: number) {
     return this._http.get(this.baseUrl + `/result/${issueId}/${roundNumber}`, { headers: this.headers });
   }
 }

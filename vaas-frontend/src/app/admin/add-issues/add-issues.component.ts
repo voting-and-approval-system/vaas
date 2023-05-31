@@ -16,7 +16,7 @@ export class AddIssuesComponent implements OnInit {
   data = null;
   assetsData: any;
   voteTypesData: any;
-  round = {issue : {id : ''},roundNumber : 1,roundIsActive : true};
+  round = { issue: { id: '' }, roundNumber: 1, roundIsActive: true };
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
     private _router: Router, private _route: ActivatedRoute) {
@@ -55,13 +55,13 @@ export class AddIssuesComponent implements OnInit {
 
   getAssets() {
     this._adminService.getAssets().subscribe((res) => {
-      this.assetsData = res; 
+      this.assetsData = res;
     });
   }
 
   getVoteTypes() {
     this._adminService.getVoteTypes().subscribe((res) => {
-      this.voteTypesData = res; 
+      this.voteTypesData = res;
     });
   }
 
@@ -76,7 +76,7 @@ export class AddIssuesComponent implements OnInit {
     const allowFeedback = this.issuesForm.get('allowFeedback').value;
 
     let _assets = [];
-    if(assetId != ''){
+    if (assetId != '') {
       try {
         const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
         _assets = assetRes;
@@ -84,7 +84,7 @@ export class AddIssuesComponent implements OnInit {
         console.log("Error while fetching assets: " + JSON.stringify(err));
       }
     }
-    
+
 
     let _voteType = [];
     try {
@@ -117,13 +117,6 @@ export class AddIssuesComponent implements OnInit {
 
     console.log("Form Data " + JSON.stringify(this.issuesForm.value));
     console.log("ID " + id);
-    // this.issuesForm.get('issueTitle').setValue(this.data.issueTitle);
-    // this.issuesForm.get('issueDescription').setValue(this.data.issueDescription);
-    // this.issuesForm.get('issueAttachmentPath').setValue(this.data.issueAttachmentPath);
-    // this.issuesForm.get('allowMultipleOptions').setValue(this.data.allowMultipleOptions);
-    // this.issuesForm.get('issueIsActive').setValue(this.data.issueIsActive);
-    // this.issuesForm.get('allowFeedback').setValue(this.data.allowFeedback);
-
 
     const assetId = this.issuesForm.get('assets').value;
     const voteTypeId = this.issuesForm.get('voteType').value;
@@ -151,20 +144,6 @@ export class AddIssuesComponent implements OnInit {
     this.issuesForm.get('assets').setValue(_assets);
     this.issuesForm.get('voteType').setValue(_voteType);
 
-    // try {
-    //   console.log(JSON.stringify(this.data))
-    //   if (assetId === "") {
-    //     console.log("NULL VALUES")
-    //     this.issuesForm.get('assets').setValue(this.data.assets);
-    //   }
-    //   if (assetId === "") {
-    //     console.log("NULL VALUES")
-    //     this.issuesForm.get('voteType').setValue(this.data.voteType);
-    //   }
-    // } catch (err) {
-    //   console.log("Error while fetching assets: " + JSON.stringify(err));
-    // }
-
     console.log("Assets Data : " + JSON.stringify(this.issuesForm.get('assets').value));
     console.log("Vote Type Data : " + JSON.stringify(this.issuesForm.get('voteType').value));
 
@@ -185,5 +164,3 @@ export class AddIssuesComponent implements OnInit {
     }
   }
 }
-
-

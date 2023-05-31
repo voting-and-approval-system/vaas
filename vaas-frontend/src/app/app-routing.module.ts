@@ -7,12 +7,12 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
 
 const routes: Routes = [
-  {path:'home', component:HomeComponent},
-  {path:'admin', component:AdminComponent},
-  {path:'', component:HomeComponent},
-  {path:'forbidden', component:ForbiddenComponent},
-  {path:'adminoption', component:AdminOptionComponent},
-  {path: 'user',component: UserComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: '', component: HomeComponent },
+  { path: 'forbidden', component: ForbiddenComponent },
+  { path: 'adminoption', component: AdminOptionComponent },
+  { path: 'user', component: UserComponent },
 ];
 
 @NgModule({
