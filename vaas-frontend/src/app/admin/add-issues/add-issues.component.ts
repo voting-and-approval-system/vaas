@@ -25,7 +25,7 @@ export class AddIssuesComponent implements OnInit {
       issueDescription: '',
       issueAttachmentPath: '',
       allowMultipleOptions: false,
-      issueIsActive: false,
+      issueIsActive: true,
       allowFeedback: false,
       voteType: '',
       assets: ''
