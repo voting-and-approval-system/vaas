@@ -55,7 +55,6 @@ body {
 
 h5{
     color: #fff;
-    padding-right: 80%;
     position: static;
     margin-top: 10px;
 }
@@ -64,6 +63,8 @@ h5{
 }
 
 .user-img{
+    margin-left: 9px;
     height: 50px;
     width: 50px;
+    border-radius: 50px;
 }
