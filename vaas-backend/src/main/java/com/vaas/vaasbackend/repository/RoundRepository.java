@@ -2,6 +2,7 @@ package com.vaas.vaasbackend.repository;
 
 import com.vaas.vaasbackend.entity.TblRound;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +19,14 @@ public interface RoundRepository extends JpaRepository<TblRound,Integer> {
 
     @Query(nativeQuery = true,value = "select * from tbl_round where round_is_active = 0")
     List<TblRound> deactiveRounds();
+
+
+    @Modifying
+    @Query(nativeQuery = true,value = "UPDATE tbl_round SET round_is_active = 'false' WHERE round_id = ?")
+    List<TblRound> setRoundToDeactive(Integer id);
+
+    @Query(nativeQuery = true,value = "select * from tbl_round where round_is_active = 'true'")
+    List<TblRound> activeRounds();
+
+
 }

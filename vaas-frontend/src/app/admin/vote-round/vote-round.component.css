@@ -1,0 +1,18 @@
+.container-fluid {
+    padding-right: 10%;
+}
+
+.table {
+    border-radius: 8px;
+    border: black;
+    position: relative;
+}
+
+.card {
+    width: -webkit-fill-available;
+    align-content: center;
+}
+
+.main {
+    width: fit-content;
+}
