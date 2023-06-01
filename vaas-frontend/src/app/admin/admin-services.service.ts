@@ -103,4 +103,11 @@ export class AdminServicesService {
     return this._http.get(this.baseUrl + '/lastissue', { headers: this.headers });
   }
 
+  getVoteRound(): Observable<any> {
+    return this._http.get(this.baseUrl + '/round/active', { headers: this.headers });
+  }
+
+  deactivateRound(id: number) {
+    return this._http.put(this.baseUrl + `/round/${id}`, null, { headers: this.headers });
+  }
 }

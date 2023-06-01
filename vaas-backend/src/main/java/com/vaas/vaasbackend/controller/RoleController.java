@@ -48,4 +48,6 @@ public class RoleController {
     public TblRole updateUser(@PathVariable("id") Integer id, @Valid @RequestBody TblRole role) {
         return roleService.updateRole(id,role);
     }
+
+
 }
