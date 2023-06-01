@@ -52,3 +52,10 @@ body {
     position: sticky;
     bottom: 0;
 }
+
+h5{
+    color: #fff;
+    padding-right: 87%;
+    position: static;
+    margin-top: 10px;
+}
