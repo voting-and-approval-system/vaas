@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserComponent } from './user/user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
+import { PendingUserComponent } from './pending-user/pending-user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'adminoption', component: AdminOptionComponent },
   { path: 'user', component: UserComponent },
+  { path: 'pending', component: PendingUserComponent },
+
 ];
 
 @NgModule({

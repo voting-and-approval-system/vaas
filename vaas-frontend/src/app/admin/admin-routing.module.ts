@@ -9,6 +9,7 @@ import { AddIssuesComponent } from './add-issues/add-issues.component';
 import { OptionComponent } from './option/option.component';
 import { AddOptionComponent } from './add-option/add-option.component';
 import { ShowUserComponent } from './show-user/show-user.component';
+import { VoteRoundComponent } from './vote-round/vote-round.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'admin/option', component: OptionComponent },
       { path: 'admin/addoption', component: AddOptionComponent },
       { path: 'admin/showuser', component: ShowUserComponent },
+      { path: 'admin/voteround', component: VoteRoundComponent}
 
 
     ]

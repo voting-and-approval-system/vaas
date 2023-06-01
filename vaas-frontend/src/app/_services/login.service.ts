@@ -107,7 +107,7 @@ export class LoginService {
           this.router.navigate(['/user']);
         }
         else {
-          this.router.navigate(['/forbidden']);
+          this.router.navigate(['/pending']);
         }
       },
       (error) => {
