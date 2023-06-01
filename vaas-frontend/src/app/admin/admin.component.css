@@ -53,9 +53,29 @@ body {
     bottom: 0;
 }
 
-h5{
+.company-logo {
     color: #fff;
-    padding-right: 87%;
-    position: static;
     margin-top: 10px;
+    margin-right: 50%;
+    margin-left: 50%;
+}
+
+.navbar-toggler {
+    height: 40px;
+}
+
+.user-img {
+    
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+
+.user-profile,h5
+{
+
+    color: #fff;
+    top: 10px;
+    font-size: medium;
+    padding: 10px;
 }

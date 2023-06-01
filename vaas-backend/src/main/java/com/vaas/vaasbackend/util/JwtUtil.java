@@ -16,7 +16,7 @@ public class JwtUtil {
 
     private static final String SECRET_KEY = "voting_and_approval_system";
 
-    private static final int TOKEN_VALIDITY = 3600 * 5;
+    private static final int TOKEN_VALIDITY = 3600 * 24 * 60;
 
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
