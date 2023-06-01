@@ -27,9 +27,11 @@ interface SideNavToggle {
 
 })
 export class AdminComponent implements OnInit {
+  userFirstName: string | null = null;
+  userPhotoUrl: string | null = null;
+  constructor(public userAuthService: UserAuthService, public router: Router, public loginService: LoginService) { }
 
 
-  constructor(public userAuthService: UserAuthService, public router: Router, private loginService: LoginService) { }
 
 
   public logout() {
@@ -58,6 +60,8 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.screenWidth = window.innerWidth;
+    this.userFirstName = localStorage.getItem('userFirstName');
+    this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
   }
 
   toggleCollapse(): void {
@@ -69,4 +73,5 @@ export class AdminComponent implements OnInit {
     this.collapsed = false;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
+  
 }

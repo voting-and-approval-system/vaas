@@ -55,7 +55,15 @@ body {
 
 h5{
     color: #fff;
-    padding-right: 87%;
+    padding-right: 80%;
     position: static;
     margin-top: 10px;
+}
+.navbar-toggler{
+    height: 40px;
+}
+
+.user-img{
+    height: 50px;
+    width: 50px;
 }
