@@ -34,6 +34,8 @@ import { VotingFormComponent } from './user/voting-form/voting-form.component';
 import { ResultComponent } from './user/result/result.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserComponent } from './admin/show-user/show-user.component';
+import { PendingUserComponent } from './pending-user/pending-user.component';
+import { VoteRoundComponent } from './admin/vote-round/vote-round.component';
 
 
 
@@ -61,7 +63,9 @@ const appRoute: Routes = [
     VotingComponent,
     VotingFormComponent,
     ResultComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    PendingUserComponent,
+    VoteRoundComponent
   ],
   imports: [
     BrowserModule,
