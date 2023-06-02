@@ -60,6 +60,7 @@ export class UserComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     this.userFirstName = localStorage.getItem('userFirstName');
     this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
+    console.log("URL : " + this.userPhotoUrl);
   }
 
   toggleCollapse(): void {

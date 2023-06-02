@@ -83,6 +83,9 @@ export class AddIssuesComponent implements OnInit {
       } catch (err) {
         console.log("Error while fetching assets: " + JSON.stringify(err));
       }
+    this.issuesForm.get('assets').setValue(_assets);
+    }else{
+      this.issuesForm.removeControl('assets');
     }
 
 
@@ -94,7 +97,6 @@ export class AddIssuesComponent implements OnInit {
       console.log("Error while fetching vote type: " + JSON.stringify(err));
     }
 
-    this.issuesForm.get('assets').setValue(_assets);
     this.issuesForm.get('voteType').setValue(_voteType);
 
 
