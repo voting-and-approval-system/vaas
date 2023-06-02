@@ -2,8 +2,15 @@
   <div class="container-fluid">
     <button class="navbar-toggler border-white" type="button" data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <img src="assets/MicrosoftTeams-image (10).png" height="35" width="35" />
+      <i class="fal fa-sharp fa-light fa-bars sidenav-link-icon"></i>
     </button>
+    <div class="logo-wrapper">
+      <h5 class="company-logo"><img src="assets/logo.svg" /></h5>
+    </div>
+    <div class="user-profile d-flex">
+      <h5>Welcome, {{ userFirstName }}</h5>
+      <img [src]="userPhotoUrl" class="user-img">
+    </div>
     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
       aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
@@ -13,12 +20,6 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="/admin" routerLinkActive="active">
-              <i class="fal fa-home sidenav-link-icon"></i>
-              <label>Home</label>
-            </a>
-          </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="/admin/assets" routerLinkActive="active">
               <i class="fal fa-thin fa-landmark sidenav-link-icon"></i>

@@ -56,7 +56,7 @@ public class RoundController {
         return roundService.deactiveRounds();
     }
 
-    @PutMapping("/round/{id}")
+    @PatchMapping("/round/{id}")
     @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> setRoundToDeactive(@PathVariable int id) throws DataNotFoundException {
         return roundService.setRoundToDeactive(id);

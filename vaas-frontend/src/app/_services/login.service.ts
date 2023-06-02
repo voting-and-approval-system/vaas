@@ -14,6 +14,8 @@ declare const gapi: any;
 export class LoginService {
   userEmail!: string;
   public tempRole: string;
+  userFirstName: string | null = null;
+  userPhotoUrl: string | null = null;
 
 
   constructor(
@@ -22,6 +24,13 @@ export class LoginService {
     private router: Router,
     private register: MatDialog
   ) { }
+
+  ngOnInit(): void {
+    // Retrieve user's name and image from sessionStorage on component initialization
+    this.userFirstName = sessionStorage.getItem('userFirstName');
+    this.userPhotoUrl = sessionStorage.getItem('userPhotoUrl');
+  }
+  
 
   openForm(newUser: any, userEmail: string) {
     const dialogRef = this.register.open(RegisterComponent);
@@ -45,7 +54,7 @@ export class LoginService {
     gapi.load('auth2', () => {
       gapi.auth2.init({
         client_id: '374191778060-j6pbqqlneq1hv5c8lijgmj6ihhkf12gi.apps.googleusercontent.com',
-        scope: 'email',
+        scope: 'profile',
         plugin_name: 'vaas-frontend',
         prompt: 'select_account'
       }).then(() => {
@@ -104,11 +113,18 @@ export class LoginService {
         else if (role.includes('Tenant')) {
           this.userAuthService.setPreferdRole('Tenant');
           this.tempRole = "Tenant";
-          this.router.navigate(['/user']);
+          this.router.navigate(['/user/home']);
         }
         else {
           this.router.navigate(['/pending']);
         }
+        const firstName = profile.getGivenName();
+        const photoUrl = profile.getImageUrl();
+
+        localStorage.setItem('userFirstName', firstName);
+        localStorage.setItem('userPhotoUrl', photoUrl);
+
+
       },
       (error) => {
         if (error.status === 500) {
@@ -124,6 +140,8 @@ export class LoginService {
   private logoutAndNotifyGoogle(): void {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userFirstName');
+    localStorage.removeItem('userPhotoUrl');
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       console.log('User signed out from Google');

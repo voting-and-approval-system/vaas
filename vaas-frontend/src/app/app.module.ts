@@ -36,8 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowUserComponent } from './admin/show-user/show-user.component';
 import { PendingUserComponent } from './pending-user/pending-user.component';
 import { VoteRoundComponent } from './admin/vote-round/vote-round.component';
-
-
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 
 const appRoute: Routes = [
@@ -65,7 +64,8 @@ const appRoute: Routes = [
     ResultComponent,
     ShowUserComponent,
     PendingUserComponent,
-    VoteRoundComponent
+    VoteRoundComponent,
+    UserHomeComponent
   ],
   imports: [
     BrowserModule,
