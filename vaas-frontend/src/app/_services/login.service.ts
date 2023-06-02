@@ -113,7 +113,7 @@ export class LoginService {
         else if (role.includes('Tenant')) {
           this.userAuthService.setPreferdRole('Tenant');
           this.tempRole = "Tenant";
-          this.router.navigate(['/user']);
+          this.router.navigate(['/user/home']);
         }
         else {
           this.router.navigate(['/pending']);
