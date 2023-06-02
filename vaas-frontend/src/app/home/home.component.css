@@ -19,6 +19,7 @@
 
 #hero .container {
   font: 5em 'Josefin Sans', sans-serif;
+  
 
 }
 
@@ -80,6 +81,7 @@
 #hero .icon-box .title a {
   color: #000000;
   transition: 0.3s;
+  
 }
 
 #hero .icon-box .description {

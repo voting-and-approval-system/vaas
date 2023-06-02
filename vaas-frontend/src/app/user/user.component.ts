@@ -3,6 +3,9 @@ import { UserAuthService } from '../_services/user-auth.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../_services/login.service';
 
+
+
+
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -24,7 +27,8 @@ interface SideNavToggle {
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-
+  userFirstName: string | null = null;
+  userPhotoUrl: string | null = null;
   constructor(private userAuthService: UserAuthService, private router: Router, private loginService: LoginService) {
   }
 
@@ -54,6 +58,8 @@ export class UserComponent implements OnInit {
       this.router.navigate(['/home']);
     }
     this.screenWidth = window.innerWidth;
+    this.userFirstName = localStorage.getItem('userFirstName');
+    this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
   }
 
   toggleCollapse(): void {
@@ -66,3 +72,8 @@ export class UserComponent implements OnInit {
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
 }
+
+
+
+
+  
