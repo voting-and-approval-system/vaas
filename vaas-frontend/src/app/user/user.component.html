@@ -7,10 +7,19 @@
         <li><a class="nav-link scrollto active" routerLink="/user/home" routerLinkActive="active">Home</a></li>
         <li><a class="nav-link scrollto" routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
         <li><a class="nav-link scrollto" routerLink="/user/result" routerLinkActive="active">Result</a></li>
-        <li><a class="getstarted scrollto" (click)="logout()">Logout</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <h4 class="user-name">Welcome, {{ userFirstName }}</h4>
+            <img [src]="userPhotoUrl" class="user-img">
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li><a>Edit Profile</a></li>
+            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
+    </nav>
   </div>
 </header>
 <router-outlet></router-outlet>
@@ -21,35 +30,35 @@
       <div class="row">
 
         <div class="col-lg-3 col-md-6 footer-contact">
-          <h3>OnePage</h3>
+          <h3>bbd Softwere</h3>
           <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
+            Floor 7, Wing C Marisoft<br>
+            Kalyani Nagar Annex<br>
+            Wadgaon Sheri, Pune, Maharashtra 411014 <br><br>
+            <strong>Phone:</strong>+91 020 6685 3600<br>
+            <strong>Email:</strong> info@bbd.com<br>
           </p>
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <li><i class="bx bx-chevron-right"></i> Home</li>
+            <li><i class="bx bx-chevron-right"></i> About us</li>
+            <li><i class="bx bx-chevron-right"></i> Services</li>
+            <li><i class="bx bx-chevron-right"></i> Terms of service</li>
+            <li><i class="bx bx-chevron-right"></i> Privacy policy</li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <li><i class="bx bx-chevron-right"></i> Web Design</li>
+            <li><i class="bx bx-chevron-right"></i>Web Development</li>
+            <li><i class="bx bx-chevron-right"></i>Product Management</li>
+            <li><i class="bx bx-chevron-right"></i>Marketing</li>
+            <li><i class="bx bx-chevron-right"></i>Graphic Design</li>
           </ul>
         </div>
 
@@ -69,14 +78,10 @@
 
     <div class="me-md-auto text-center text-md-start">
       <div class="copyright">
-        &copy; Copyright <strong><span>OnePage</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>bbd Softwere</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bbd.co.za/">bbd Softwere</a>
       </div>
     </div>
     <div class="social-links text-center text-md-right pt-3 pt-md-0">
