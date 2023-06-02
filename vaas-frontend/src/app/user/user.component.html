@@ -1,89 +1,47 @@
-<header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center justify-content-between">
-    <h1 class="logo"><img src="src\assets\voting-and-approval-system-website-favicon-color.png" class="logo-wrapper"></h1>
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" routerLink="/user/home" routerLinkActive="active">Home</a></li>
-        <li><a class="nav-link scrollto" routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
-        <li><a class="nav-link scrollto" routerLink="/user/result" routerLinkActive="active">Result</a></li>
-        <li><a class="getstarted scrollto" (click)="logout()">Logout</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-  </div>
-</header>
-<router-outlet></router-outlet>
-<footer id="footer">
-  
-  <div class="footer-top">
-    <div class="container">
-      <div class="row">
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler border-white" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <img src="assets/MicrosoftTeams-image (10).png" height="35" width="35" />
+    </button>
 
-        <div class="col-lg-3 col-md-6 footer-contact">
-          <h3>OnePage</h3>
-          <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
-          </p>
-        </div>
-
-        <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-6 footer-newsletter">
-          <h4>Join Our Newsletter</h4>
-          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          <form action="" method="post">
-            <input type="email" name="email"><input type="submit" value="Subscribe">
-          </form>
-        </div>
-
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><img src="assets/MicrosoftTeams-image (10).png"
+            height="40" width="40">Voting & Approval System</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/user" routerLinkActive="active">
+              <i class="fal fa-home sidenav-link-icon"></i>
+              <label>Home</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/user/voting" routerLinkActive="active">
+              <i class="fal fa-duotone fa-box-ballot sidenav-link-icon"></i>
+              <label>Voting</label>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="/user/result" routerLinkActive="active">
+              <i class="fal fa-regular fa-clipboard sidenav-link-icon"></i>
+              <label>Result</label>
+            </a>
+        </ul>
+      </div>
+      <a class="bottom">
+        <button mat-button type="button" color="warn" (click)="logout()">
+          <i class="fa fa-sign-out sidenav-link-icon" aria-hidden="true"></i>
+          Logout
+        </button>
+      </a>
     </div>
   </div>
-
-  <div class="container d-md-flex py-4">
-
-    <div class="me-md-auto text-center text-md-start">
-      <div class="copyright">
-        &copy; Copyright <strong><span>OnePage</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-    <div class="social-links text-center text-md-right pt-3 pt-md-0">
-      <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-      <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-      <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-    </div>
-  </div>
-</footer>
+</nav>
+<div>
+  <router-outlet></router-outlet>
+</div>
