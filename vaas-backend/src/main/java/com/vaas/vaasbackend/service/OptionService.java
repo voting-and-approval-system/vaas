@@ -28,7 +28,7 @@ public class OptionService {
     public TblOption saveOption(TblOption option) throws Exception {
         try {
             return optionRepository.save(option);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e);
         }
     }
@@ -37,7 +37,7 @@ public class OptionService {
     public void deleteOption(Integer id) throws DataNotFoundException {
         try {
             optionRepository.deleteById(id);
-        }catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             throw new DataNotFoundException("No Option Found With Id " + id);
         }
     }
@@ -46,11 +46,11 @@ public class OptionService {
     public List<TblOption> showOptionByIssueId(Integer id) throws DataNotFoundException {
         try {
             List<TblOption> options = optionRepository.findByIssueId(id);
-            if(options.isEmpty()){
+            if (options.isEmpty()) {
                 throw new DataNotFoundException("No Option Found For Given Issue");
             }
             return options;
-        }catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             throw new DataNotFoundException("No Issue Found For Id " + id);
         }
     }
@@ -58,7 +58,7 @@ public class OptionService {
 
     public TblOption showOption(Integer id) throws DataNotFoundException {
         Optional<TblOption> option = optionRepository.findById(id);
-        if(!option.isPresent()){
+        if (!option.isPresent()) {
             throw new DataNotFoundException("No Option Found For Id " + id);
         }
         return option.get();
@@ -66,7 +66,7 @@ public class OptionService {
 
     public TblOption updateOption(Integer id, TblOption option) throws Exception {
         Optional<TblOption> option1 = optionRepository.findById(id);
-        if(!option1.isPresent()){
+        if (!option1.isPresent()) {
             throw new DataNotFoundException("Option Not Found For Id " + id);
         }
         TblOption tblOption = option1.get();
@@ -75,10 +75,7 @@ public class OptionService {
             tblOption.setOptionTitle(option.getOptionTitle());
         }
 
-        if (Objects.nonNull(option.getOptionDescription()) &&
-                !"".equalsIgnoreCase(option.getOptionDescription())) {
-            tblOption.setOptionDescription(option.getOptionDescription());
-        }
+        tblOption.setOptionDescription(option.getOptionDescription());
 
         if (Objects.nonNull(option.getOptionAttachmentPath()) &&
                 !"".equalsIgnoreCase(option.getOptionAttachmentPath())) {
@@ -96,9 +93,9 @@ public class OptionService {
             tblOption.setOptionIsActive(option.getOptionIsActive());
         }
 
-        try{
+        try {
             return optionRepository.save(tblOption);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception(e);
         }
     }

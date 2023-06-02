@@ -66,10 +66,7 @@ public class IssueService {
             tblIssue.setIssueTitle(issue.getIssueTitle());
         }
 
-        if (Objects.nonNull(issue.getIssueDescription()) &&
-                !"".equalsIgnoreCase(issue.getIssueDescription())) {
-            tblIssue.setIssueDescription(issue.getIssueDescription());
-        }
+        tblIssue.setIssueDescription(issue.getIssueDescription());
 
         if (Objects.nonNull(issue.getIssueAttachmentPath()) &&
                 !"".equalsIgnoreCase(issue.getIssueAttachmentPath())) {
@@ -81,10 +78,7 @@ public class IssueService {
             tblIssue.setAllowMultipleOptions(issue.getAllowMultipleOptions());
         }
 
-        if (Objects.nonNull(issue.getAssets()) &&
-                !"".equalsIgnoreCase(issue.getAssets().toString())) {
-            tblIssue.setAssets(issue.getAssets());
-        }
+        tblIssue.setAssets(issue.getAssets());
 
         if (Objects.nonNull(issue.getIssueIsActive()) &&
                 !"".equalsIgnoreCase(issue.getIssueIsActive().toString())) {

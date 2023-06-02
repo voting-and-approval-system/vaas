@@ -51,11 +51,7 @@ public class AssetsService {
                 !"".equalsIgnoreCase(asset.getAssetsTitle())) {
             tblAsset.setAssetsTitle(asset.getAssetsTitle());
         }
-
-        if (Objects.nonNull(asset.getAssetsDescription()) &&
-                !"".equalsIgnoreCase(asset.getAssetsDescription())) {
-            tblAsset.setAssetsDescription(asset.getAssetsDescription());
-        }
+        tblAsset.setAssetsDescription(asset.getAssetsDescription());
         try{
             return assetsRepository.save(tblAsset);
         }catch (Exception e){
