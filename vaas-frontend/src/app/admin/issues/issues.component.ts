@@ -26,7 +26,6 @@ export class IssuesComponent implements OnInit {
     this._adminService.getIssues().subscribe(
       (res) => {
         this.data = res;
-        console.log(JSON.stringify(this.data));
       });
   }
 

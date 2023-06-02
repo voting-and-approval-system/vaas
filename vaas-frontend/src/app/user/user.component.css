@@ -392,11 +392,11 @@
 
   
   .user-img {
-    
     height: 40px;
     width: 40px;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 .user-name{
   font-weight: 100;
+  margin-right: 5%;
 }
