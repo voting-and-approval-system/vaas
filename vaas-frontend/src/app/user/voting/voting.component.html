@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center p-3 m-1 container-fluid">
+<!-- <div class="d-flex justify-content-center p-3 m-1 container-fluid">
   <div class="card shadow p-3 mt-4">
     <div div id="filter">
       <div class="p-3">
@@ -25,4 +25,24 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div *ngFor="let round of roundData" class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-box iconbox-blue">
+          <div class="icon">
+            {{round.issue.issueTitle}}
+          </div>
+          <div class="description">
+            {{round.issue.issueDescription}}
+          </div>
+          <div class="vote-button">
+            <a class="btn btn-outline-primary" (click)="vote(round.id)">Vote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
