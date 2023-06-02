@@ -2,7 +2,7 @@
   <div class="card shadow p-3 mt-4">
     <div div id="filter">
       <div class="p-3">
-        <h1>Register New Issues</h1>
+        <h1>{{data? 'Update Issue' : 'Register New Issue'}}</h1>
       </div>
       <div class="p-3 mb-3 table-responsive border">
         <form [formGroup]="issuesForm" (ngSubmit)="data ? updateIssues(data.id) : addIssues()">
@@ -29,7 +29,9 @@
             <label for="asset" class="col-sm-2 col-form-label">Asset</label>
             <div class="col-sm-10">
               <select formControlName="assets" class="form-select" id="asset">
-                <option *ngFor="let asset of assetsData" [value]="asset.id">{{ asset.assetsTitle }}</option>
+                <option *ngFor="let asset of assetsData" [value]="asset.id"
+                  [selected]="issuesForm.get('assets')?.value !== null && issuesForm.get('assets')?.value !== '' && asset.id === issuesForm.get('assets').value">
+                  {{ asset.assetsTitle }}</option>
               </select>
             </div>
           </div>
@@ -37,8 +39,8 @@
             <label for="voteType" class="col-sm-2 col-form-label">Vote Type</label>
             <div class="col-sm-10">
               <select formControlName="voteType" class="form-select" id="voteType" required>
-                <option *ngFor="let voteType of voteTypesData" [value]="voteType.id">{{ voteType.voteTypeTitle }}
-                </option>
+                <option *ngFor="let voteType of voteTypesData" [value]="voteType.id"
+                  [selected]="voteType.id === issuesForm.get('voteType').value">{{ voteType.voteTypeTitle }}</option>
               </select>
             </div>
           </div>

@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminServicesService } from '../admin-services.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-add-issues',
   templateUrl: './add-issues.component.html',
@@ -44,14 +42,21 @@ export class AddIssuesComponent implements OnInit {
       }
 
       if (this.data) {
-        this.issuesForm.patchValue(this.data);
+        this.issuesForm.patchValue({
+          issueTitle: this.data.issueTitle,
+          issueDescription: this.data.issueDescription,
+          allowMultipleOptions: this.data.allowMultipleOptions,
+          issueIsActive: this.data.issueIsActive,
+          allowFeedback: this.data.allowFeedback,
+          voteType: this.data.voteType.id,
+          assets: this.data.assets ? this.data.assets.id : ''
+        });
       }
+
     } catch (err) {
       console.log(err);
     }
-
   }
-
 
   getAssets() {
     this._adminService.getAssets().subscribe((res) => {
@@ -66,14 +71,8 @@ export class AddIssuesComponent implements OnInit {
   }
 
   async addIssues() {
-    const title = this.issuesForm.get('issueTitle').value;
-    const description = this.issuesForm.get('issueDescription').value;
-    const atachmentpath = this.issuesForm.get('issueAttachmentPath').value;
-    const allowMultipleOptions = this.issuesForm.get('allowMultipleOptions').value;
-    const assetId = this.issuesForm.get('assets').value;
-    const issueIsActive = this.issuesForm.get('issueIsActive').value;
+    const assetId = this.issuesForm.get('assets').value || '';
     const voteTypeId = this.issuesForm.get('voteType').value;
-    const allowFeedback = this.issuesForm.get('allowFeedback').value;
 
     let _assets = [];
     if (assetId != '') {
@@ -83,11 +82,10 @@ export class AddIssuesComponent implements OnInit {
       } catch (err) {
         console.log("Error while fetching assets: " + JSON.stringify(err));
       }
-    this.issuesForm.get('assets').setValue(_assets);
-    }else{
+      this.issuesForm.get('assets').setValue(_assets);
+    } else {
       this.issuesForm.removeControl('assets');
     }
-
 
     let _voteType = [];
     try {
@@ -96,9 +94,7 @@ export class AddIssuesComponent implements OnInit {
     } catch (err) {
       console.log("Error while fetching vote type: " + JSON.stringify(err));
     }
-
     this.issuesForm.get('voteType').setValue(_voteType);
-
 
     try {
       const val = await this._adminService.addIssues(this.issuesForm.value).toPromise();
@@ -117,22 +113,20 @@ export class AddIssuesComponent implements OnInit {
 
   async updateIssues(id: number) {
 
-    console.log("Form Data " + JSON.stringify(this.issuesForm.value));
-    console.log("ID " + id);
-
-    const assetId = this.issuesForm.get('assets').value;
+    const assetId = this.issuesForm.get('assets').value || '';
     const voteTypeId = this.issuesForm.get('voteType').value;
 
-    console.log("Assets Data : " + JSON.stringify(this.issuesForm.get('assets').value));
-
-    console.log("print Data : " + JSON.stringify(this.issuesForm.value));
-
     let _assets = [];
-    try {
-      const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
-      _assets = assetRes;
-    } catch (err) {
-      console.log("Error while fetching assets: " + JSON.stringify(err));
+    if (assetId != '') {
+      try {
+        const assetRes: any = await this._adminService.findAssetsById(assetId).toPromise();
+        _assets = assetRes;
+      } catch (err) {
+        console.log("Error while fetching assets: " + JSON.stringify(err));
+      }
+      this.issuesForm.get('assets').setValue(_assets);
+    } else {
+      this.issuesForm.removeControl('assets');
     }
 
     let _voteType = [];
@@ -142,22 +136,11 @@ export class AddIssuesComponent implements OnInit {
     } catch (err) {
       console.log("Error while fetching vote type: " + JSON.stringify(err));
     }
-
-    this.issuesForm.get('assets').setValue(_assets);
     this.issuesForm.get('voteType').setValue(_voteType);
-
-    console.log("Assets Data : " + JSON.stringify(this.issuesForm.get('assets').value));
-    console.log("Vote Type Data : " + JSON.stringify(this.issuesForm.get('voteType').value));
-
 
     try {
       const val = await this._adminService.updateIssues(id, this.issuesForm.value).toPromise();
-      console.log("Round:" + this.round);
-
       alert("issues Updated !!");
-
-
-
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {

@@ -13,14 +13,11 @@ import { Router } from '@angular/router';
 export class IssuesComponent implements OnInit {
   data = [];
 
-
   constructor(private _adminService: AdminServicesService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getIssues();
   }
-
-
 
   getIssues() {
     this._adminService.getIssues().subscribe(
