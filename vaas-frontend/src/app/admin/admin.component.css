@@ -19,6 +19,7 @@
 
 .bottom {
     margin-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .title {
@@ -30,6 +31,7 @@
 .nav-link {
     border-radius: 8px;
     margin-bottom: 20px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 html,
@@ -37,16 +39,19 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .wrapper {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .content {
     flex: 1;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .sticky-footer {
@@ -54,6 +59,7 @@ body {
     text-align: center;
     position: sticky;
     bottom: 0;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .company-logo {
@@ -65,6 +71,7 @@ body {
 
 .navbar-toggler {
     height: 40px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .user-img {

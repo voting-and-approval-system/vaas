@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_services/login.service';
 import { UserAuthService } from 'src/app/_services/user-auth.service';
+import { UserServicesService } from '../user-services.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,32 +11,30 @@ import { UserAuthService } from 'src/app/_services/user-auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  data: any;
-  userEmail: string | null = null;
-  _userService: any;
-
+  userData; 
+  userEmail: string = localStorage.getItem('userEmail');
+  userPhotoUrl: string;
 
   constructor(
+    private _userService: UserServicesService,
     private userAuthService: UserAuthService,
     private router: Router,
     private loginService: LoginService,
   ) {}
 
-  ngOnInit(): void {
-    this.userEmail = this.loginService.userEmail;
-    if (this.userEmail) {
-      this.findUserByEmail();
+
+
+  async ngOnInit(): Promise<void> {
+    try {
+      const res: any = await this._userService.findUserByEmail(localStorage.getItem('userEmail')).toPromise();
+      this.userData = res;
+      console.log(this.userData)
+    } catch (error) {
+      console.error(error);
     }
+
+    this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
   }
 
-  findUserByEmail(): void {
-    this._userService.findUserByEmail(this.userEmail).subscribe(
-      (res: any) => {
-        this.data = res;
-      },
-      (error: any) => {
-        console.error(error);
-      }
-    );
-  }
+
 }

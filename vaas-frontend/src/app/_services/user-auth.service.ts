@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserAuthService {
   getPreferdRole: any;
+  findUserByEmail: any;
   constructor() { }
 
   public setRoles(roles: any[]) {
