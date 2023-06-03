@@ -1,5 +1,6 @@
 package com.vaas.vaasbackend.service;
 
+import com.vaas.vaasbackend.entity.TblIssue;
 import com.vaas.vaasbackend.entity.TblRound;
 import com.vaas.vaasbackend.errors.DataNotFoundException;
 import com.vaas.vaasbackend.repository.RoundRepository;
@@ -58,19 +59,18 @@ public class RoundService {
         return rounds;
     }
 
-    public List<TblRound> setRoundToDeactive(int roundId) throws DataNotFoundException {
-        List<TblRound> rounds = roundRepository.setRoundToDeactive(roundId);
-        if (rounds == null) {
-            throw new DataNotFoundException("Round Not Updated");
-        }
-        return rounds;
-    }
-
     public List<TblRound> activeRounds() throws DataNotFoundException {
         List<TblRound> rounds = roundRepository.activeRounds();
         if (rounds.isEmpty()) {
             throw new DataNotFoundException("No Round Found");
         }
         return rounds;
+    }
+
+    public TblRound updateRoundIsActive(Integer roundId, boolean isActive) throws DataNotFoundException {
+        TblRound round = roundRepository.findById(roundId)
+                .orElseThrow(() -> new DataNotFoundException("Round not found with ID: " + roundId));
+        round.setRoundIsActive(isActive);
+        return roundRepository.save(round);
     }
 }

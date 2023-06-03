@@ -10,14 +10,11 @@ import { Router } from '@angular/router';
 export class VoteRoundComponent {
   data = [];
 
-
 constructor(private _adminService: AdminServicesService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getVoteRound();
   }
-
-
 
   getVoteRound() {
     this._adminService.getVoteRound().subscribe(
@@ -26,19 +23,13 @@ constructor(private _adminService: AdminServicesService, private _router: Router
       });
   }
 
-
-  deactivateRound(id: number) {
-  
-      this._adminService.deactivateRound(id).subscribe({
-        next: (res) => {
-          alert("Round Dactivated !!");
-          this.getVoteRound();
-        },
-        error: (err) => {
-          console.log("Error While Delete : " + err);
-        }
-      })
-    
-
-}
+  updateStatus(id : number,isActive : boolean){
+    isActive = isActive ? false : true;
+    this._adminService.updateRoundIsActive(id,isActive).subscribe({
+      next : (res) => {
+        alert("Status is Updated !!");
+        this.getVoteRound();
+      }
+    });
+  }
 }

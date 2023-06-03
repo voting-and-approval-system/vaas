@@ -128,4 +128,11 @@ public class IssueService {
         }
         return issue;
     }
+
+    public TblIssue updateIssueIsActive(Integer issueId, boolean isActive) throws DataNotFoundException {
+        TblIssue issue = issueRepository.findById(issueId)
+                .orElseThrow(() -> new DataNotFoundException("Issue not found with ID: " + issueId));
+        issue.setIssueIsActive(isActive);
+        return issueRepository.save(issue);
+    }
 }

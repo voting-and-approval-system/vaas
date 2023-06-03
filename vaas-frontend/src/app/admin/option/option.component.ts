@@ -40,7 +40,7 @@ export class OptionComponent implements OnInit {
         this.getOptions(this.issueId);
       },
       error: (err) => {
-        console.log("Error While Delete : " + err);
+        alert("This option can't be deleted !!");
       }
     })
   }

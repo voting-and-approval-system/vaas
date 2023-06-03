@@ -13,42 +13,49 @@ import java.util.List;
 public class IssueController {
     @Autowired
     IssueService issueService;
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public List<TblIssue> showIssue() throws DataNotFoundException {
         return issueService.showIssue();
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue/{id}")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public TblIssue showIssue(@PathVariable Integer id) throws DataNotFoundException {
         return issueService.showIssue(id);
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("issue/active/{isactive}")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public List<TblIssue> showActiveIssue(@PathVariable("isactive") boolean isActive) throws DataNotFoundException {
         return issueService.showActiveIssue(isActive);
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/issue")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public TblIssue saveIssue(@RequestBody TblIssue issue) throws Exception {
         return issueService.saveIssue(issue);
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/issue/{id}")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public TblIssue updateIssue(@PathVariable Integer id, @RequestBody TblIssue issue) throws Exception {
-        return issueService.updateIssue(id,issue);
+        return issueService.updateIssue(id, issue);
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/issue/assets/{assetsid}")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public List<TblIssue> getActiveIssueForAssets(@PathVariable(name = "assetsid") Integer assetsId) throws DataNotFoundException {
         return issueService.getActiveIssueForAssets(assetsId);
     }
+
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/issue/{id}")
     @PreAuthorize("hasRole('ROLE_Admin')")
@@ -61,5 +68,12 @@ public class IssueController {
     @PreAuthorize("hasRole('ROLE_Admin')")
     public Integer getIdOfLastAddedIssue() throws DataNotFoundException {
         return issueService.getIdOfLastAddedIssue();
+    }
+
+    @PutMapping("issue/{id}/{isActive}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PreAuthorize("hasRole('ROLE_Admin')")
+    public TblIssue updateIssueIsActive(@PathVariable("id") Integer issueId, @PathVariable("isActive") boolean isActive) throws DataNotFoundException {
+        return issueService.updateIssueIsActive(issueId, isActive);
     }
 }
