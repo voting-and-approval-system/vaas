@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./issues.component.css']
 })
 
-
-
 export class IssuesComponent implements OnInit {
   data = [];
 
@@ -30,7 +28,6 @@ export class IssuesComponent implements OnInit {
     this._router.navigate(['/admin/addissues', { id: id }]);
   }
 
-
   deleteIssues(id: number) {
     this._adminService.deleteIssues(id).subscribe({
       next: (res) => {
@@ -41,5 +38,9 @@ export class IssuesComponent implements OnInit {
         console.log("Error While Delete : " + err);
       }
     })
+  }
+
+  viewOptions(id: number){
+    this._router.navigate(['/admin/option', { id: id }]);
   }
 }

@@ -7,27 +7,16 @@
       <div class="p-3 mb-3 table-responsive border">
         <form [formGroup]="optionForm" (ngSubmit)="data ? updateOption(data.id) : addOption()">
           <div class="row mb-3">
-            <label for="optionTitle" class="col-sm-2 col-form-label">Title</label>
+            <label for="optionTitle" class="col-sm-2 col-form-label">Option Title</label>
             <div class="col-sm-10">
               <input type="text" formControlName="optionTitle" class="form-control" id="optionTitle" required>
             </div>
           </div>
           <div class="row mb-3">
-            <label for="optionDescription" class="col-sm-2 col-form-label">Description</label>
+            <label for="optionDescription" class="col-sm-2 col-form-label">Option Description</label>
             <div class="col-sm-10">
               <textarea formControlName="optionDescription" class="form-control" id="optionDescription"
                 required></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label for="issues" class="col-sm-2 col-form-label">issue</label>
-            <div class="col-sm-10">
-              <select formControlName="issue" class="form-select" id="issue" required>
-                <option *ngFor="let issue of issueData" [value]="issue.id"
-                  [selected]="issue.id === optionForm.get('issue').value">
-                  {{ issue.issueTitle }}
-                </option>
-              </select>
             </div>
           </div>
           <button type="submit" class="btn  btn-dark" [innerText]="data ? 'Update' : 'Add'"></button>
