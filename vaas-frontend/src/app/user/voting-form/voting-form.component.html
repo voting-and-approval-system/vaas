@@ -1,15 +1,12 @@
-<div class="d-flex justify-content-center p-3 m-1 container-fluid">
-    <div class="card shadow p-3 mt-4">
-      <div id="filter">
-        <div class="p-3">
-          <h1>{{ roundData.issue?.issueTitle }}</h1>
-        </div>
-        <div class="p-3 mb-3 table-responsive border">
-          <form [formGroup]="votingForm" (ngSubmit)="voting()">
-            <div class="form-group">
+    <div class="container d-flex">
+      <div class="card container-fluid m-1">
+       <div class="content">
+          <p class="heading">{{ roundData.issue?.issueTitle }}</p>
+          <form  [formGroup]="votingForm" (ngSubmit)="voting()">
+            <div class="para form-group">
               <div class="row">
-                <div class="justify-content-left">
-                  <div class="form-check col" *ngFor="let option of optionData; let i = index">
+                <div class="para">
+                  <div class="para" *ngFor="let option of optionData; let i = index">
                     <label class="form-label" [for]="'optionId' + i">{{ option.optionTitle }}</label>
                     <ng-container *ngIf="roundData.issue?.allowMultipleOptions; else radioOption">
                       <input class="form-check-input" type="checkbox" [value]="option.id" name="optionId"
@@ -20,12 +17,12 @@
                       <input class="form-check-input" type="radio" [value]="option.id" [id]="'optionId' + i"
                         [formControlName]="'optionId'" (change)="onChange()" [(ngModel)]="option.isSelected" required>
                     </ng-template>
-                    <div class="col">
+                    <div class="para col">
                       <input class="form-control" type="text" *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'"
                         name="preference">
                     </div>
                   </div>
-                  <div *ngIf="roundData.issue?.allowFeedback" class="justify-content-left form-check col">
+                  <div class="para" *ngIf="roundData.issue?.allowFeedback" >
                     <label for="">Feedback</label>
                     <textarea class="form-control" [formControlName]="'feedback'"></textarea>
                   </div>
@@ -33,11 +30,9 @@
               </div>
             </div>
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-dark">Vote</button>
+              <button type="submit" class="btn">Vote</button>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
-  
