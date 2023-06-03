@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminServicesService } from '../admin-services.service';
 
 @Component({
@@ -9,18 +9,17 @@ import { AdminServicesService } from '../admin-services.service';
 })
 export class OptionComponent implements OnInit {
   data = [];
+  issueId : number;
 
-
-  constructor(private _adminService: AdminServicesService, private _router: Router) { }
+  constructor(private _adminService: AdminServicesService, private _router: Router,private _route : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getOptions();
+    this.issueId = Number(this._route.snapshot.paramMap.get('id'));
+    this.getOptions(this.issueId);
   }
 
-
-
-  getOptions() {
-    this._adminService.getOptions().subscribe(
+  getOptions(issueId : number) {
+    this._adminService.getOptions(issueId).subscribe(
       (res) => {
         this.data = res;
       });
@@ -30,12 +29,15 @@ export class OptionComponent implements OnInit {
     this._router.navigate(['/admin/addoption', { id: id }]);
   }
 
+  addOption(issueId : number){
+    this._router.navigate(['/admin/addoption', { issueId: issueId }]);
+  }
 
   deleteOption(id: number) {
     this._adminService.deleteOption(id).subscribe({
       next: (res) => {
         alert("Record Deleted !!");
-        this.getOptions();
+        this.getOptions(this.issueId);
       },
       error: (err) => {
         console.log("Error While Delete : " + err);

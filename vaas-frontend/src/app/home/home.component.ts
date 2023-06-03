@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     if (this.isLoggedIn()) {
       const preferedRole = localStorage.getItem('preferedRole');
       if (preferedRole == 'Admin') {
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/admin/assets']);
       } else {
         this.router.navigate(['/user/home']);
       }

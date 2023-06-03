@@ -61,8 +61,12 @@ export class AdminServicesService {
     return this._http.delete(this.baseUrl + `/issue/${id}`, { headers: this.headers });
   }
 
-  getOptions(): Observable<any> {
-    return this._http.get(this.baseUrl + '/option', { headers: this.headers });
+  getOptions(issueId : number): Observable<any> {
+    return this._http.get(this.baseUrl + `/option/issue/${issueId}`, { headers: this.headers });
+  }
+
+  getIssue(issueId : number) : Observable<any>{
+    return this._http.get(this.baseUrl + `/issue/${issueId}`, { headers: this.headers });
   }
 
   addOption(data: any) {
