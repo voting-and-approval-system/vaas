@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
 #hero {
   width: 100%;
   height: 100vh;
@@ -18,7 +19,8 @@
 }
 
 #hero .container {
-  font: 5em 'Josefin Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
   
 
 }
@@ -171,7 +173,9 @@ section {
 .btn-login {
   color: white;
   border-radius: 40px;
-  background-color: #000000;
+  background-color: #252323;
+  font-weight: 200;
+  
 }
 
 .google-login {

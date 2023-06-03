@@ -13,7 +13,7 @@
             <img [src]="userPhotoUrl" class="user-img">
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li><a>Edit Profile</a></li>
+            <li><a routerLink="/user/Profile" (click)="userProfile(userEmail)">view Profile</a></li>
             <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
           </ul>
         </li>

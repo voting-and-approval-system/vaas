@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./forbidden.component.css']
 })
 export class ForbiddenComponent {
-
+  removeUserRole() {
+    localStorage.clear(); // Remove the userRole from localStorage
+  }
 }

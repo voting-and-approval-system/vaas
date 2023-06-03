@@ -1,23 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
 .btn {
     height: 50px;
     width: 100px;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .container-fluid {
     padding-right: 10%;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .table {
     border-radius: 8px;
     border: black;
     position: relative;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .card {
     width: -webkit-fill-available;
     align-content: center;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .main {
     width: fit-content;
+    font-family: 'Quicksand', sans-serif;
 }

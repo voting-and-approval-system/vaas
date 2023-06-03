@@ -29,6 +29,7 @@ interface SideNavToggle {
 export class UserComponent implements OnInit {
   userFirstName: string | null = null;
   userPhotoUrl: string | null = null;
+  userEmail: string | null = null;
   constructor(private userAuthService: UserAuthService, private router: Router, private loginService: LoginService) {
   }
 
@@ -60,6 +61,7 @@ export class UserComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     this.userFirstName = localStorage.getItem('userFirstName');
     this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
+    this.userEmail = localStorage.getItem('userEmail');
     console.log("URL : " + this.userPhotoUrl);
   }
 
@@ -71,6 +73,10 @@ export class UserComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
+  }
+
+  userProfile(userEmail: string) {
+    this.router.navigate(['/user/profile', { userEmail: userEmail }]);
   }
 }
 

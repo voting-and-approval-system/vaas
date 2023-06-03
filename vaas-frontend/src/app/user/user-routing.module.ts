@@ -5,17 +5,20 @@ import { VotingComponent } from './voting/voting.component';
 import { VotingFormComponent } from './voting-form/voting-form.component';
 import { ResultComponent } from './result/result.component';
 import { UserHomeComponent } from './user-home/user-home.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { TenantAuthGuard } from '../_services/user-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: UserComponent,
+    canActivate: [TenantAuthGuard], // Apply AuthGuard to the parent route
     children: [
       { path: 'user/voting', component: VotingComponent },
       { path: 'user/votingForm', component: VotingFormComponent },
       { path: 'user/result', component: ResultComponent },
-      { path: 'user/home', component: UserHomeComponent }
-
+      { path: 'user/home', component: UserHomeComponent },
+      { path: 'user/profile', component: UserProfileComponent },
     ]
   }
 ];

@@ -37,6 +37,7 @@ import { ShowUserComponent } from './admin/show-user/show-user.component';
 import { PendingUserComponent } from './pending-user/pending-user.component';
 import { VoteRoundComponent } from './admin/vote-round/vote-round.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 
 const appRoute: Routes = [
@@ -65,7 +66,8 @@ const appRoute: Routes = [
     ShowUserComponent,
     PendingUserComponent,
     VoteRoundComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

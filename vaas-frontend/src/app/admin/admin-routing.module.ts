@@ -10,11 +10,13 @@ import { OptionComponent } from './option/option.component';
 import { AddOptionComponent } from './add-option/add-option.component';
 import { ShowUserComponent } from './show-user/show-user.component';
 import { VoteRoundComponent } from './vote-round/vote-round.component';
+import { AuthGuard } from '../_services/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
+    canActivate: [AuthGuard], // Add the AuthGuard to protect the admin routes
     children: [
       { path: 'admin/assets', component: AssetsComponent },
       { path: 'admin/addassets', component: AddAssetsComponent },
@@ -25,8 +27,6 @@ const routes: Routes = [
       { path: 'admin/addoption', component: AddOptionComponent },
       { path: 'admin/showuser', component: ShowUserComponent },
       { path: 'admin/voteround', component: VoteRoundComponent}
-
-
     ]
   }
 ];
