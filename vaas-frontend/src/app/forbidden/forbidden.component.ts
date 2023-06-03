@@ -9,4 +9,5 @@ export class ForbiddenComponent {
   removeUserRole() {
     localStorage.clear(); // Remove the userRole from localStorage
   }
+
 }
