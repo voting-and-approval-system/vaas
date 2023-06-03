@@ -23,13 +23,11 @@ public class UsersController {
 
     @GetMapping("/users")
     @PreAuthorize("hasRole('ROLE_Admin')")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblUser> showUsers(){
         return usersService.showUsers();
     }
 
     @PostMapping("/user")
-    @CrossOrigin(origins = "http://localhost:4200")
     public TblUser saveUser(@Valid @RequestBody TblUser user){
         return usersService.saveUsers(user);
     }
@@ -46,7 +44,6 @@ public class UsersController {
     }
 
     @GetMapping("/users/{emailid}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Optional<TblUser> findByUserEmail(@PathVariable("emailid") String userEmail)
     {
         return this.usersService.findByUserEmail(userEmail);
@@ -54,7 +51,6 @@ public class UsersController {
 
 
     @GetMapping("/newusers")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblUser> showUserWithNoRole()
     {
         return this.usersService.showUserWithNoRole();
