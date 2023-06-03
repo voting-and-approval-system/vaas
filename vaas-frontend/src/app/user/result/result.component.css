@@ -1,18 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
+
 .container-fluid {
     padding-right: 10%;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .table {
     border-radius: 8px;
     border: black;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0 auto; /* Center the table horizontally */
 }
 
-
 .card {
-    width: -webkit-fill-available;
-    align-content: center;
+    width: max-content;
+    margin: 0 auto; /* Center the card horizontally */
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 100;
 }
 
 .main {
     width: fit-content;
+    font-family: 'Quicksand', sans-serif;
 }
+.title
+{
+  text-align: center;
+  font-weight: 200;
+  
+}
+
+.table:hover {
+    box-shadow: 0 0 20px rgba(85, 132, 185, 0.8);
+    border-color: #638cbb;
+  }

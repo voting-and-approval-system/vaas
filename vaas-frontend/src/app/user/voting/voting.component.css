@@ -77,3 +77,11 @@
     height: auto; /* Allow the height to adjust on smaller screens */
   }
 }
+
+.title
+{
+  text-align: center;
+  font-weight: 200;
+  margin-bottom: 50px;
+  
+}
