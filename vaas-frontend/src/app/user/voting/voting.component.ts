@@ -11,6 +11,8 @@ export class VotingComponent implements OnInit {
   userData: any = [];
   roundData: any = [];
 
+  constructor(private _userService: UserServicesService, private _router: Router) { }
+
   async ngOnInit(): Promise<void> {
     try {
       const res: any = await this._userService.findUserByEmail(localStorage.getItem('userEmail')).toPromise();
@@ -20,8 +22,6 @@ export class VotingComponent implements OnInit {
     }
     await this.displayRound(this.userData.id);
   }
-
-  constructor(private _userService: UserServicesService, private _router: Router) { }
 
   vote(roundId: number) {
     this._router.navigate(['/user/votingForm', { roundId: roundId }]);

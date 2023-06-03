@@ -1,23 +1,24 @@
 .btn {
-    height: 50px;
-    width: 100px;
-}
-
-.container-fluid {
-    padding-right: 10%;
-}
-
-.table {
-    border-radius: 8px;
-    border: black;
-    position: relative;
-}
-
-.card {
-    width: -webkit-fill-available;
-    align-content: center;
-}
-
-.main {
-    width: fit-content;
-}
+    color: #e8e8e8;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background: #0974f1;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .btn:hover {
+    outline: 2px solid #e8e8e8;
+    background: transparent;
+    color: #e8e8e8;
+  }
+  
+  .btn:active {
+    box-shadow: none;
+  }
+  

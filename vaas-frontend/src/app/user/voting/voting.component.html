@@ -1,48 +1,9 @@
-<!-- <div class="d-flex justify-content-center p-3 m-1 container-fluid">
-  <div class="card shadow p-3 mt-4">
-    <div div id="filter">
-      <div class="p-3">
-      </div>
-      <div class="p-3 mb-3 table-responsive border">
-        <table class="table bg-black">
-          <thead id="tableHead" class="thead-dark text-white jus">
-            <tr>
-              <th class="font-weight-bold" scope="col">Issue Title</th>
-              <th class="font-weight-bold" scope="col">Issue Description</th>
-              <th class="font-weight-bold" scope="col">Round Number</th>
-              <th class="font-weight-bold" scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let round of roundData">
-              <td class="bg-white ">{{round.issue.issueTitle}}</td>
-              <td class="bg-white ">{{round.issue.issueDescription}}</td>
-              <td class="bg-white ">{{round.roundNumber}}</td>
-              <td class="bg-white "><a class="btn btn-outline-primary" (click)="vote(round.id)">Vote</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div class="container d-flex">
+  <div *ngFor="let round of roundData" class="card container-fluid m-1">
+    <div class="content">
+      <p class="heading"> {{round.issue.issueTitle}}</p>
+      <p class="para">{{round.issue.issueDescription}}</p>
+      <button class="btn" (click)="vote(round.id)">Vote Now</button>
     </div>
   </div>
-</div> -->
-
-<section id="services" class="services section-bg">
-  <div class="container" data-aos="fade-up">
-    <div class="row">
-      <div *ngFor="let round of roundData" class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
-        <div class="icon-box iconbox-blue">
-          <div class="icon">
-            {{round.issue.issueTitle}}
-          </div>
-          <div class="description">
-            {{round.issue.issueDescription}}
-          </div>
-          <div class="vote-button">
-            <a class="btn btn-outline-primary" (click)="vote(round.id)">Vote</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
