@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
 .sidenav-link-icon {
     font-size: 22px;
     width: 2rem;
     min-width: 2rem;
     margin: 0 0.5rem;
     text-align: center;
+    
 }
 
 .active {
@@ -22,6 +24,7 @@
 .title {
     color: #fff;
     align-items: center;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .nav-link {
@@ -78,4 +81,5 @@ body {
     top: 10px;
     font-size: medium;
     padding: 10px;
+    font-family: 'Quicksand', sans-serif;
 }

@@ -41,4 +41,6 @@ export class UserServicesService {
   displayResult(issueId: number, roundNumber: number) {
     return this._http.get(this.baseUrl + `/result/${issueId}/${roundNumber}`, { headers: this.headers });
   }
+
+
 }
