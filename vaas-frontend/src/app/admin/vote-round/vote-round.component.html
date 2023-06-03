@@ -9,7 +9,7 @@
             <thead id="tableHead" class="thead-dark text-white jus">
               <tr>
                 <th class="font-weight-bold" scope="col">Title</th>
-                <th class="font-weight-bold" scope="col">Description</th>
+                <th class="font-weight-bold" scope="col">Round Number</th>
                 <th class="font-weight-bold" scope="col">Status</th>
               </tr>
             </thead>
@@ -17,9 +17,9 @@
               <tr *ngFor="let voteround of data">
                 <td class="bg-white ">{{voteround.issue.issueTitle}}</td>
                 <td class="bg-white ">{{voteround.roundNumber}}</td>
-                <td class="bg-white ">{{voteround.roundIsActive}}</td>
-                <td class="bg-white "><a class="btn btn-outline-success"
-                    (click)="deactivateRound(voteround.id)">Deactivate</a></td>
+                <td class="bg-white"><a
+                  [class]="voteround.roundIsActive ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="updateStatus(voteround.id,voteround.roundIsActive)">{{voteround.roundIsActive
+                  ? 'Active' : 'Deactive'}}</a></td>
               </tr>
             </tbody>
           </table>

@@ -35,12 +35,22 @@ export class IssuesComponent implements OnInit {
         this.getIssues();
       },
       error: (err) => {
-        console.log("Error While Delete : " + err);
+        alert("This issue can't be deleted !!");
       }
     })
   }
 
   viewOptions(id: number){
     this._router.navigate(['/admin/option', { id: id }]);
+  }
+
+  updateStatus(id : number,isActive : boolean){
+    isActive = isActive ? false : true;
+    this._adminService.updateIssueIsActive(id,isActive).subscribe({
+      next : (res) => {
+        alert("Status is Updated !!");
+        this.getIssues();
+      }
+    });
   }
 }

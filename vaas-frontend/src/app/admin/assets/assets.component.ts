@@ -33,7 +33,7 @@ export class AssetsComponent implements OnInit {
         this.getAssets();
       },
       error: (err) => {
-        console.log("Error While Delete : " + err);
+        alert("This assets can't be deleted !!");
       }
     })
   }

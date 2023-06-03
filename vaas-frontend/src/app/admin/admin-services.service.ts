@@ -50,9 +50,11 @@ export class AdminServicesService {
   addIssues(data: any) {
     return this._http.post(this.baseUrl + '/issue', data, { headers: this.headers });
   }
+
   updateIssues(id: number, data: any) {
     return this._http.put(this.baseUrl + `/issue/${id}`, data, { headers: this.headers });
   }
+
   findIssuesById(id: number): Observable<any> {
     return this._http.get(this.baseUrl + `/issue/${id}`, { headers: this.headers });
   }
@@ -65,10 +67,6 @@ export class AdminServicesService {
     return this._http.get(this.baseUrl + `/option/issue/${issueId}`, { headers: this.headers });
   }
 
-  getIssue(issueId : number) : Observable<any>{
-    return this._http.get(this.baseUrl + `/issue/${issueId}`, { headers: this.headers });
-  }
-
   addOption(data: any) {
     return this._http.post(this.baseUrl + '/option', data, { headers: this.headers });
   }
@@ -76,9 +74,11 @@ export class AdminServicesService {
   updateOption(id: number, data: any) {
     return this._http.put(this.baseUrl + `/option/${id}`, data, { headers: this.headers });
   }
+
   findOptionById(id: number): Observable<any> {
     return this._http.get(this.baseUrl + `/option/${id}`, { headers: this.headers });
   }
+
   deleteOption(id: number) {
     return this._http.delete(this.baseUrl + `/option/${id}`, { headers: this.headers });
   }
@@ -108,10 +108,14 @@ export class AdminServicesService {
   }
 
   getVoteRound(): Observable<any> {
-    return this._http.get(this.baseUrl + '/round/active', { headers: this.headers });
+    return this._http.get(this.baseUrl + '/round', { headers: this.headers });
   }
 
-  deactivateRound(id: number) {
-    return this._http.put(this.baseUrl + `/round/${id}`, null, { headers: this.headers });
+  updateIssueIsActive(issueId : number, isActive : boolean){
+    return this._http.put(this.baseUrl + `/issue/${issueId}/${isActive}`, null, { headers: this.headers });
+  }
+
+  updateRoundIsActive(roundId : number, isActive : boolean){
+    return this._http.put(this.baseUrl + `/round/${roundId}/${isActive}`, null, { headers: this.headers });
   }
 }
