@@ -22,7 +22,6 @@ public class ResultController {
     Evaluator[] evaluator;
 
     @GetMapping("/result/{issueid}/{roundno}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TotalVoteForIssue> getResponseWithHighestCount(@PathVariable(name = "issueid") Integer issueId, @PathVariable(name="roundno") Integer roundNo) throws Exception {
         return resultService.getResult(issueId, roundNo);
     }

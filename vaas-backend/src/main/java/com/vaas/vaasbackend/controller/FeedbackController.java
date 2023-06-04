@@ -1,12 +1,14 @@
 package com.vaas.vaasbackend.controller;
 
 import com.vaas.vaasbackend.entity.TblFeedback;
+import com.vaas.vaasbackend.entity.TblUser;
 import com.vaas.vaasbackend.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
 public class FeedbackController {
 
     @Autowired
@@ -17,7 +19,7 @@ public class FeedbackController {
         return feedbackService.saveFeedback(feedback);
     }
 
-    @GetMapping("/feedback")
+    @GetMapping("/feedbacks")
     public List<TblFeedback> showFeedback(){
         return feedbackService.showFeedback();
     }

@@ -21,14 +21,13 @@ public class VoteTypeController {
     public TblVotesType saveVoteType(@RequestBody TblVotesType votesType) {
         return voteTypeService.saveVoteType(votesType);
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+
     @GetMapping("/votetype")
     public List<TblVotesType> showVoteType(){
         return voteTypeService.showUserVoteType();
     }
 
     @GetMapping("/votetype/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public TblVotesType showVoteType(@PathVariable Integer id) throws DataNotFoundException {
         return voteTypeService.showVoteType(id);
     }

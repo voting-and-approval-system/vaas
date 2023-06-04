@@ -14,7 +14,6 @@ public class VotingController {
     @Autowired
     VotingService votingService;
     @PostMapping("/voting")
-    @CrossOrigin(origins = "http://localhost:4200")
     public Voting insertVotingDetails(@RequestBody Voting voting) throws Exception {
         return votingService.insertVotingDetails(voting);
     }

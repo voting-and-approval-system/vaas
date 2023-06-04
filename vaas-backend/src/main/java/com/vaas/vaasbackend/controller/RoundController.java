@@ -17,19 +17,16 @@ public class RoundController {
     @Autowired
     RoundService roundService;
     @GetMapping("/round")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> showRound(){
         return roundService.showRound();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/round/{id}")
     public TblRound showRound(@PathVariable Integer id) throws DataNotFoundException {
         return roundService.showRound(id);
     }
 
     @PostMapping("/round")
-    @CrossOrigin(origins = "http://localhost:4200")
     public TblRound saveRound(@RequestBody TblRound round){
         return roundService.saveRound(round);
     }
@@ -40,31 +37,26 @@ public class RoundController {
     }
 
     @GetMapping("/round/user/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> roundUserNotVote(@PathVariable Integer id) throws DataNotFoundException {
         return roundService.roundUserNotVote(id);
     }
 
     @GetMapping("/round/issueIsNotActive")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> roundWithDeactiveIssues() throws DataNotFoundException {
         return roundService.roundWithDeactiveIssues();
     }
 
     @GetMapping("/round/deactive")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> deactiveRounds() throws DataNotFoundException {
         return roundService.deactiveRounds();
     }
 
     @GetMapping("/round/active")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<TblRound> activeRound() throws DataNotFoundException {
         return roundService.activeRounds();
     }
 
     @PutMapping("round/{id}/{isActive}")
-    @CrossOrigin(origins = "http://localhost:4200")
     @PreAuthorize("hasRole('ROLE_Admin')")
     public TblRound updateRoundIsActive(@PathVariable("id") Integer roundId, @PathVariable("isActive") boolean isActive) throws DataNotFoundException {
         return roundService.updateRoundIsActive(roundId, isActive);
