@@ -4,9 +4,11 @@ import com.vaas.vaasbackend.entity.TblFeedback;
 import com.vaas.vaasbackend.repository.FeedbackRepository;
 import com.vaas.vaasbackend.repository.VoteTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FeedbackService {
 
     @Autowired

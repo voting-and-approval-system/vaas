@@ -10,6 +10,7 @@ import { OptionComponent } from './option/option.component';
 import { AddOptionComponent } from './add-option/add-option.component';
 import { ShowUserComponent } from './show-user/show-user.component';
 import { VoteRoundComponent } from './vote-round/vote-round.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 import { AuthGuard } from '../_services/auth.guard';
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: 'admin/option', component: OptionComponent },
       { path: 'admin/addoption', component: AddOptionComponent },
       { path: 'admin/showuser', component: ShowUserComponent },
-      { path: 'admin/voteround', component: VoteRoundComponent}
+      { path: 'admin/voteround', component: VoteRoundComponent},
+      { path: 'admin/feedback', component: FeedbackComponent}
     ]
   }
 ];

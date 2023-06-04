@@ -38,6 +38,7 @@ import { PendingUserComponent } from './pending-user/pending-user.component';
 import { VoteRoundComponent } from './admin/vote-round/vote-round.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { FeedbackComponent } from './admin/feedback/feedback.component';
 
 
 const appRoute: Routes = [
@@ -67,7 +68,8 @@ const appRoute: Routes = [
     PendingUserComponent,
     VoteRoundComponent,
     UserHomeComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
