@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pending-user.component.css']
 })
 export class PendingUserComponent {
-
+  removeUserRole() {
+    localStorage.clear();
+  }
 }
