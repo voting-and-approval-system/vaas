@@ -1,20 +1,21 @@
 <header id="header" class="header">
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <h1 class="logo"><img src="assets\logo2.svg" class="logo-wrapper"></h1>
-    
     <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" routerLink="/user/home" routerLinkActive="active">Home</a></li>
-        <li><a class="nav-link scrollto" routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
-        <li><a class="nav-link scrollto" routerLink="/user/result" routerLinkActive="active">Result</a></li>
+      <ul class="d-flex me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="/user/home" routerLinkActive="active">Home</a></li>
+        <li class="nav-item"><a class="nav-link " routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
+        <li class="nav-item"><a class="nav-link " routerLink="/user/result" routerLinkActive="active">Result</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             <h4 class="user-name">Welcome, {{ userFirstName }}</h4>
             <img [src]="userPhotoUrl" class="user-img">
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li><a routerLink="/user/Profile" class="dropdown-item" (click)="userProfile(userEmail)">View Profile</a></li>
-            <li><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
+            <li><a routerLink="/user/Profile" class="dropdown-item" (click)="userProfile(userEmail)">View Profile</a>
+            </li>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
           </ul>
         </li>
       </ul>
@@ -22,9 +23,10 @@
     </nav>
   </div>
 </header>
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+</div>
 <footer id="footer">
-
   <div class="footer-top">
     <div class="container">
       <div class="row">
