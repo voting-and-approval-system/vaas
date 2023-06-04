@@ -62,4 +62,9 @@ public class RoundController {
         return roundService.updateRoundIsActive(roundId, isActive);
     }
 
+    @GetMapping("/round/lastRoundNumber/{id}")
+    @PreAuthorize("hasRole('ROLE_Admin')")
+    public Integer lastRoundNumber(@PathVariable("id") int issueId){
+        return roundService.lastRoundNumber(issueId);
+    }
 }

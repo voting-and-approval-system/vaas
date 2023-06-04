@@ -12,6 +12,7 @@ import { ShowUserComponent } from './show-user/show-user.component';
 import { VoteRoundComponent } from './vote-round/vote-round.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { AuthGuard } from '../_services/auth.guard';
+import { ResultRevotingComponent } from './result-revoting/result-revoting.component';
 
 const routes: Routes = [
   {
@@ -28,7 +29,8 @@ const routes: Routes = [
       { path: 'admin/addoption', component: AddOptionComponent },
       { path: 'admin/showuser', component: ShowUserComponent },
       { path: 'admin/voteround', component: VoteRoundComponent},
-      { path: 'admin/feedback', component: FeedbackComponent}
+      { path: 'admin/feedback', component: FeedbackComponent},
+      { path: 'admin/result', component: ResultRevotingComponent}
     ]
   }
 ];

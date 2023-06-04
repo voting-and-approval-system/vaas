@@ -17,7 +17,7 @@ export class ResultComponent implements OnInit {
     this.displayRound();
   }
 
-  constructor(private _userService: UserServicesService, private _router: Router) { }
+  constructor(private _userService: UserServicesService) { }
 
   displayRound() {
     this._userService.displayDeactiveRounds().subscribe(
@@ -43,6 +43,4 @@ export class ResultComponent implements OnInit {
       });
     }
   }
-  
-
 }

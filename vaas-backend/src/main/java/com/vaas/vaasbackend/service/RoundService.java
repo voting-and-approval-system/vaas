@@ -73,4 +73,8 @@ public class RoundService {
         round.setRoundIsActive(isActive);
         return roundRepository.save(round);
     }
+
+    public Integer lastRoundNumber(Integer issueId){
+        return roundRepository.lastRoundNumber(issueId);
+    }
 }

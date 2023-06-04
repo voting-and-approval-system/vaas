@@ -63,7 +63,7 @@ export class AdminServicesService {
     return this._http.delete(this.baseUrl + `/issue/${id}`, { headers: this.headers });
   }
 
-  getOptions(issueId : number): Observable<any> {
+  getOptions(issueId: number): Observable<any> {
     return this._http.get(this.baseUrl + `/option/issue/${issueId}`, { headers: this.headers });
   }
 
@@ -111,15 +111,27 @@ export class AdminServicesService {
     return this._http.get(this.baseUrl + '/round', { headers: this.headers });
   }
 
-  updateIssueIsActive(issueId : number, isActive : boolean){
+  updateIssueIsActive(issueId: number, isActive: boolean) {
     return this._http.put(this.baseUrl + `/issue/${issueId}/${isActive}`, null, { headers: this.headers });
   }
 
-  updateRoundIsActive(roundId : number, isActive : boolean){
+  updateRoundIsActive(roundId: number, isActive: boolean) {
     return this._http.put(this.baseUrl + `/round/${roundId}/${isActive}`, null, { headers: this.headers });
   }
 
   getFeedback(): Observable<any> {
     return this._http.get(this.baseUrl + '/feedbacks', { headers: this.headers });
+  }
+
+  displayDeactiveRounds() {
+    return this._http.get(this.baseUrl + '/round/deactive', { headers: this.headers });
+  }
+
+  displayResult(issueId: number, roundNumber: number) {
+    return this._http.get(this.baseUrl + `/result/${issueId}/${roundNumber}`, { headers: this.headers });
+  }
+
+  lastRoundNumber(issueId : number){
+    return this._http.get(this.baseUrl + `/round/lastRoundNumber/${issueId}`, { headers: this.headers });
   }
 }
