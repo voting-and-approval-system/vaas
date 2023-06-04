@@ -37,9 +37,16 @@
 .content .para {
   line-height: 1.5;
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 200;
   color: #000;
+  display: block;/* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 5.6em;
+  line-height: 1.8em;
+
 }
 
 .content .btn {
