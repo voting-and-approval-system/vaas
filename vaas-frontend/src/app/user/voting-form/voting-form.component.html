@@ -1,9 +1,8 @@
+<h1 class="title">{{ roundData.issue?.issueTitle }}</h1>
+<h5 class="description">{{ roundData.issue?.issueDescription }}</h5>
 <div class="d-flex justify-content-center p-3 m-1 container-fluid">
     <div class="card shadow p-3 mt-4">
       <div id="filter">
-        <div class="p-3">
-          <h1>{{ roundData.issue?.issueTitle }}</h1>
-        </div>
         <div class="p-3 mb-3 table-responsive border">
           <form [formGroup]="votingForm" (ngSubmit)="voting()">
             <div class="form-group">
@@ -26,7 +25,7 @@
                     </div>
                   </div>
                   <div *ngIf="roundData.issue?.allowFeedback" class="justify-content-left form-check col">
-                    <label for="">Feedback</label>
+                    <label class="feedback">Feedback</label>
                     <textarea class="form-control" [formControlName]="'feedback'"></textarea>
                   </div>
                 </div>
@@ -41,3 +40,9 @@
     </div>
   </div>
   
+
+
+
+ 
+      
+      

@@ -118,4 +118,8 @@ export class AdminServicesService {
   updateRoundIsActive(roundId : number, isActive : boolean){
     return this._http.put(this.baseUrl + `/round/${roundId}/${isActive}`, null, { headers: this.headers });
   }
+
+  getFeedback(): Observable<any> {
+    return this._http.get(this.baseUrl + '/feedbacks', { headers: this.headers });
+  }
 }

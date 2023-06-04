@@ -28,5 +28,10 @@ export const navbarData = [
         routeLink: '/admin/showuser',
         icon: 'fal fa-thin fa-person-sign',
         label: 'Approve user'
+    },
+    {
+        routeLink: '/admin/feedback',
+        icon: 'fal fa-thin fa-person-sign',
+        label: 'Approve user'
     }
 ];
