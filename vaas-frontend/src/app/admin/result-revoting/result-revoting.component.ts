@@ -52,14 +52,14 @@ export class ResultRevotingComponent implements OnInit {
       const roundNumberResponse: any = await this._adminService.lastRoundNumber(id).toPromise();
       this.roundNumber = roundNumberResponse;
     } catch (error) {
-      // Handle the error
+      console.log(error.error);
     }
 
     try {
       const issueDataResponse = await this._adminService.findIssuesById(id).toPromise();
       this.issueData = issueDataResponse;
     } catch (error) {
-      // Handle the error
+      console.log(error.error);
     }
 
     this.newRound.issue = this.issueData;

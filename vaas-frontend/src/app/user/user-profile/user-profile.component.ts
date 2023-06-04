@@ -10,8 +10,7 @@ import { UserServicesService } from '../user-services.service';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-
-  userData; 
+  userData;
   userEmail: string = localStorage.getItem('userEmail');
   userPhotoUrl: string;
 
@@ -20,21 +19,15 @@ export class UserProfileComponent implements OnInit {
     private userAuthService: UserAuthService,
     private router: Router,
     private loginService: LoginService,
-  ) {}
-
-
+  ) { }
 
   async ngOnInit(): Promise<void> {
     try {
       const res: any = await this._userService.findUserByEmail(localStorage.getItem('userEmail')).toPromise();
       this.userData = res;
-      console.log(this.userData)
     } catch (error) {
       console.error(error);
     }
-
     this.userPhotoUrl = localStorage.getItem('userPhotoUrl');
   }
-
-
 }

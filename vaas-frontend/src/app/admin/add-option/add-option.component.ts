@@ -27,8 +27,6 @@ export class AddOptionComponent implements OnInit {
   async ngOnInit() {
     const data = this._route.snapshot.paramMap.get('id');
     this.issueId = Number(this._route.snapshot.paramMap.get('issueId'));
-  
-    console.log("Issue Id " + this.issueId);
 
     if (data != null) {
       try {

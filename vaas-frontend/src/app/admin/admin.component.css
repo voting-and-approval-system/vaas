@@ -54,19 +54,10 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-.sticky-footer {
-    padding: 20px;
-    text-align: center;
-    position: sticky;
-    bottom: 0;
-    font-family: 'Quicksand', sans-serif;
-}
 
 .company-logo {
     color: #fff;
     margin-top: 10px;
-    margin-right: 50%;
-    margin-left: 50%;
 }
 
 .navbar-toggler {
