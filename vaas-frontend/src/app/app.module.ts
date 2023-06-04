@@ -39,6 +39,7 @@ import { VoteRoundComponent } from './admin/vote-round/vote-round.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FeedbackComponent } from './admin/feedback/feedback.component';
+import { ResultRevotingComponent } from './admin/result-revoting/result-revoting.component';
 
 
 const appRoute: Routes = [
@@ -69,7 +70,9 @@ const appRoute: Routes = [
     VoteRoundComponent,
     UserHomeComponent,
     UserProfileComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ResultRevotingComponent
+    
   ],
   imports: [
     BrowserModule,

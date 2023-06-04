@@ -28,5 +28,6 @@ public interface RoundRepository extends JpaRepository<TblRound,Integer> {
     @Query(nativeQuery = true,value = "select * from tbl_round where round_is_active = 'true'")
     List<TblRound> activeRounds();
 
-
+    @Query(nativeQuery = true, value = "select max(round_number) as round_number from tbl_round where issue_id = ?")
+    Integer lastRoundNumber(int issueId);
 }
