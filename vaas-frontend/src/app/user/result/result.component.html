@@ -6,13 +6,13 @@
       </div>
 
       <div class="p-3 mb-3 table-responsive border">
-        <table class="table">
+        <table class="table table-bordered">
           <thead id="tableHead" class="thead-dark text-black jus">
             <tr>
               <th class="font-weight-bold" scope="col">Issue Title</th>
               <th class="font-weight-bold" scope="col">Issue Description</th>
               <th class="font-weight-bold" scope="col">Round Number</th>
-              <th class="font-weight-bold" scope="col"></th>
+              <th class="font-weight-bold" scope="col">Result</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +26,7 @@
                   (click)="viewResult(round.issue.id,round.roundNumber,i)">{{
                   currentCollapseIndex === i ? 'X'
                   : 'View Result' }}</a></td>
-              <td class="bg-white ">
+              
                 <div class="collapse" [id]="'collapseExample' + i" [ngClass]="{ 'show': currentCollapseIndex === i }">
                   <div class="card card-body" *ngFor="let result of resultData">
                     <p>Winning Option : {{result.optionTitle}}</p>
@@ -36,7 +36,7 @@
                     <p>{{errorMessage}}</p>
                   </div>
                 </div>
-              </td>
+              
               </tr>
           </tbody>
         </table>
