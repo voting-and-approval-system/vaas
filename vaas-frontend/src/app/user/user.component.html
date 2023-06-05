@@ -2,14 +2,14 @@
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <h1 class="logo"><img src="assets\logo2.svg" class="logo-wrapper"></h1>
     <nav id="navbar" class="navbar">
-      <ul class="d-flex me-auto mb-2 mb-lg-0">
+      <ul>
         <li class="nav-item"><a class="nav-link" routerLink="/user/home" routerLinkActive="active">Home</a></li>
         <li class="nav-item"><a class="nav-link " routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
         <li class="nav-item"><a class="nav-link " routerLink="/user/result" routerLinkActive="active">Result</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <h4 class="user-name">Welcome, {{ userFirstName }}</h4>
+            <h4 id="user-name" class="user-name">Welcome, {{ userFirstName }}</h4>
             <img [src]="userPhotoUrl" class="user-img">
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
