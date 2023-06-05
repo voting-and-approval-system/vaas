@@ -21,6 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], // Add the AuthGuard to protect the admin routes
     children: [
       { path: 'admin/assets', component: AssetsComponent },
+      { path: 'admin/assets', component: AssetsComponent },
       { path: 'admin/addassets', component: AddAssetsComponent },
       { path: 'admin/votetypes', component: VoteTypesComponent },
       { path: 'admin/issues', component: IssuesComponent },

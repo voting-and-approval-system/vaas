@@ -6,14 +6,16 @@ import { UserComponent } from './user/user.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminOptionComponent } from './admin-option/admin-option.component';
 import { PendingUserComponent } from './pending-user/pending-user.component';
+import { AuthGuard } from './_services/auth.guard';
+import { TenantAuthGuard } from './_services/user-auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '', component: HomeComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  { path: 'adminoption', component: AdminOptionComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'adminoption', component: AdminOptionComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [TenantAuthGuard] },
   { path: 'pending', component: PendingUserComponent },
 
 ];
