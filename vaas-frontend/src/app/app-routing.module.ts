@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: '', component: HomeComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  { path: 'adminoption', component: AdminOptionComponent, canActivate: [AuthGuard] },
+  { path: 'adminoption', component: AdminOptionComponent},
   { path: 'user', component: UserComponent, canActivate: [TenantAuthGuard] },
   { path: 'pending', component: PendingUserComponent },
 
