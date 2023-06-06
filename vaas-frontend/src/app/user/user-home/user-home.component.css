@@ -16,13 +16,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: ease-in-out 0.3s;
     position: relative;
   }
 
   .services .icon-box .icon i {
     font-size: 36px;
-    transition: 0.5s;
     position: relative;
   }
 

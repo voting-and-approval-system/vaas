@@ -3,8 +3,8 @@
 <div class="d-flex justify-content-center p-3 m-1 container-fluid">
     <div class="card shadow p-3 mt-4">
       <div id="filter">
-        <div class="p-3 mb-3 table-responsive border">
-          <form [formGroup]="votingForm" (ngSubmit)="voting()">
+        <div class="p-3 mb-3 table-responsive border card-header">
+          <form [formGroup]="votingForm" class="form" (ngSubmit)="voting()">
             <div class="form-group">
               <div class="row">
                 <div class="justify-content-left">
@@ -37,6 +37,7 @@
           </form>
         </div>
       </div>
+      
     </div>
   </div>
   

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NgZone } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
@@ -24,4 +24,13 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+  router: any; 
+  constructor(private ngZone: NgZone) {} // Inject NgZone into the constructor
+
+navigate(route: string): void {
+  this.ngZone.run(() => {
+    this.router.navigateByUrl(route);
+  });
+}
+}
