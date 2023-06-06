@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NgZone } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { AssetsComponent } from './assets/assets.component';
@@ -18,20 +18,63 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    canActivate: [AuthGuard], // Add the AuthGuard to protect the admin routes
+    canActivate: [AuthGuard],
     children: [
-      { path: 'admin/assets', component: AssetsComponent },
-      { path: 'admin/assets', component: AssetsComponent },
-      { path: 'admin/addassets', component: AddAssetsComponent },
-      { path: 'admin/votetypes', component: VoteTypesComponent },
-      { path: 'admin/issues', component: IssuesComponent },
-      { path: 'admin/addissues', component: AddIssuesComponent },
-      { path: 'admin/option', component: OptionComponent },
-      { path: 'admin/addoption', component: AddOptionComponent },
-      { path: 'admin/showuser', component: ShowUserComponent },
-      { path: 'admin/voteround', component: VoteRoundComponent},
-      { path: 'admin/feedback', component: FeedbackComponent},
-      { path: 'admin/result', component: ResultRevotingComponent}
+      {
+        path: 'admin/assets',
+        component: AssetsComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/addassets',
+        component: AddAssetsComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/votetypes',
+        component: VoteTypesComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/issues',
+        component: IssuesComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/addissues',
+        component: AddIssuesComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/option',
+        component: OptionComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/addoption',
+        component: AddOptionComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/showuser',
+        component: ShowUserComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/voteround',
+        component: VoteRoundComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/feedback',
+        component: FeedbackComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'admin/result',
+        component: ResultRevotingComponent,
+        pathMatch: 'full'
+      }
     ]
   }
 ];
@@ -40,4 +83,13 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+  router: any;
+  constructor(private ngZone: NgZone) {} // Inject NgZone into the constructor
+
+  navigate(route: string): void {
+    this.ngZone.run(() => {
+      this.router.navigateByUrl(route);
+    });
+  }
+}

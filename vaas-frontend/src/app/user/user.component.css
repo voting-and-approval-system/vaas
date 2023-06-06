@@ -10,6 +10,8 @@
     align-items: center;
   }
 
+  
+
   .navbar li {
     position: relative;
   }
@@ -79,6 +81,19 @@
     padding: 10px 20px;
     text-transform: none;
   }
+
+  .d-flex .nav-item{
+    position: relative;
+    left: 15vw;
+  }
+  
+  @media only screen and (max-width: 414px) {
+    .d-flex .nav-item{
+      position: relative;
+      left: 5px;
+    }
+   
+      }
 
   .navbar .dropdown ul a i {
     font-size: 12px;

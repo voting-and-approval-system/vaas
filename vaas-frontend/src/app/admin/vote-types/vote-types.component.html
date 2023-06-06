@@ -6,7 +6,7 @@
       </div>
       <div class="p-3 mb-3 table-responsive border">
         <table class="table bg-black">
-          <thead id="tableHead" class="thead-dark text-white jus">
+          <thead id="tableHead" class="thead-dark text-white">
             <tr>
               <th class="font-weight-bold" scope="col">Title</th>
               <th class="font-weight-bold" scope="col">Description</th>
@@ -14,8 +14,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let votetype of data">
-              <td class="bg-white ">{{votetype.voteTypeTitle}}</td>
-              <td class="bg-white ">{{votetype.voteTypeDescription}}</td>
+              <td class="bg-white">{{votetype.voteTypeTitle}}</td>
+              <td class="bg-white overflow-hidden">{{votetype.voteTypeDescription}}</td>
             </tr>
           </tbody>
         </table>

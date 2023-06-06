@@ -1,15 +1,20 @@
-<header id="header" class="header">
+<!-- <header id="header" class="header"> -->
+  <nav id="navbar" class="navbar">
   <div class="container-fluid d-flex align-items-center justify-content-between">
+    <div>
     <h1 class="logo"><img src="assets\logo2.svg" class="logo-wrapper"></h1>
-    <nav id="navbar" class="navbar">
-      <ul>
+  </div>
+  <div class="d-flex nav-item">
+      <ul class="d-flex me-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" routerLink="/user/home" routerLinkActive="active">Home</a></li>
         <li class="nav-item"><a class="nav-link " routerLink="/user/voting" routerLinkActive="active">Voting</a></li>
         <li class="nav-item"><a class="nav-link " routerLink="/user/result" routerLinkActive="active">Result</a></li>
-        <li class="nav-item dropdown">
+      </ul>
+    </div>
+        <div class="d-flex dropdown">
           <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <h4 id="user-name" class="user-name">Welcome, {{ userFirstName }}</h4>
+            <h4 class="user-name">Welcome, {{ userFirstName }}</h4>
             <img [src]="userPhotoUrl" class="user-img">
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
@@ -17,12 +22,12 @@
             </li>
             <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      
       <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav>
   </div>
-</header>
+</nav>
+<!-- </header> -->
 <div>
   <router-outlet></router-outlet>
 </div>
@@ -32,7 +37,7 @@
       <div class="row">
 
         <div class="col-lg-3 col-md-6 footer-contact">
-          <h3>bbd Softwere</h3>
+          <h3>bbd Software</h3>
           <p>
             Floor 7, Wing C Marisoft<br>
             Kalyani Nagar Annex<br>
@@ -66,7 +71,7 @@
 
         <div class="col-lg-4 col-md-6 footer-newsletter">
           <h4>Join Our Newsletter</h4>
-          
+          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
           <form action="" method="post">
             <input type="email" name="email"><input type="submit" value="Subscribe">
           </form>
@@ -80,10 +85,10 @@
 
     <div class="me-md-auto text-center text-md-start">
       <div class="copyright">
-        &copy; Copyright <strong><span>bbd Softwere</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>bbd Software</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://bbd.co.za/">bbd Softwere</a>
+        Designed by <a href="https://bbd.co.za/">bbd Software</a>
       </div>
     </div>
     <div class="social-links text-center text-md-right pt-3 pt-md-0">

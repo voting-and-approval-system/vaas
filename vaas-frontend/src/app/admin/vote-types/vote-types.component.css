@@ -22,3 +22,7 @@
     width: fit-content;
     font-family: 'Quicksand', sans-serif;
 }
+
+.overflow-hidden {
+    overflow: hidden;
+}
