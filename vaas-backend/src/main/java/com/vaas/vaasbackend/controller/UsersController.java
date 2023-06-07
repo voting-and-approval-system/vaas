@@ -49,13 +49,14 @@ public class UsersController {
         return this.usersService.findByUserEmail(userEmail);
     }
 
-
     @GetMapping("/newusers")
     public List<TblUser> showUserWithNoRole()
     {
         return this.usersService.showUserWithNoRole();
     }
 
-
-
+    @GetMapping("/user/totalusers")
+    public Integer totalUser(){
+        return usersService.totalUser();
+    }
 }
