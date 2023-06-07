@@ -12,25 +12,29 @@ import { TenantAuthGuard } from './_services/user-auth.guard';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'adminoption', component: AdminOptionComponent },
   { path: '', component: HomeComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  { path: 'adminoption', component: AdminOptionComponent},
   { path: 'user', component: UserComponent, canActivate: [TenantAuthGuard] },
   { path: 'pending', component: PendingUserComponent },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    scrollOffset: [0, 64],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
-  router: any; 
-  constructor(private ngZone: NgZone) {} // Inject NgZone into the constructor
+  router: any;
+  constructor(private ngZone: NgZone) { } 
 
-navigate(route: string): void {
-  this.ngZone.run(() => {
-    this.router.navigateByUrl(route);
-  });
-}
+  navigate(route: string): void {
+    this.ngZone.run(() => {
+      this.router.navigateByUrl(route);
+    });
+  }
 }

@@ -21,9 +21,7 @@ export class AdminComponent implements OnInit {
 
 
   public logout() {
-    console.log("After Clear :" + localStorage.getItem('preferedRole'));
     this.userAuthService.clear();
-    console.log("After Clear :" + localStorage.getItem('preferedRole'));
     this.router.navigate(['/home']);
   }
 
