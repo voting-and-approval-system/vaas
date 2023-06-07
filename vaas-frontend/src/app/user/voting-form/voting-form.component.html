@@ -1,43 +1,37 @@
 <h1 class="title">{{ roundData.issue?.issueTitle }}</h1>
 <h5 class="description">{{ roundData.issue?.issueDescription }}</h5>
 <div class="d-flex justify-content-center p-3 m-1 container-fluid">
-    <div class="card shadow p-3 mt-4">
-      <div id="filter">
-        <div class="p-3 mb-3 table-responsive border card-header">
-          <form [formGroup]="votingForm" class="form" (ngSubmit)="voting()">
-            <div class="form-group">
-              <div class="row">
-                <div class="justify-content-left">
-                  <div class="form-check col" *ngFor="let option of optionData; let i = index">
-                    <label class="form-label" [for]="'optionId' + i">{{ option.optionTitle }}</label>
-                    <ng-container *ngIf="roundData.issue?.allowMultipleOptions; else radioOption">
-                      <input class="form-check-input" type="checkbox" [value]="option.id" name="optionId"
-                        [id]="'optionId' + i" [formControlName]="'optionId'" (change)="onChange()"
-                        [(ngModel)]="option.isSelected" required>
-                    </ng-container>
-                    <ng-template #radioOption>
-                      <input class="form-check-input" type="radio" [value]="option.id" [id]="'optionId' + i"
-                        [formControlName]="'optionId'" (change)="onChange()" [(ngModel)]="option.isSelected" required>
-                    </ng-template>
-                    <div class="col">
-                      <input class="form-control" type="text" *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'"
-                        name="preference">
-                    </div>
-                  </div>
-                  <div *ngIf="roundData.issue?.allowFeedback" class="justify-content-left form-check col">
-                    <label class="feedback">Feedback</label>
-                    <textarea class="form-control" [formControlName]="'feedback'"></textarea>
+  <div class="card shadow p-3 mt-4">
+    <div id="filter">
+      <div class="p-3 mb-3 table-responsive border card-header">
+        <form [formGroup]="votingForm" class="form" (ngSubmit)="voting()">
+          <div class="form-group">
+            <div class="row">
+              <div class="justify-content-left">
+                <div class="form-check col" *ngFor="let option of optionData; let i = index">
+                  <label class="form-label" [for]="'optionId' + i">{{ option.optionTitle }}</label>
+                  <ng-container *ngIf="roundData.issue?.allowMultipleOptions; else radioOption">
+                    <input class="form-check-input" type="checkbox" [value]="option.id" name="optionId"
+                      [id]="'optionId' + i" [formControlName]="'optionId'" [(ngModel)]="option.isSelected" required>
+                  </ng-container>
+                  <ng-template #radioOption>
+                    <input class="form-check-input" type="radio" [value]="option.id" [id]="'optionId' + i"
+                      [formControlName]="'optionId'" [(ngModel)]="option.isSelected" required>
+                  </ng-template>
+                  <div class="col">
+                    <input class="form-control" type="text"
+                      *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'" name="preference">
                   </div>
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-dark">Vote</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-dark">Vote</button>
+          </div>
+        </form>
       </div>
-      
     </div>
+
   </div>
-  
+</div>

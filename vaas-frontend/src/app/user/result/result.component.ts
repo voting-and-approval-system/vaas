@@ -38,7 +38,7 @@ export class ResultComponent implements OnInit {
         },
         error: (err: any) => {
           this.resultData = [];
-          this.errorMessage = err.error.message;
+          this.errorMessage = "There is no exact Winner For This Issue, New Voting Round Will be Live Soon !!";
         }
       });
     }
