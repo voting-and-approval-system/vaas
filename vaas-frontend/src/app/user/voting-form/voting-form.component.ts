@@ -22,7 +22,6 @@ export class VotingFormComponent implements OnInit {
       optionId: '',
       preference: ''
     }],
-    feedback: ''
   }
 
 
@@ -30,7 +29,6 @@ export class VotingFormComponent implements OnInit {
     this.votingForm = this._formBuilder.group({
       optionId: '',
       preference: '',
-      feedback: ''
     })
   }
 
@@ -56,7 +54,7 @@ export class VotingFormComponent implements OnInit {
     }
   }
 
-  voting() {
+  voting() : any{
     this.votingData.userId = this.userData.id;
     this.votingData.roundId = this.roundData.id;
     this.votingData.votePreferences = this.optionData.filter(x => x.isSelected != false).map((option: any) => {
@@ -64,23 +62,18 @@ export class VotingFormComponent implements OnInit {
         optionId: option.id
       }
     });
-    this.votingData.feedback = this.votingForm.get('feedback').value;
 
-    console.log(JSON.stringify(this.votingData));
-
-    console.log(JSON.stringify(this.votingForm.value));
-
-    return this._userService.voting(this.votingData).subscribe({
-      next: (res) => {
-        this._router.navigate(['/user/voting']);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    });
-  }
-
-  onChange() {
-    console.log(this.optionData);
+    if (this.votingData.votePreferences != '') {
+      return this._userService.voting(this.votingData).subscribe({
+        next: (res) => {
+          this._router.navigate(['/user/voting']);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    } else {
+      alert("Please select any option for vote !!");
+    }
   }
 }

@@ -50,15 +50,6 @@ public class VotingService {
                 voteOption.setPreference(votePreference.getPreference());
                 entityManager.persist(voteOption);
             }
-            
-            if(!voting.getFeedback().isEmpty()){
-                TblFeedback tblFeedback = new TblFeedback();
-                tblFeedback.setFeedbackDescription(voting.getFeedback());
-                tblFeedback.setFeedbackDate(voting.getVoteDate());
-                tblFeedback.setUser(usersRepository.findById(voting.getUserId()).get());
-                tblFeedback.setIssue(issueRepository.getIssueByRoundId(voting.getRoundId()));
-                entityManager.persist(tblFeedback);
-            }
             return voting;
         } catch (Exception e) {
             throw new Exception("No Voting");
