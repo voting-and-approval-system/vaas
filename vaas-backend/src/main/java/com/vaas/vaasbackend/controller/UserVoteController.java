@@ -32,4 +32,9 @@ public class UserVoteController {
     public TblUsersVote saveUserVote(@RequestBody TblUsersVote usersVote) throws Exception {
         return userVoteService.saveUserVote(usersVote);
     }
+
+    @GetMapping("uservote/totalvote/{issueId}/{roundNumber}")
+    public Integer countVoteForRound(@PathVariable("issueId") int issueId,@PathVariable("roundNumber") int roundNumber){
+        return userVoteService.countVoteForRound(issueId,roundNumber);
+    }
 }

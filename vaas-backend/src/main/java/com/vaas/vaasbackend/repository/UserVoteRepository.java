@@ -20,4 +20,9 @@ public interface UserVoteRepository extends JpaRepository<TblUsersVote,Integer> 
     @Query(nativeQuery = true,value = "select tbl_users.user_id from tbl_users,tbl_users_vote,tbl_round where tbl_users.user_id = tbl_users_vote.user_id and\n" +
             "tbl_round.round_id = tbl_users_vote.round_id and tbl_users.user_id = ? and tbl_round.round_id = ?")
     public Integer userAlreadyVote(int userId,int roundId);
+
+    @Query(nativeQuery = true,value = "select count(tbl_users_vote.user_id) from tbl_users_vote,tbl_issue,tbl_round\n" +
+            "where tbl_round.round_id = tbl_users_vote.round_id and tbl_issue.issue_id = tbl_round.issue_id\n" +
+            "and tbl_issue.issue_id = ? and tbl_round.round_number = ?")
+    Integer countVoteForRound(int issueId,int roundNumber);
 }
