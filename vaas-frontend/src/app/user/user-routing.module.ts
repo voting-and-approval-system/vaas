@@ -7,6 +7,7 @@ import { ResultComponent } from './result/result.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TenantAuthGuard } from '../_services/user-auth.guard';
+import { ShowResultComponent } from './show-result/show-result.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'user/result', component: ResultComponent },
       { path: 'user/home', component: UserHomeComponent },
       { path: 'user/profile', component: UserProfileComponent },
+      { path: 'user/show-result', component: ShowResultComponent },
     ]
   }
 ];
