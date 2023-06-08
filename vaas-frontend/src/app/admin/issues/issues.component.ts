@@ -28,18 +28,6 @@ export class IssuesComponent implements OnInit {
     this._router.navigate(['/admin/addissues', { id: id }]);
   }
 
-  deleteIssues(id: number) {
-    this._adminService.deleteIssues(id).subscribe({
-      next: (res) => {
-        alert("Record Deleted !!");
-        this.getIssues();
-      },
-      error: (err) => {
-        alert("This issue can't be deleted !!");
-      }
-    })
-  }
-
   viewOptions(id: number){
     this._router.navigate(['/admin/option', { id: id }]);
   }

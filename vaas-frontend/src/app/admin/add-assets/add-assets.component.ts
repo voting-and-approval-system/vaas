@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminServicesService } from '../admin-services.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-add-assets',
@@ -12,7 +13,7 @@ export class AddAssetsComponent implements OnInit {
   assetsForm: FormGroup;
   data = null;
 
-  constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService, private _router: Router, private _route: ActivatedRoute) {
+  constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService, private _router: Router, private _route: ActivatedRoute,private _coreService : CoreService) {
     this.assetsForm = this._formBuilder.group({
       assetsTitle: '',
       assetsDescription: ''
@@ -44,7 +45,7 @@ export class AddAssetsComponent implements OnInit {
     }
     return this._adminService.addAssets(this.assetsForm.value).subscribe({
       next: (val: any) => {
-        alert("Assets Added !!");
+        this._coreService.openSnackBar("Assets Add !!");
         this._router.navigate(['/admin/assets']);
         this.assetsForm.reset();
       },
@@ -58,7 +59,7 @@ export class AddAssetsComponent implements OnInit {
   updateAssets(id: number) {
     return this._adminService.updateAssets(id, this.assetsForm.value).subscribe({
       next: (val: any) => {
-        alert("Assets Updated !!");
+        this._coreService.openSnackBar("Assets Updated !!");
         this._router.navigate(['/admin/assets']);
         this.assetsForm.reset();
       },
