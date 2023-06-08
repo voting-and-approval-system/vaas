@@ -21,21 +21,8 @@
               <td class="bg-white">{{round.issue.issueDescription}}</td>
               <td class="bg-white ">{{round.roundNumber}}</td>
               <td class="bg-white "><a
-                  [class]="currentCollapseIndex === i ? 'btn btn-outline-dark' : 'btn btn-outline-primary'"
-                  data-bs-toggle="collapse" href="#collapseExample{{i}}"
-                  (click)="viewResult(round.issue.id,round.roundNumber,i)">{{
-                  currentCollapseIndex === i ? 'X'
-                  : 'View Result' }}</a></td>
-              
-                <div class="collapse" [id]="'collapseExample' + i" [ngClass]="{ 'show': currentCollapseIndex === i }">
-                  <div class="card card-body" *ngFor="let result of resultData">
-                    <p>Winning Option : {{result.optionTitle}}</p>
-                    <p>Total Vote : {{result.count}}</p>
-                  </div>
-                  <div class="card card-body" *ngIf="errorMessage">
-                    <p>{{errorMessage}}</p>
-                  </div>
-                </div>
+                  [class]="'btn btn-outline-primary'"
+                  (click)="viewResult(round.issue.id,round.roundNumber,i)">View Result</a></td>
               </tr>
           </tbody>
         </table>
