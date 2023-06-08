@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServicesService } from '../user-services.service';
 import { formatDate } from '@angular/common';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-voting-form',
@@ -12,6 +13,7 @@ export class VotingFormComponent implements OnInit {
   roundData: any = [];
   optionData: any = [];
   userData: any = [];
+  votingForm: FormGroup;
 
   votingData: any = {
     userId: '',
@@ -24,8 +26,11 @@ export class VotingFormComponent implements OnInit {
   }
 
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService) {
-   
+  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder) {
+    this.votingForm = this._formBuilder.group({
+      optionId: '',
+      preference: '',
+    })
   }
 
   async ngOnInit(): Promise<void> {
