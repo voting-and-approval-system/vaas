@@ -17,25 +17,11 @@ export class AssetsComponent implements OnInit {
     this.getAssets();
   }
 
-
-
   getAssets() {
     this._adminService.getAssets().subscribe(
       (res) => {
         this.data = res;
       });
-  }
-
-  deleteAssets(id: number) {
-    this._adminService.deleteAssets(id).subscribe({
-      next: (res) => {
-        alert("Record Deleted !!");
-        this.getAssets();
-      },
-      error: (err) => {
-        alert("This assets can't be deleted !!");
-      }
-    })
   }
 
   editAssets(id: number) {
