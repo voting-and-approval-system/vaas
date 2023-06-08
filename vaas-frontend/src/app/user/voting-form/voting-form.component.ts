@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServicesService } from '../user-services.service';
 import { formatDate } from '@angular/common';
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-voting-form',
@@ -13,7 +12,7 @@ export class VotingFormComponent implements OnInit {
   roundData: any = [];
   optionData: any = [];
   userData: any = [];
-  votingForm: FormGroup;
+
   votingData: any = {
     userId: '',
     roundId: '',
@@ -25,11 +24,8 @@ export class VotingFormComponent implements OnInit {
   }
 
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder) {
-    this.votingForm = this._formBuilder.group({
-      optionId: '',
-      preference: '',
-    })
+  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService) {
+   
   }
 
   async ngOnInit(): Promise<void> {
@@ -46,7 +42,8 @@ export class VotingFormComponent implements OnInit {
         return {
           id: option.id,
           optionTitle: option.optionTitle,
-          isSelected: false
+          isSelected: false,
+          preference : ''
         };
       });
     } catch (error) {
@@ -59,7 +56,8 @@ export class VotingFormComponent implements OnInit {
     this.votingData.roundId = this.roundData.id;
     this.votingData.votePreferences = this.optionData.filter(x => x.isSelected != false).map((option: any) => {
       return {
-        optionId: option.id
+        optionId: option.id,
+        preference : option.preference
       }
     });
 

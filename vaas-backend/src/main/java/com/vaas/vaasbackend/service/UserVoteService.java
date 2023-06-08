@@ -39,4 +39,8 @@ public class UserVoteService {
     public List<String> showUserVoteForIssue(Integer id) {
         return userVoteRepository.ShowUserVoteForIssue(id);
     }
+
+    public Integer countVoteForRound(int issueId,int roundNumber){
+        return userVoteRepository.countVoteForRound(issueId,roundNumber);
+    }
 }

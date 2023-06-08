@@ -4,7 +4,7 @@
   <div class="card shadow p-3 mt-4">
     <div id="filter">
       <div class="p-3 mb-3 table-responsive border card-header">
-        <form [formGroup]="votingForm" class="form" (ngSubmit)="voting()">
+        <form  class="form" (ngSubmit)="voting()">
           <div class="form-group">
             <div class="row">
               <div class="justify-content-left">
@@ -12,15 +12,15 @@
                   <label class="form-label" [for]="'optionId' + i">{{ option.optionTitle }}</label>
                   <ng-container *ngIf="roundData.issue?.allowMultipleOptions; else radioOption">
                     <input class="form-check-input" type="checkbox" [value]="option.id" name="optionId"
-                      [id]="'optionId' + i" [formControlName]="'optionId'" [(ngModel)]="option.isSelected" required>
+                      [id]="'optionId' + i"  [(ngModel)]="option.isSelected" required>
                   </ng-container>
                   <ng-template #radioOption>
                     <input class="form-check-input" type="radio" [value]="option.id" [id]="'optionId' + i"
-                      [formControlName]="'optionId'" [(ngModel)]="option.isSelected" required>
+                       [(ngModel)]="option.isSelected" required>
                   </ng-template>
                   <div class="col">
                     <input class="form-control" type="text"
-                      *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'" name="preference">
+                      *ngIf="roundData.issue?.voteType.voteTypeTitle == 'Instant-runoff'" [(ngModel)]="option.preference"  name="preference">
                   </div>
                 </div>
               </div>
