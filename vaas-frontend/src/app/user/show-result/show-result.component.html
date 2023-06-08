@@ -1,1 +1,22 @@
-<p>show-result works!</p>
+<div class="container text-center border">
+    <h1 class="title m-3">Result Details</h1>
+    <div class="row m-3">
+        <div class="col p-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <canvas id="piechart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col justify-content-left">
+            <h3 class="title">Winner Details</h3>
+            <div class="card p-3" *ngFor="let result of resultData">
+                <p class="title">Winning Option : {{result.optionTitle}}</p>
+                <p class="title">Total Vote : {{result.count}}</p>
+            </div>
+            <div *ngIf="errorMessage">
+                <p class="title p-3">{{errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div>

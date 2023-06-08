@@ -41,6 +41,7 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { FeedbackComponent } from './admin/feedback/feedback.component';
 import { ResultRevotingComponent } from './admin/result-revoting/result-revoting.component';
+import { ShowResultComponent } from './user/show-result/show-result.component';
 
 
 const appRoute: Routes = [
@@ -72,8 +73,8 @@ const appRoute: Routes = [
     UserHomeComponent,
     UserProfileComponent,
     FeedbackComponent,
-    ResultRevotingComponent
-    
+    ResultRevotingComponent,
+    ShowResultComponent
   ],
   imports: [
     BrowserModule,
