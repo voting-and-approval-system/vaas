@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
+
+.container-fluid {
+    padding-right: 10%;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.card {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 100;
+}
+
+.title {
+    text-align: center;
+    font-weight: 200;
+}
