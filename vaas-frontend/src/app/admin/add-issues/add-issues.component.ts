@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminServicesService } from '../admin-services.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-add-issues',
@@ -17,7 +18,7 @@ export class AddIssuesComponent implements OnInit {
   round = { issue: { id: '' }, roundNumber: 1, roundIsActive: true };
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
-    private _router: Router, private _route: ActivatedRoute) {
+    private _router: Router, private _route: ActivatedRoute,private _coreService : CoreService) {
     this.issuesForm = this._formBuilder.group({
       issueTitle: '',
       issueDescription: '',
@@ -102,7 +103,7 @@ export class AddIssuesComponent implements OnInit {
       this.round.issue.id = issueId.toString();
       const addRound = await this._adminService.addRound(this.round).toPromise();
 
-      alert("issues Added !!");
+      this._coreService.openSnackBar("Issue Added !!");
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {
@@ -140,7 +141,7 @@ export class AddIssuesComponent implements OnInit {
 
     try {
       const val = await this._adminService.updateIssues(id, this.issuesForm.value).toPromise();
-      alert("issues Updated !!");
+      this._coreService.openSnackBar("Issue Updated !!");
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {
