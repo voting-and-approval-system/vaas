@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminServicesService } from '../admin-services.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-add-option',
@@ -14,12 +15,12 @@ export class AddOptionComponent implements OnInit {
   issueId : number;
 
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
-    private _router: Router, private _route: ActivatedRoute) {
+    private _router: Router, private _route: ActivatedRoute,private _coreService : CoreService) {
     this.optionForm = this._formBuilder.group({
-      optionTitle: '',
-      optionDescription: '',
-      optionAttachmentPath: '',
-      issue: '',
+      optionTitle: null,
+      optionDescription: null,
+      optionAttachmentPath: null,
+      issue: null,
       optionIsActive: true
     })
   }
@@ -59,12 +60,12 @@ export class AddOptionComponent implements OnInit {
 
     try {
       const val = await this._adminService.addOption(this.optionForm.value).toPromise();
-      alert("options Added !!");
+      this._coreService.openSnackBar("Option Added !!");
       console.log(this.issueId);
       this._router.navigate(['/admin/option', { id: this.issueId }]);
       this.optionForm.reset();
     } catch (err) {
-      console.log("Error while adding option: " + JSON.stringify(err));
+      this._coreService.openSnackBar("Please fill necessary details!");
       this.optionForm.reset();
     }
   }
@@ -84,7 +85,7 @@ export class AddOptionComponent implements OnInit {
       this.optionForm.get('issue').setValue(_issue);
 
       const val = await this._adminService.updateOption(id, this.optionForm.value).toPromise();
-      alert("options Updated !!");
+      this._coreService.openSnackBar("Option Updated !!");
       this._router.navigate(['/admin/option', { id: this.issueId }]);
       this.optionForm.reset();
     } catch (err) {

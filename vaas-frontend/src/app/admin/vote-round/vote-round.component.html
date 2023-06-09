@@ -18,7 +18,7 @@
                 <td class="bg-white ">{{voteround.issue.issueTitle}}</td>
                 <td class="bg-white ">{{voteround.roundNumber}}</td>
                 <td class="bg-white"><a
-                  [class]="voteround.roundIsActive ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="updateStatus(voteround.id,voteround.roundIsActive)">{{voteround.roundIsActive
+                  [class]="voteround.roundIsActive ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="voteround.roundIsActive && updateStatus(voteround.id, voteround.roundIsActive)">{{voteround.roundIsActive
                   ? 'Active' : 'Deactive'}}</a></td>
               </tr>
             </tbody>

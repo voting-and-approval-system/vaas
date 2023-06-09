@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServicesService } from '../admin-services.service';
 import { Router } from '@angular/router';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-result-revoting',
@@ -20,7 +21,7 @@ export class ResultRevotingComponent implements OnInit {
     this.displayRound();
   }
 
-  constructor(private _adminService: AdminServicesService,private _router : Router) { }
+  constructor(private _adminService: AdminServicesService,private _router : Router,private _coreService : CoreService) { }
 
   displayRound() {
     this._adminService.displayDeactiveRounds().subscribe(
@@ -65,7 +66,7 @@ export class ResultRevotingComponent implements OnInit {
     this.newRound.issue = this.issueData;
     this.newRound.roundNumber = this.roundNumber + 1;
     const issueDataResponse = await this._adminService.addRound(this.newRound).toPromise();
-    alert("New Round Created For This Issue !!");
+    this._coreService.openSnackBar("New Round is set");
     this._router.navigate(['admin/result']);
   }
 

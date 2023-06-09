@@ -33,7 +33,7 @@ export class ResultComponent implements OnInit {
       this.currentCollapseIndex = index;
       this._userService.displayResult(issueId, roundNumber).subscribe({
         next: (res: any) => {
-          this.errorMessage = '';
+          this.errorMessage = 'There is no exact Winner For This Issue, New Voting Round Will be Live Soon !!"';
           this.resultData = res;
         },
         error: (err: any) => {
