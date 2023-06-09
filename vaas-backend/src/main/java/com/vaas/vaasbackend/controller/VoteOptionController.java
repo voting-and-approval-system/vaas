@@ -25,7 +25,7 @@ public class VoteOptionController {
     }
 
     @GetMapping("/voteoption/findtotalvote/{issueId}/{roundNumber}")
-    public List<TotalVoteForIssue> countTotalVotes(@PathVariable(name = "issueId") Integer issueId,@PathVariable(name = "roundNumber") Integer roundNumber){
+    public List<TotalVoteForIssue> countTotalVotes(@PathVariable(name = "issueId") Integer issueId,@PathVariable(name = "roundNumber") Integer roundNumber) throws DataNotFoundException {
         return voteOptionService.countTotalVotes(issueId,roundNumber);
     }
 }

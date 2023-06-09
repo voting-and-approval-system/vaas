@@ -43,11 +43,11 @@ public class InstantRunoffEvaluator implements Evaluator {
     public boolean resultValidation(int issueId, int roundNumber) {
         boolean valid = false;
         int totalVote = usersService.totalUser();
-        int totalVoteForRound = userVoteService.countVoteForRound(issueId,roundNumber);
+        int totalVoteForRound = userVoteService.countVoteForRound(issueId, roundNumber);
 
-        float percentage =  ((float) totalVoteForRound /(float) totalVote) * 100;
+        float percentage = ((float) totalVoteForRound / (float) totalVote) * 100;
 
-        if(percentage >= 30) {
+        if (percentage >= 30) {
             valid = true;
         }
         return valid;
@@ -60,10 +60,13 @@ public class InstantRunoffEvaluator implements Evaluator {
         TblIssue issue = option.getIssue();
         roundNo = optionList.get(0).getRoundNumber();
         issueId = issueService.showIssue(issue.getId()).getId();
-        int totalVote = voteOptionRepository.totalVote(issueId,roundNo);
+        Integer totalVote = voteOptionRepository.totalVote(issueId, roundNo);
         requireVote = totalVote * 50 / 100;
 
         List<TotalVoteForIssue> firstPreferenceOptionList = optionList.stream().filter(list -> list.getPreference() == 1).collect(Collectors.toCollection(ArrayList<TotalVoteForIssue>::new));
+        if (firstPreferenceOptionList.isEmpty()) {
+            throw new DataNotFoundException("No Exact Winner Found For This Round");
+        }
         return eliminateLeastCountOption(firstPreferenceOptionList);
     }
 
