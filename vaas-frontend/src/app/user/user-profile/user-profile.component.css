@@ -6,9 +6,6 @@ body {
     padding: 3rem !important
 }
 
-.user-card-full {
-    overflow: hidden;
-}
 
 .card {
     border-radius: 5px;
