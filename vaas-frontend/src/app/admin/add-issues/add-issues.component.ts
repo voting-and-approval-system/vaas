@@ -20,14 +20,14 @@ export class AddIssuesComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _adminService: AdminServicesService,
     private _router: Router, private _route: ActivatedRoute,private _coreService : CoreService) {
     this.issuesForm = this._formBuilder.group({
-      issueTitle: '',
-      issueDescription: '',
-      issueAttachmentPath: '',
+      issueTitle: null,
+      issueDescription: null,
+      issueAttachmentPath: null,
       allowMultipleOptions: false,
       issueIsActive: true,
       allowFeedback: false,
-      voteType: '',
-      assets: ''
+      voteType: null,
+      assets: null
     })
   }
 
@@ -74,6 +74,8 @@ export class AddIssuesComponent implements OnInit {
   async addIssues() {
     const assetId = this.issuesForm.get('assets').value || '';
     const voteTypeId = this.issuesForm.get('voteType').value;
+    const title = this.issuesForm.get('issueTitle').value;
+    const description = this.issuesForm.get('issueDescription').value;
 
     let _assets = [];
     if (assetId != '') {
@@ -107,7 +109,7 @@ export class AddIssuesComponent implements OnInit {
       this._router.navigate(['/admin/issues']);
       this.issuesForm.reset();
     } catch (err) {
-      console.log("Error while adding issues: " + JSON.stringify(err));
+      this._coreService.openSnackBar("Please fill necessary details!");
       this.issuesForm.reset();
     }
   }
@@ -148,5 +150,9 @@ export class AddIssuesComponent implements OnInit {
       console.log("Error while Updating issues: " + JSON.stringify(err));
       this.issuesForm.reset();
     }
+
+    
+
   }
+
 }

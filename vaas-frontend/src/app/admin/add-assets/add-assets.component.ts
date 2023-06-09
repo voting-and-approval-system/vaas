@@ -36,16 +36,16 @@ export class AddAssetsComponent implements OnInit {
     const title = this.assetsForm.get('assetsTitle').value;
     const description = this.assetsForm.get('assetsDescription').value;
     if (title == '') {
-      alert("Please Add Title");
+      this._coreService.openSnackBar("Please add title!");
       return null;
     }
     if (description == '') {
-      alert("Please Add Description");
+      this._coreService.openSnackBar("Please add description!");
       return null;
     }
     return this._adminService.addAssets(this.assetsForm.value).subscribe({
       next: (val: any) => {
-        this._coreService.openSnackBar("Assets Add !!");
+        this._coreService.openSnackBar("Assets Added !!");
         this._router.navigate(['/admin/assets']);
         this.assetsForm.reset();
       },

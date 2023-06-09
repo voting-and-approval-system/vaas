@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminServicesService } from '../admin-services.service';
 import { Router } from '@angular/router';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-vote-round',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class VoteRoundComponent {
   data = [];
 
-constructor(private _adminService: AdminServicesService, private _router: Router) { }
+constructor(private _adminService: AdminServicesService, private _router: Router ,private _coreService : CoreService) { }
 
   ngOnInit(): void {
     this.getVoteRound();
@@ -27,7 +28,7 @@ constructor(private _adminService: AdminServicesService, private _router: Router
     isActive = isActive ? false : true;
     this._adminService.updateRoundIsActive(id,isActive).subscribe({
       next : (res) => {
-        alert("Status is Updated !!");
+        this._coreService.openSnackBar("Status Updated!");
         this.getVoteRound();
       }
     });

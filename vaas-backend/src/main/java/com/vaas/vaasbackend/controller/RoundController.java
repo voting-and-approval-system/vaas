@@ -16,17 +16,20 @@ import java.util.List;
 public class RoundController {
     @Autowired
     RoundService roundService;
+
+    @PreAuthorize("hasRole('ROLE_Admin')")
     @GetMapping("/round")
     public List<TblRound> showRound(){
         return roundService.showRound();
     }
-
+    @PreAuthorize("hasRole('ROLE_Admin')")
     @GetMapping("/round/{id}")
     public TblRound showRound(@PathVariable Integer id) throws DataNotFoundException {
         return roundService.showRound(id);
     }
 
     @PostMapping("/round")
+    @PreAuthorize("hasRole('ROLE_Admin')")
     public TblRound saveRound(@RequestBody TblRound round){
         return roundService.saveRound(round);
     }
@@ -50,7 +53,7 @@ public class RoundController {
     public List<TblRound> deactiveRounds() throws DataNotFoundException {
         return roundService.deactiveRounds();
     }
-
+    @PreAuthorize("hasRole('ROLE_Admin')")
     @GetMapping("/round/active")
     public List<TblRound> activeRound() throws DataNotFoundException {
         return roundService.activeRounds();

@@ -24,6 +24,7 @@ public class RoleController {
     RoleService roleService;
 
     @GetMapping("/roles")
+    @PreAuthorize("hasRole('ROLE_Admin')")
     public List<TblRole> showRoles(){
         return roleService.showRoles();
     }
@@ -33,18 +34,21 @@ public class RoleController {
     }
     
     @GetMapping("/roles/{id}")
+    @PreAuthorize("hasRole('ROLE_Admin')")
 	public Optional<TblRole> getRole(@PathVariable Integer id)
 	{
 		return this.roleService.getRole(id);
 	}
 
     @DeleteMapping("/roles/{id}")
+    @PreAuthorize("hasRole('ROLE_Admin')")
     public String deleteRole(@PathVariable("id") Integer id) {
         roleService.deleteRole(id);
         return "role deleted Successfully!!";
     }
 
     @PutMapping("/roles/{id}")
+    @PreAuthorize("hasRole('ROLE_Admin')")
     public TblRole updateUser(@PathVariable("id") Integer id, @Valid @RequestBody TblRole role) {
         return roleService.updateRole(id,role);
     }

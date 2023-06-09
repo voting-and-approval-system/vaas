@@ -6,8 +6,7 @@
 }
 
 .table {
-    border-radius: 8px;
-    border: black;
+
     font-family: 'Quicksand', sans-serif;
     margin: 0 auto; /* Center the table horizontally */
 }
