@@ -15,7 +15,7 @@ public interface VoteOptionRepository extends JpaRepository<TblVoteOption,Intege
 
     @Query(nativeQuery = true,value = "select count(*) from tbl_users,tbl_round,tbl_users_vote,tbl_issue where tbl_users.user_id = tbl_users_vote.user_id and\n" +
             "tbl_users_vote.round_id = tbl_round.round_id and tbl_round.issue_id = tbl_issue.issue_id and tbl_issue.issue_id = ? and tbl_round.round_number = ?")
-    public int totalVote(int issueId, int roundNo);
+    public Integer totalVote(int issueId, int roundNo);
 
     @Query(nativeQuery = true,value = "select tbl_users_vote.user_id from tbl_users_vote,tbl_vote_option where\n" +
             "tbl_users_vote.user_vote_id = tbl_vote_option.user_vote_id and tbl_vote_option.preference = 1 and tbl_vote_option.option_id = ?")

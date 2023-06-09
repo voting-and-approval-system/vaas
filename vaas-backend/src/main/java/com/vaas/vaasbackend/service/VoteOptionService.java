@@ -14,8 +14,12 @@ public class VoteOptionService{
     @Autowired
     VoteOptionRepository voteOptionRepository;
 
-    public List<TotalVoteForIssue> countTotalVotes(Integer issueId, Integer roundNumber) {
-        return voteOptionRepository.countTotalVotes(issueId,roundNumber);
+    public List<TotalVoteForIssue> countTotalVotes(Integer issueId, Integer roundNumber) throws DataNotFoundException {
+        List<TotalVoteForIssue> totalVoteForIssues = voteOptionRepository.countTotalVotes(issueId,roundNumber);
+        if(totalVoteForIssues.isEmpty()){
+            throw new DataNotFoundException("No user vote for this round");
+        }
+        return totalVoteForIssues;
     }
 
     public List<TblVoteOption> showVoteOption() throws DataNotFoundException {

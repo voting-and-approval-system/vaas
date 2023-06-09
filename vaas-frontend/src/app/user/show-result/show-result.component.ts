@@ -14,6 +14,7 @@ export class ShowResultComponent implements OnInit {
   resultData:any = [];
   totalVoteData: any = [];
   errorMessage = '';
+  chartErrorMessage = '';
 
   async ngOnInit(): Promise<void> {
     const roundNumber: any = this._route.snapshot.paramMap.get('roundNumber');
@@ -21,16 +22,14 @@ export class ShowResultComponent implements OnInit {
 
     try {
       this.resultData = await this._userService.displayResult(issueId, roundNumber).toPromise();
-      console.log("Result: " + JSON.stringify(this.resultData));
     } catch (err) {
-      this.errorMessage = "There is no exact Winner For This Issue, New Voting Round Will be Live Soon !!";
+      this.errorMessage = err.error.message;
     }
 
     try {
       this.totalVoteData = await this._userService.getTotalVote(issueId, roundNumber).toPromise();
-      console.log("Total Vote: " + JSON.stringify(this.totalVoteData));
     } catch (err) {
-      console.log(err);
+      this.chartErrorMessage = err.error.message;
     }
     this.renderChart();
   }

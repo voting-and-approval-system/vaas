@@ -8,6 +8,9 @@
                 <div class="col-lg-6">
                     <canvas id="piechart"></canvas>
                 </div>
+                <div *ngIf="chartErrorMessage" class="col-lg-6">
+                    <p class="title">{{chartErrorMessage}}</p>
+                </div>
             </div>
         </div>
         <div class="col justify-content-left">
