@@ -22,7 +22,7 @@ public class RoundController {
     public List<TblRound> showRound(){
         return roundService.showRound();
     }
-    @PreAuthorize("hasRole('ROLE_Admin')")
+
     @GetMapping("/round/{id}")
     public TblRound showRound(@PathVariable Integer id) throws DataNotFoundException {
         return roundService.showRound(id);
@@ -60,7 +60,6 @@ public class RoundController {
     }
 
     @PutMapping("round/{id}/{isActive}")
-    @PreAuthorize("hasRole('ROLE_Admin')")
     public TblRound updateRoundIsActive(@PathVariable("id") Integer roundId, @PathVariable("isActive") boolean isActive) throws DataNotFoundException {
         return roundService.updateRoundIsActive(roundId, isActive);
     }
