@@ -42,6 +42,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import { FeedbackComponent } from './admin/feedback/feedback.component';
 import { ResultRevotingComponent } from './admin/result-revoting/result-revoting.component';
 import { ShowResultComponent } from './user/show-result/show-result.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 const appRoute: Routes = [
@@ -93,7 +94,42 @@ const appRoute: Routes = [
     UserRoutingModule,
     AdminRoutingModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxUiLoaderModule.forRoot({
+      "bgsColor": "red",
+      "bgsOpacity": 0.5,
+      "bgsPosition": "bottom-right",
+      "bgsSize": 60,
+      "bgsType": "ball-spin-clockwise",
+      "blur": 5,
+      "delay": 0,
+      "fastFadeOut": true,
+      "fgsColor": "red",
+      "fgsPosition": "center-center",
+      "fgsSize": 60,
+      "fgsType": "circle",
+      "gap": 24,
+      "logoPosition": "center-center",
+      "logoSize": 120,
+      "logoUrl": "",
+      "masterLoaderId": "master",
+      "overlayBorderRadius": "0",
+      "overlayColor": "rgba(40, 40, 40, 0.8)",
+      "pbColor": "red",
+      "pbDirection": "ltr",
+      "pbThickness": 3,
+      "hasProgressBar": true,
+      "text": "",
+      "textColor": "#FFFFFF",
+      "textPosition": "center-center",
+      "maxTime": -1,
+      "minTime": 300
+    }),
+
+
+
+
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
