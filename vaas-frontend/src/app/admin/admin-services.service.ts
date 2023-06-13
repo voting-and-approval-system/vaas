@@ -13,7 +13,7 @@ export class AdminServicesService {
     .set('Authorization', `Bearer ${this._userAuthService.getToken()}`)
     .set('Content-Type', 'application/json');
 
-  baseUrl = "https://ec2-34-203-243-194.compute-1.amazonaws.com:8080";
+  baseUrl = 'http://localhost:8080';
 
   getAssets(): Observable<any> {
     return this._http.get(this.baseUrl + '/assets', { headers: this.headers });
