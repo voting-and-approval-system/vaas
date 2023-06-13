@@ -22,7 +22,6 @@ public class ResultService {
         Optional<Evaluator> voteEvaluatorService = getEvaluatorService(voteType);
 
         if(voteEvaluatorService.isEmpty()) throw new UnsupportedOperationException("vote type is not supported !!");
-        if(!voteEvaluatorService.get().resultValidation(issueId,roundNo)) throw new UnsupportedOperationException("We apologize, but the vote results cannot be generated at this time. In order to ensure a fair and representative outcome, we require at least 30% of users to participate in the voting process.");
 
         return voteEvaluatorService.get().evaluate(responseList);
     }

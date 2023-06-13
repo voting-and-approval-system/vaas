@@ -22,19 +22,6 @@ public class TopChoicesEvaluator implements Evaluator{
     }
 
     @Override
-    public boolean resultValidation(int issueId, int roundNumber) {
-        boolean valid = false;
-        int totalVote = usersService.totalUser();
-        int totalVoteForRound = userVoteService.countVoteForRound(issueId,roundNumber);
-
-        float percentage =  ((float) totalVoteForRound /(float) totalVote) * 100;
-
-        if(percentage >= 30) {
-            valid = true;
-        }
-        return valid;
-    }
-    @Override
     public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws Exception {
         Collections.sort(optionList, new Comparator<TotalVoteForIssue>() {
             @Override
