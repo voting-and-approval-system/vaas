@@ -1,0 +1,45 @@
+<h1 class="title">Voting History</h1>
+<div class="d-flex justify-content-center p-3 m-1 container-fluid">
+    <div class="card shadow p-3 mt-4">
+        <div div id="filter">
+            <div class="p-3">
+            </div>
+            <div class="p-3 mb-3 table-responsive border">
+                <table class="table table-striped">
+                    <thead id="tableHead" class="thead-dark text-black jus">
+                        <tr>
+                            <th class="font-weight-bold" scope="col">Issue Title</th>
+                            <th class="font-weight-bold" scope="col">Issue Description</th>
+                            <th class="font-weight-bold" scope="col">Round Number</th>
+                            <th class="font-weight-bold" scope="col"></th>
+                            <th class="font-weight-bold" scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let round of roundData; let i = index">
+                            <td class="bg-white ">{{round.issue.issueTitle}}</td>
+                            <td class="bg-white">{{round.issue.issueDescription}}</td>
+                            <td class="bg-white ">{{round.roundNumber}}</td>
+                            <td class="bg-white "><a
+                                    [class]="currentCollapseIndex === i ? 'btn btn-outline-dark' : 'btn btn-outline-primary'"
+                                    Data-bs-toggle="collapse" href="#collapseExample{{i}}"
+                                    (click)="viewResult(round.issue.id,round.roundNumber,i)">{{
+                                    currentCollapseIndex === i ? 'X'
+                                    : 'View Your Vote' }}</a></td>
+                            <td class="bg-white ">
+                                <div class="collapse" [id]="'collapseExample' + i"
+                                    [ngClass]="{ 'show': currentCollapseIndex === i }">
+                                    <div>
+                                        <h4>Your Vote</h4>
+                                    </div>
+                                    <div *ngFor="let result of resultData">
+                                        <li>{{result.optionTitle}}</li>
+                                    </div>
+                                </div>
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
