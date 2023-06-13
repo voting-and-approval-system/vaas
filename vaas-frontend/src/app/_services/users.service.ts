@@ -6,7 +6,7 @@ import { UserAuthService } from './user-auth.service';
   providedIn: 'root',
 })
 export class UsersService {
-  PATH_OF_API = 'https://ec2-34-203-243-194.compute-1.amazonaws.com:8080';
+  PATH_OF_API = 'https://ec2-52-51-82-19.eu-west-1.compute.amazonaws.com:8080';
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
