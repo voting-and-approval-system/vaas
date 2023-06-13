@@ -22,6 +22,14 @@ public class VoteOptionService{
         return totalVoteForIssues;
     }
 
+    public List<TotalVoteForIssue> getUserOptionList(Integer issueId, Integer roundNumber,Integer userId) throws DataNotFoundException {
+        List<TotalVoteForIssue> totalVoteForIssues = voteOptionRepository.getUserOptionList(issueId,roundNumber,userId);
+        if(totalVoteForIssues.isEmpty()){
+            throw new DataNotFoundException("You Don't Vote For This Issue");
+        }
+        return totalVoteForIssues;
+    }
+
     public List<TblVoteOption> showVoteOption() throws DataNotFoundException {
         List<TblVoteOption> tblVoteOptions = voteOptionRepository.findAll();
         if(tblVoteOptions.isEmpty()){

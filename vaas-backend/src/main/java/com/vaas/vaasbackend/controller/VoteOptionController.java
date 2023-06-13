@@ -28,4 +28,9 @@ public class VoteOptionController {
     public List<TotalVoteForIssue> countTotalVotes(@PathVariable(name = "issueId") Integer issueId,@PathVariable(name = "roundNumber") Integer roundNumber) throws DataNotFoundException {
         return voteOptionService.countTotalVotes(issueId,roundNumber);
     }
+
+    @GetMapping("/voteoption/getUserOptionList/{issueId}/{roundNumber}/{userId}")
+    public List<TotalVoteForIssue> getUserOptionList(@PathVariable(name = "issueId") Integer issueId,@PathVariable(name = "roundNumber") Integer roundNumber,@PathVariable(name = "userId") Integer userId) throws DataNotFoundException {
+        return voteOptionService.getUserOptionList(issueId,roundNumber,userId);
+    }
 }

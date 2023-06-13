@@ -23,4 +23,7 @@ public interface VoteOptionRepository extends JpaRepository<TblVoteOption,Intege
 
     @Query(name = "getNewOptionList",nativeQuery = true)
     public List<TotalVoteForIssue> getNextPreferenceOfLeastOptionUser(int nextPreference,int issueId,int roundNo,int[] users);
+
+    @Query(name = "getUserOptionList",nativeQuery = true)
+    public List<TotalVoteForIssue> getUserOptionList(int issueId,int roundNo,int userId);
 }

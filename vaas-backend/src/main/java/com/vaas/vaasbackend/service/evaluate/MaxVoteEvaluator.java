@@ -21,19 +21,6 @@ public class MaxVoteEvaluator implements Evaluator {
     }
 
     @Override
-    public boolean resultValidation(int issueId, int roundNumber) {
-        boolean valid = false;
-        int totalVote = usersService.totalUser();
-        int totalVoteForRound = userVoteService.countVoteForRound(issueId,roundNumber);
-
-        float percentage =  ((float) totalVoteForRound /(float) totalVote) * 100;
-
-        if(percentage >= 30) {
-            valid = true;
-        }
-        return valid;
-    }
-    @Override
     public List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> responseList) throws Exception {
         TotalVoteForIssue highestCountObject = null;
         List<TotalVoteForIssue> totalVoteForIssues = new ArrayList<>();
