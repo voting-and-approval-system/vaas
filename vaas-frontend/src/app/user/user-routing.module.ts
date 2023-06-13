@@ -8,6 +8,7 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TenantAuthGuard } from '../_services/user-auth.guard';
 import { ShowResultComponent } from './show-result/show-result.component';
+import { ShowVotingHistoryComponent } from './show-voting-history/show-voting-history.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: 'user/home', component: UserHomeComponent },
       { path: 'user/profile', component: UserProfileComponent },
       { path: 'user/show-result', component: ShowResultComponent },
+      { path: 'user/voting-history', component: ShowVotingHistoryComponent},
     ]
   }
 ];

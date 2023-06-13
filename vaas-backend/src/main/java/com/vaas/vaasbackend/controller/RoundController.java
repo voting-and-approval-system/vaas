@@ -44,6 +44,11 @@ public class RoundController {
         return roundService.roundUserNotVote(id);
     }
 
+    @GetMapping("/round/uservote/{id}")
+    public List<TblRound> roundUserVote(@PathVariable Integer id) throws DataNotFoundException {
+        return roundService.roundUserVote(id);
+    }
+
     @GetMapping("/round/issueIsNotActive")
     public List<TblRound> roundWithDeactiveIssues() throws DataNotFoundException {
         return roundService.roundWithDeactiveIssues();

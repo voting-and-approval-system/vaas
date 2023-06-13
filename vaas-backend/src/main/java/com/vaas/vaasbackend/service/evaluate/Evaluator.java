@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface Evaluator {
     boolean isSupported(String votingType);
-    boolean resultValidation(int issueId,int roundNumber);
     List<TotalVoteForIssue> evaluate(List<TotalVoteForIssue> optionList) throws Exception;
 }

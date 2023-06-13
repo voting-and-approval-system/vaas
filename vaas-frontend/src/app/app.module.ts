@@ -43,6 +43,7 @@ import { FeedbackComponent } from './admin/feedback/feedback.component';
 import { ResultRevotingComponent } from './admin/result-revoting/result-revoting.component';
 import { ShowResultComponent } from './user/show-result/show-result.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ShowVotingHistoryComponent } from './user/show-voting-history/show-voting-history.component';
 
 
 const appRoute: Routes = [
@@ -75,7 +76,8 @@ const appRoute: Routes = [
     UserProfileComponent,
     FeedbackComponent,
     ResultRevotingComponent,
-    ShowResultComponent
+    ShowResultComponent,
+    ShowVotingHistoryComponent
   ],
   imports: [
     BrowserModule,

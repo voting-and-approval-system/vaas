@@ -45,4 +45,12 @@ export class UserServicesService {
   getTotalVote(issueId: number, roundNumber: number) {
     return this._http.get(this.baseUrl + `/voteoption/findtotalvote/${issueId}/${roundNumber}`, { headers: this.headers });
   }
+
+  displayUserVoteRound(userId : number){
+    return this._http.get(this.baseUrl + `/round/uservote/${userId}`, { headers: this.headers });
+  }
+
+  displayUserOptionList(issueId: number, roundNumber: number,userId : number){
+    return this._http.get(this.baseUrl + `/voteoption/getUserOptionList/${issueId}/${roundNumber}/${userId}`, { headers: this.headers });
+  }
 }
