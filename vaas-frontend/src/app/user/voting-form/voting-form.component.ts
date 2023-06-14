@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserServicesService } from '../user-services.service';
 import { formatDate } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CoreService } from 'src/app/_services/core.service';
 
 @Component({
   selector: 'app-voting-form',
@@ -26,7 +27,7 @@ export class VotingFormComponent implements OnInit {
   }
 
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder) {
+  constructor(private _route: ActivatedRoute, private _router: Router, private _userService: UserServicesService, private _formBuilder: FormBuilder, private _coreService : CoreService) {
     this.votingForm = this._formBuilder.group({
       optionId: '',
       preference: '',
@@ -59,7 +60,7 @@ export class VotingFormComponent implements OnInit {
   voting() : any{
     this.votingData.userId = this.userData.id;
     this.votingData.roundId = this.roundData.id;
-    this.votingData.votePreferences = this.optionData.filter(x => x.isSelected != false).map((option: any) => {
+    this.votingData.votePreferences = this.optionData.filter(x => x.isSelected == true || x.id == this.votingForm.get('optionId').value).map((option: any) => {
       return {
         optionId: option.id,
         preference : option.preference
@@ -76,7 +77,7 @@ export class VotingFormComponent implements OnInit {
         }
       });
     } else {
-      alert("Please select any option for vote !!");
+      this._coreService.openSnackBar("Please select any option for vote !!");
     }
   }
 }
