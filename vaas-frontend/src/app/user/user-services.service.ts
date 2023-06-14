@@ -12,7 +12,7 @@ export class UserServicesService {
     .set('Authorization', `Bearer ${this._userAuthService.getToken()}`)
     .set('Content-Type', 'application/json');
 
-  baseUrl = 'https://ec2-52-51-82-19.eu-west-1.compute.amazonaws.com:8080';
+  baseUrl = 'https://d2zoc2f04048nn.cloudfront.net/api';
 
   findUserByEmail(userEmail: string) {
     return this._http.get(this.baseUrl + `/users/${userEmail}`, { headers: this.headers });
