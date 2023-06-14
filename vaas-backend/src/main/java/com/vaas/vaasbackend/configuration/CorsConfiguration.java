@@ -22,7 +22,7 @@ public class CorsConfiguration {
                 registry.addMapping("/**")
                         .allowedOrigins("https://d2zoc2f04048nn.cloudfront.net")
                         .allowedMethods(GET, PUT, POST, DELETE)
-                        .allowedHeaders("*-")
+                        .allowedHeaders("**")
                         .allowCredentials(true)
                         .maxAge(3600);
             }

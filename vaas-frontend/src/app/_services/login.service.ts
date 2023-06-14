@@ -22,29 +22,24 @@ export class LoginService {
     private userService: UsersService,
     private userAuthService: UserAuthService,
     private router: Router,
-    private register: MatDialog
+    private register: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    // Retrieve user's name and image from sessionStorage on component initialization
     this.userFirstName = sessionStorage.getItem('userFirstName');
     this.userPhotoUrl = sessionStorage.getItem('userPhotoUrl');
   }
-  
+
 
   openForm(newUser: any, userEmail: string) {
     const dialogRef = this.register.open(RegisterComponent);
     dialogRef.componentInstance.formSubmitted.subscribe(({ houseNumber, phoneNumber }) => {
-      if (houseNumber == null || phoneNumber == null) {
-        return;
-      }
-      newUser.houseNumber = houseNumber || '';
-      newUser.phoneNumber = phoneNumber || '';
+      newUser.houseNumber = houseNumber;
+      newUser.phoneNumber = phoneNumber;
       this.userService.register(newUser).subscribe(
         (response: any) => {
           this.loginWithGoogle(userEmail);
-        },
-        (error: any) => {
+          dialogRef.close();
         }
       );
     });
@@ -83,7 +78,7 @@ export class LoginService {
     const profile = googleUser.getBasicProfile();
 
     const firstName = profile.getGivenName();
-    const lastName = profile.getFamilyName();
+    const lastName = profile.getFamilyName() || 'Not given';
 
     const newUser = {
       firstName: firstName,
