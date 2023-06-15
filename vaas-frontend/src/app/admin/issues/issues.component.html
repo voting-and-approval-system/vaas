@@ -14,7 +14,6 @@
               <th class="font-weight-bold" scope="col">Asset</th>
               <th class="font-weight-bold" scope="col">Vote Type</th>
               <th class="font-weight-bold" scope="col">Feedback</th>
-              <th class="font-weight-bold" scope="col">Status</th>
               <th class="font-weight-bold" scope="col"></th>
               <th class="font-weight-bold" scope="col"></th>
             </tr>
@@ -27,9 +26,6 @@
               <td class="bg-white">{{issues.assets ? issues.assets.assetsTitle : ''}}</td>
               <td class="bg-white">{{issues.voteType.voteTypeTitle}}</td>
               <td class="bg-white">{{issues.allowFeedback ? 'Allow' : 'Not Allow'}}</td>
-              <td class="bg-white"><a
-                  [class]="issues.issueIsActive ? 'btn btn-outline-primary' : 'btn btn-outline-secondary'" (click)="updateStatus(issues.id,issues.issueIsActive)">{{issues.issueIsActive
-                  ? 'Active' : 'Deactive'}}</a></td>
               <td class="bg-white "><a class="btn btn-outline-success" (click)="viewOptions(issues.id)">Options</a></td>
               <td class="bg-white "><a class="btn btn-outline-primary" (click)="editIssues(issues.id)">Edit</a></td>
             </tr>
