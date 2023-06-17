@@ -22,6 +22,10 @@ export class UserServicesService {
     return this._http.get(this.baseUrl + `/round/user/${userId}`, { headers: this.headers });
   }
 
+  displayIssueById(id: number) {
+    return this._http.get(this.baseUrl + `/issue/${id}`, { headers: this.headers });
+  }
+
   displayOptionForIssue(issueId: any) {
     return this._http.get(this.baseUrl + `/option/issue/${issueId}`, { headers: this.headers });
   }
@@ -52,5 +56,9 @@ export class UserServicesService {
 
   displayUserOptionList(issueId: number, roundNumber: number,userId : number){
     return this._http.get(this.baseUrl + `/voteoption/getUserOptionList/${issueId}/${roundNumber}/${userId}`, { headers: this.headers });
+  }
+
+  addFeedback(data : any){
+    return this._http.post(this.baseUrl + '/feedback',data, { headers: this.headers });
   }
 }
